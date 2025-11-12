@@ -1,0 +1,20 @@
+{
+  "test": {
+    "username": "test",
+    "password": "test",
+    "createdAt": "2025-11-11T19:08:16.984Z",
+    "lastLogin": "2025-11-11T20:08:02.114Z"
+  },
+  "test2": {
+    "username": "test2",
+    "password": "test",
+    "createdAt": "2025-11-11T19:22:28.015Z",
+    "lastLogin": "2025-11-11T19:22:28.015Z"
+  },
+  "zenox": {
+    "username": "zenox",
+    "password": "zenox",
+    "createdAt": "2025-11-11T19:23:32.797Z",
+    "lastLogin": "2025-11-11T19:31:11.812Z"
+  }
+}
