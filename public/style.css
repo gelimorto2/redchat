@@ -2341,31 +2341,31 @@ input:focus-visible,
     }
 }
 .dark-mode .search-input-wrapper input {
-    background: var(--dark-input-bg);
-    border-color: var(--dark-border);
-    color: var(--dark-text);
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
 }
 
 .dark-mode .available-room-item {
-    background: var(--dark-message-bg);
-    border-color: var(--dark-border);
+    background: var(--message-bg);
+    border-color: var(--border-color);
 }
 
 .dark-mode .available-room-item:hover {
-    background: var(--dark-hover-bg);
+    background: var(--hover-bg);
 }
 
 .dark-mode .category-btn {
-    border-color: var(--dark-border);
-    color: var(--dark-text-secondary);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
 }
 
 .dark-mode .category-btn:hover {
-    background: var(--dark-hover-bg);
+    background: var(--hover-bg);
 }
 
 .dark-mode .room-categories {
-    border-color: var(--dark-border);
+    border-color: var(--border-color);
 }
 
 /* Settings Modal Styles */
@@ -2591,22 +2591,22 @@ input:focus-visible,
 
 /* Dark mode settings */
 .dark-mode .settings-section {
-    border-color: var(--dark-border);
+    border-color: var(--border-color);
 }
 
 .dark-mode .setting-select,
 .dark-mode .settings-content input[type="text"] {
-    background: var(--dark-input-bg);
-    border-color: var(--dark-border);
-    color: var(--dark-text);
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
 }
 
 .dark-mode .user-id-display input {
-    background: var(--dark-message-bg);
+    background: var(--message-bg);
 }
 
 .dark-mode .settings-actions {
-    border-color: var(--dark-border);
+    border-color: var(--border-color);
 }
 
 .no-rooms {
@@ -2617,7 +2617,7 @@ input:focus-visible,
 }
 
 .dark-mode .no-rooms {
-    color: var(--dark-text-secondary);
+    color: var(--text-secondary);
 }
 
 /* Sidebar overlay for mobile */
@@ -2760,16 +2760,16 @@ input:focus-visible,
 
 /* Dark mode file attachments */
 .dark-mode .file-attachment {
-    background: var(--dark-message-bg);
-    border-color: var(--dark-border);
+    background: var(--message-bg);
+    border-color: var(--border-color);
 }
 
 .dark-mode .file-attachment .file-name {
-    color: var(--dark-text);
+    color: var(--text-color);
 }
 
 .dark-mode .file-attachment .file-size {
-    color: var(--dark-text-secondary);
+    color: var(--text-secondary);
 }
 
 /* Improved Mobile Styles for SphereChat */
@@ -3565,6 +3565,15 @@ input:focus-visible,
 .message-sticker:hover {
     transform: scale(1.1);
     transition: transform 0.2s;
+}
+
+/* Custom sticker images */
+.custom-sticker-img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    display: block;
+    margin: 0.5rem 0;
 }
 
 /* User Context Menu */
