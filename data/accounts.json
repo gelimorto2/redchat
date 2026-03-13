@@ -1,32 +1,96 @@
 {
-  "test": {
-    "username": "test",
-    "password": "test",
-    "createdAt": "2025-11-11T19:08:16.984Z",
-    "lastLogin": "2025-11-11T20:08:02.114Z"
+  "gelimorto": {
+    "passwordHash": "14a04204779b67950aec157e78612aa175b1213818d46be7b68f88b9b6fd7060cbbe35f9cadf472d19b23445290678c0383830144ac67e3477e19db3f6826821",
+    "salt": "0ac6be8272ae13ecdd6c37ac9d7d97103cbb2c11b6114271ca8a9211570dd6f0",
+    "email": "",
+    "emailVerified": false,
+    "created": 1772191822368,
+    "lastLogin": 1772218010697,
+    "loginCount": 7,
+    "messagesSent": 42,
+    "bio": "Hi!",
+    "nameColor": "#e34040",
+    "settings": {},
+    "friends": [],
+    "friendRequests": {
+      "sent": [
+        "testuser2"
+      ],
+      "received": []
+    },
+    "blocked": [],
+    "achievements": [],
+    "xp": 42,
+    "level": 1,
+    "bannerColor": "#fd0006",
+    "bannerColor2": "#b63838"
   },
-  "test2": {
-    "username": "test2",
-    "password": "test",
-    "createdAt": "2025-11-11T19:22:28.015Z",
-    "lastLogin": "2025-11-11T19:22:28.015Z"
+  "testaccount1": {
+    "passwordHash": "b14355541655f5d495c6bbaebe89670c2f44dfec7c95e021384b7ace8f4191b98b2558df53bde14ee54afbd002d4df0c65cf0102c1efc1153aba2e91289d4839",
+    "salt": "4a539bcc2cec977ae8ac5f2a51c5caea206c91d76a0a1f235b5298f604c59f53",
+    "email": "beeftool21@gmail.com",
+    "emailVerified": false,
+    "created": 1772203990735,
+    "lastLogin": 1772203990735,
+    "loginCount": 1,
+    "messagesSent": 0,
+    "bio": "",
+    "nameColor": "",
+    "settings": {},
+    "friends": [],
+    "friendRequests": {
+      "sent": [],
+      "received": []
+    },
+    "blocked": [],
+    "achievements": [],
+    "xp": 0,
+    "level": 1
   },
-  "zenox": {
-    "username": "zenox",
-    "password": "zenox",
-    "createdAt": "2025-11-11T19:23:32.797Z",
-    "lastLogin": "2025-11-11T19:31:11.812Z"
+  "testaccount2": {
+    "passwordHash": "11c9eb9ab661ffab51172fa5992b30965fd8682ff04da8108b7b852cecd3e6efb851fd43c4b6ed3f25e3a049c8ae25101c8e9200be6b1a1006fb5b98ecd86573",
+    "salt": "2ac6484ec9caa805f7b1b252934e6f86f954b40b00f53f0bd5f6a6e12c8f94dd",
+    "email": "octomorto@gmail.com",
+    "emailVerified": false,
+    "created": 1772211982759,
+    "lastLogin": 1772211982759,
+    "loginCount": 1,
+    "messagesSent": 0,
+    "bio": "",
+    "nameColor": "",
+    "settings": {},
+    "friends": [],
+    "friendRequests": {
+      "sent": [],
+      "received": []
+    },
+    "blocked": [],
+    "achievements": [],
+    "xp": 0,
+    "level": 1
   },
-  "TestUser": {
-    "username": "TestUser",
-    "password": "testpass",
-    "createdAt": "2025-11-12T08:01:47.355Z",
-    "lastLogin": "2025-11-12T08:01:47.355Z"
-  },
-  "DemoUser": {
-    "username": "DemoUser",
-    "password": "demo123",
-    "createdAt": "2025-11-12T08:06:44.993Z",
-    "lastLogin": "2025-11-12T08:06:44.993Z"
+  "testuser2": {
+    "passwordHash": "51dbfe3f8d7460684ca67eeea899fd93926f5a16211ea83d6048e5b182917a53a714811263bec64108c6632bef51bd6bc4b9441689406a5d87fb2377000d4220",
+    "salt": "20d1567d72c734325bdb006fa128e48749f1720df95b4ee1ddf92c39a25b4fe2",
+    "email": "",
+    "emailVerified": false,
+    "created": 1772217604481,
+    "lastLogin": 1772217604481,
+    "loginCount": 1,
+    "messagesSent": 1,
+    "bio": "",
+    "nameColor": "",
+    "settings": {},
+    "friends": [],
+    "friendRequests": {
+      "sent": [],
+      "received": [
+        "gelimorto"
+      ]
+    },
+    "blocked": [],
+    "achievements": [],
+    "xp": 1,
+    "level": 1
   }
 }

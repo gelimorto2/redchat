@@ -1,0 +1,18 @@
+{
+  "testaccount1": {
+    "code": "304159",
+    "token": "d3cc83f033c8b07af9cbdab3cffa2291",
+    "email": "beeftool21@gmail.com",
+    "created": 1772203990735,
+    "expires": 1772205790735,
+    "attempts": 0
+  },
+  "testaccount2": {
+    "code": "457256",
+    "token": "80f43f438ab018b142778ef6bb037b1a",
+    "email": "octomorto@gmail.com",
+    "created": 1772211982760,
+    "expires": 1772213782760,
+    "attempts": 0
+  }
+}

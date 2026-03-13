@@ -1,0 +1,317 @@
+[
+  {
+    "id": "2396286144a53fc0",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190988593,
+    "ip": null
+  },
+  {
+    "id": "cb72f2eedd18cf13",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190995401,
+    "ip": null
+  },
+  {
+    "id": "395850afcf92c20b",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190995812,
+    "ip": null
+  },
+  {
+    "id": "bb8c7127138e2308",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190996031,
+    "ip": null
+  },
+  {
+    "id": "bf8e45f4c90f88d8",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190996196,
+    "ip": null
+  },
+  {
+    "id": "1fecf244573c45cb",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190996352,
+    "ip": null
+  },
+  {
+    "id": "609867dbd55d6314",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190996517,
+    "ip": null
+  },
+  {
+    "id": "48aaa9486580b360",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772190996699,
+    "ip": null
+  },
+  {
+    "id": "d000a43b638eea57",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: saveAccounts is not defined",
+    "metadata": {},
+    "timestamp": 1772191254310,
+    "ip": null
+  },
+  {
+    "id": "ad8320f809d5f405",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: listen EADDRINUSE: address already in use :::3000",
+    "metadata": {},
+    "timestamp": 1772191255552,
+    "ip": null
+  },
+  {
+    "id": "83c5dd95da07fb85",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: defaultRooms is not defined",
+    "metadata": {},
+    "timestamp": 1772192170096,
+    "ip": null
+  },
+  {
+    "id": "489d5ce5e0f8bd1d",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: defaultRooms is not defined",
+    "metadata": {},
+    "timestamp": 1772192566669,
+    "ip": null
+  },
+  {
+    "id": "87728c197179d073",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772203316249,
+    "ip": null
+  },
+  {
+    "id": "53232c7c734471a1",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772203316253,
+    "ip": null
+  },
+  {
+    "id": "712941dcfb048088",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: listen EADDRINUSE: address already in use :::3000",
+    "metadata": {},
+    "timestamp": 1772205707175,
+    "ip": null
+  },
+  {
+    "id": "421eb735d794321b",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: listen EADDRINUSE: address already in use :::3000",
+    "metadata": {},
+    "timestamp": 1772205710948,
+    "ip": null
+  },
+  {
+    "id": "dc5ff259a30a4bcd",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772205930574,
+    "ip": null
+  },
+  {
+    "id": "8a4b43c422562677",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772205933503,
+    "ip": null
+  },
+  {
+    "id": "ff28645e9dd55db7",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772205938166,
+    "ip": null
+  },
+  {
+    "id": "5d69088d94210dc3",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772208404857,
+    "ip": null
+  },
+  {
+    "id": "cb0bf3d45582cd94",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772208406847,
+    "ip": null
+  },
+  {
+    "id": "15c41f5ab2188e18",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772208410985,
+    "ip": null
+  },
+  {
+    "id": "afc6e9ea99aa26a8",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772212197934,
+    "ip": null
+  },
+  {
+    "id": "810822c05d4d65d1",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772212201541,
+    "ip": null
+  },
+  {
+    "id": "1b8e8e5551915c4d",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772212824819,
+    "ip": null
+  },
+  {
+    "id": "d6be8cfa4516010a",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772212826600,
+    "ip": null
+  },
+  {
+    "id": "74fa9754047720cb",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: (roomId || \"\").toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772212857202,
+    "ip": null
+  },
+  {
+    "id": "8d9db120b31a6359",
+    "action": "update_profile",
+    "user": "gelimorto",
+    "details": "Profile updated",
+    "metadata": {},
+    "timestamp": 1772213105607,
+    "ip": null
+  },
+  {
+    "id": "7a428eb9dd7c9925",
+    "action": "update_profile",
+    "user": "gelimorto",
+    "details": "Profile updated",
+    "metadata": {},
+    "timestamp": 1772213160961,
+    "ip": null
+  },
+  {
+    "id": "e7f1be16c6e2ad6d",
+    "action": "update_profile",
+    "user": "gelimorto",
+    "details": "Profile updated",
+    "metadata": {},
+    "timestamp": 1772213191827,
+    "ip": null
+  },
+  {
+    "id": "89829702fcfa891b",
+    "action": "update_profile",
+    "user": "gelimorto",
+    "details": "Profile updated",
+    "metadata": {},
+    "timestamp": 1772214672358,
+    "ip": null
+  },
+  {
+    "id": "cf18db1d72b5fb55",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772226098617,
+    "ip": null
+  },
+  {
+    "id": "169059e7896c4cb0",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772226098622,
+    "ip": null
+  },
+  {
+    "id": "d6db666d58e13b55",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772226133014,
+    "ip": null
+  },
+  {
+    "id": "356c2f01562c0b4a",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: roomId.toLowerCase is not a function",
+    "metadata": {},
+    "timestamp": 1772226133022,
+    "ip": null
+  }
+]

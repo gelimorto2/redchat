@@ -1,0 +1,30 @@
+{
+  "startTime": 1772191780614,
+  "totalMessages": 39,
+  "totalLogins": 60,
+  "totalRegistrations": 4,
+  "totalFileUploads": 4,
+  "totalReports": 0,
+  "totalBans": 0,
+  "peakOnlineUsers": 1,
+  "dailyStats": {
+    "2026-02-27": {
+      "messages": 39,
+      "logins": 60,
+      "registrations": 4,
+      "reports": 0
+    }
+  },
+  "hourlyActivity": {
+    "11": 3,
+    "12": 6,
+    "13": 9,
+    "14": 7,
+    "15": 4,
+    "16": 1,
+    "17": 26,
+    "18": 24,
+    "19": 16,
+    "20": 3
+  }
+}

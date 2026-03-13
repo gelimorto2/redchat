@@ -1,0 +1,1578 @@
+[
+  {
+    "id": "1799ee658bb3cf6a",
+    "type": "register",
+    "username": "gelimorto",
+    "details": "Account created via login form",
+    "timestamp": 1772191822369,
+    "ip": ""
+  },
+  {
+    "id": "3cf03a173982ab7a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772191822370,
+    "ip": ""
+  },
+  {
+    "id": "482eba52d50cae5f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772191835539,
+    "ip": ""
+  },
+  {
+    "id": "17b2776392064835",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772192170097,
+    "ip": ""
+  },
+  {
+    "id": "51fd234065928529",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772192566671,
+    "ip": ""
+  },
+  {
+    "id": "2b3c9eb20b39d11d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772195678866,
+    "ip": ""
+  },
+  {
+    "id": "8c4fcd3d247e2df4",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772195693895,
+    "ip": ""
+  },
+  {
+    "id": "91a6354dba5e9017",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772195695595,
+    "ip": ""
+  },
+  {
+    "id": "a9bee34566a446bc",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772197192652,
+    "ip": ""
+  },
+  {
+    "id": "9fa34f43d19e003c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772197652772,
+    "ip": ""
+  },
+  {
+    "id": "2cf7b5b69d451d40",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772197654538,
+    "ip": ""
+  },
+  {
+    "id": "d316e53e5bb95b80",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772197944622,
+    "ip": ""
+  },
+  {
+    "id": "220b1f5427f3820c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772197976035,
+    "ip": ""
+  },
+  {
+    "id": "b27a462fa71efaa9",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772197977862,
+    "ip": ""
+  },
+  {
+    "id": "3271f0174b1452af",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772200018476,
+    "ip": ""
+  },
+  {
+    "id": "fe2b19365e9c3c80",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Art & Design",
+    "timestamp": 1772200021069,
+    "ip": ""
+  },
+  {
+    "id": "fab2bed30e437461",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Memes",
+    "timestamp": 1772200022388,
+    "ip": ""
+  },
+  {
+    "id": "aed43c7373d4d2df",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772200023125,
+    "ip": ""
+  },
+  {
+    "id": "2c42d532efa6041a",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772200023716,
+    "ip": ""
+  },
+  {
+    "id": "9d52b56173dd9081",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772200024204,
+    "ip": ""
+  },
+  {
+    "id": "22c281c72b1dddb8",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772200566192,
+    "ip": ""
+  },
+  {
+    "id": "f0d8ba3b5bdbb3dc",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772200567953,
+    "ip": ""
+  },
+  {
+    "id": "cdabf4e33827928a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772202000326,
+    "ip": ""
+  },
+  {
+    "id": "1673a823a5f2ec7a",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772202005953,
+    "ip": ""
+  },
+  {
+    "id": "a70832160ac0525e",
+    "type": "password_reset_request",
+    "username": "gelimorto",
+    "details": "Password reset requested",
+    "timestamp": 1772202125975,
+    "ip": ""
+  },
+  {
+    "id": "1df7da49c99618d8",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772203116670,
+    "ip": ""
+  },
+  {
+    "id": "48ed27ac96b47b13",
+    "type": "create_room",
+    "username": "gelimorto",
+    "details": "Created room: test",
+    "timestamp": 1772203316230,
+    "ip": ""
+  },
+  {
+    "id": "bb2698e392894c7d",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: test",
+    "timestamp": 1772203319164,
+    "ip": ""
+  },
+  {
+    "id": "0904223e0c9209de",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Art & Design",
+    "timestamp": 1772203378403,
+    "ip": ""
+  },
+  {
+    "id": "07cd60a4f9106c25",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: test",
+    "timestamp": 1772203378881,
+    "ip": ""
+  },
+  {
+    "id": "d1549c5308cbd827",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772203407819,
+    "ip": ""
+  },
+  {
+    "id": "cecbe32579ce62e8",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772203421262,
+    "ip": ""
+  },
+  {
+    "id": "7e9e90eb62a110a2",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772203542982,
+    "ip": ""
+  },
+  {
+    "id": "67e2b53c6d8a268e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772203544138,
+    "ip": ""
+  },
+  {
+    "id": "2e8d3de5b167a291",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772203544369,
+    "ip": ""
+  },
+  {
+    "id": "4c55bd6d995b2a96",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772203544637,
+    "ip": ""
+  },
+  {
+    "id": "8ef3998b10cc1f24",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772203545885,
+    "ip": ""
+  },
+  {
+    "id": "0e6aae075f0127e4",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772203546293,
+    "ip": ""
+  },
+  {
+    "id": "4294de40afa9aa90",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772203848519,
+    "ip": ""
+  },
+  {
+    "id": "10aa9d0c17523d3e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772203951738,
+    "ip": ""
+  },
+  {
+    "id": "cf71f788e0548612",
+    "type": "register",
+    "username": "testaccount1",
+    "details": "New account created",
+    "timestamp": 1772203990735,
+    "ip": ""
+  },
+  {
+    "id": "14f00ec1fc0d8a54",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772204071104,
+    "ip": ""
+  },
+  {
+    "id": "6f467491c65e590d",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Art & Design",
+    "timestamp": 1772204089418,
+    "ip": ""
+  },
+  {
+    "id": "5bf6f65ac0ac2ee5",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772205821146,
+    "ip": ""
+  },
+  {
+    "id": "fc2aac5fa50c6676",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772205889625,
+    "ip": ""
+  },
+  {
+    "id": "080b7c151fc2b23d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772205891279,
+    "ip": ""
+  },
+  {
+    "id": "6d59c6ceae237612",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: test",
+    "timestamp": 1772205919879,
+    "ip": ""
+  },
+  {
+    "id": "bcc42ed433a9dcb1",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772206006252,
+    "ip": ""
+  },
+  {
+    "id": "e05a6df4421fb873",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772206007894,
+    "ip": ""
+  },
+  {
+    "id": "6d686b13e62967a3",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772206117080,
+    "ip": ""
+  },
+  {
+    "id": "8119968ba4068fe3",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772206117708,
+    "ip": ""
+  },
+  {
+    "id": "5e4eef69f4165e90",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772208302747,
+    "ip": ""
+  },
+  {
+    "id": "0091c2c14c7b0120",
+    "type": "create_poll",
+    "username": "gelimorto",
+    "details": "Created poll: 2",
+    "timestamp": 1772208383260,
+    "ip": ""
+  },
+  {
+    "id": "2de6179dd19a1e5c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: test",
+    "timestamp": 1772208386373,
+    "ip": ""
+  },
+  {
+    "id": "bd2d6dcf27dc1cc9",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772208387369,
+    "ip": ""
+  },
+  {
+    "id": "dc7a6cec94ef4e8a",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: test",
+    "timestamp": 1772208462803,
+    "ip": ""
+  },
+  {
+    "id": "f97bead1e1c5caed",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772208945243,
+    "ip": ""
+  },
+  {
+    "id": "a25218b097ee0abd",
+    "type": "register",
+    "username": "testaccount2",
+    "details": "New account created",
+    "timestamp": 1772211982760,
+    "ip": ""
+  },
+  {
+    "id": "b32ba4abd4a1ea80",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212041448,
+    "ip": ""
+  },
+  {
+    "id": "b1083d5db0758b3f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772212086476,
+    "ip": ""
+  },
+  {
+    "id": "a3f88424af83fe95",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212088356,
+    "ip": ""
+  },
+  {
+    "id": "d4fb9ec7c3e43f49",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212761653,
+    "ip": ""
+  },
+  {
+    "id": "db9949880a2134d1",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772212797399,
+    "ip": ""
+  },
+  {
+    "id": "9fc13d1768558c55",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212799172,
+    "ip": ""
+  },
+  {
+    "id": "24eabd3ce7ebaada",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772212819858,
+    "ip": ""
+  },
+  {
+    "id": "690c2bddfa18cd52",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212821542,
+    "ip": ""
+  },
+  {
+    "id": "9e811ea9740a556e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772212846910,
+    "ip": ""
+  },
+  {
+    "id": "1c97dff7ded5ce49",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772212848692,
+    "ip": ""
+  },
+  {
+    "id": "25795022bc9168b8",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772212901169,
+    "ip": ""
+  },
+  {
+    "id": "3f2463b5cc3c25cf",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772212901942,
+    "ip": ""
+  },
+  {
+    "id": "1fec6d940b7b7628",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772212902437,
+    "ip": ""
+  },
+  {
+    "id": "cd274bba01db2f7e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772212902741,
+    "ip": ""
+  },
+  {
+    "id": "96f9ed9e07365234",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772212903021,
+    "ip": ""
+  },
+  {
+    "id": "c58cc98c607d4740",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772212903357,
+    "ip": ""
+  },
+  {
+    "id": "a9d02375d4cc991e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772212904069,
+    "ip": ""
+  },
+  {
+    "id": "ac62520596924b94",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772212905109,
+    "ip": ""
+  },
+  {
+    "id": "c271118c286c94b1",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772212926936,
+    "ip": ""
+  },
+  {
+    "id": "4f8a72ca71941aa8",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772212927415,
+    "ip": ""
+  },
+  {
+    "id": "64f72827e3b7f876",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772212927798,
+    "ip": ""
+  },
+  {
+    "id": "a348681a858ee9c5",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772212928328,
+    "ip": ""
+  },
+  {
+    "id": "1f3183122c5f4e57",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1772212929017,
+    "ip": ""
+  },
+  {
+    "id": "9994c8397ae461e1",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772213093249,
+    "ip": ""
+  },
+  {
+    "id": "f3479a1151c4f0a1",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772213095133,
+    "ip": ""
+  },
+  {
+    "id": "ef3178b65f571c09",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772213570655,
+    "ip": ""
+  },
+  {
+    "id": "5e239851b1cc27db",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772213675301,
+    "ip": ""
+  },
+  {
+    "id": "f6f9315eddc1ae79",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772213676187,
+    "ip": ""
+  },
+  {
+    "id": "6e0ac5529ccaf5d1",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772213841329,
+    "ip": ""
+  },
+  {
+    "id": "c5e5c6a92b30f1f0",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772213841874,
+    "ip": ""
+  },
+  {
+    "id": "2647279976334adf",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772213842529,
+    "ip": ""
+  },
+  {
+    "id": "028897f51891d957",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772213843458,
+    "ip": ""
+  },
+  {
+    "id": "96a61a37a94708b4",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772213843970,
+    "ip": ""
+  },
+  {
+    "id": "07238b2aef3328cc",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772213844881,
+    "ip": ""
+  },
+  {
+    "id": "faf87d416a94dd32",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772213929767,
+    "ip": ""
+  },
+  {
+    "id": "01b3ccf66547364f",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214254842,
+    "ip": ""
+  },
+  {
+    "id": "78e781010306421e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214325106,
+    "ip": ""
+  },
+  {
+    "id": "fa741ef18d2923dc",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214327047,
+    "ip": ""
+  },
+  {
+    "id": "de1c061fd4c7912d",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214386687,
+    "ip": ""
+  },
+  {
+    "id": "906530c2b2a0b798",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214388645,
+    "ip": ""
+  },
+  {
+    "id": "cbd1b728bd615474",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214401205,
+    "ip": ""
+  },
+  {
+    "id": "8a0b6adadadedb39",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214402955,
+    "ip": ""
+  },
+  {
+    "id": "c0d5f4b283a460c7",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214417926,
+    "ip": ""
+  },
+  {
+    "id": "9f0fb2ffb58806db",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214419673,
+    "ip": ""
+  },
+  {
+    "id": "347015b47631748b",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214496515,
+    "ip": ""
+  },
+  {
+    "id": "d1fe98d549de59e9",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214498360,
+    "ip": ""
+  },
+  {
+    "id": "c1574a6e0e804c2d",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214722331,
+    "ip": ""
+  },
+  {
+    "id": "4d918f72e3f5dedb",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214724227,
+    "ip": ""
+  },
+  {
+    "id": "89f8c81098bf330e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214850060,
+    "ip": ""
+  },
+  {
+    "id": "76606ff3f35941be",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772214880998,
+    "ip": ""
+  },
+  {
+    "id": "118dcaa12166027d",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772214881411,
+    "ip": ""
+  },
+  {
+    "id": "48d6f31930e5bb35",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772214882227,
+    "ip": ""
+  },
+  {
+    "id": "4022364342037a64",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772214883292,
+    "ip": ""
+  },
+  {
+    "id": "717029db0ea7ea3a",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772214883611,
+    "ip": ""
+  },
+  {
+    "id": "b5ab73038a2bc5b6",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Movies & TV",
+    "timestamp": 1772214883939,
+    "ip": ""
+  },
+  {
+    "id": "915e3d0310299f08",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772214884500,
+    "ip": ""
+  },
+  {
+    "id": "fbc7c973e9feafa0",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772214886275,
+    "ip": ""
+  },
+  {
+    "id": "e8bad5e759f0e9ef",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772214887836,
+    "ip": ""
+  },
+  {
+    "id": "3a86de923c07ff60",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772214888540,
+    "ip": ""
+  },
+  {
+    "id": "2ba77be22e6d69c6",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772214888940,
+    "ip": ""
+  },
+  {
+    "id": "20de44fab676aa66",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772214889333,
+    "ip": ""
+  },
+  {
+    "id": "044a9d386f45fe43",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1772214889630,
+    "ip": ""
+  },
+  {
+    "id": "7b080f4b113b0cbf",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772214890333,
+    "ip": ""
+  },
+  {
+    "id": "0d4b330d2fb4da63",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772215101628,
+    "ip": ""
+  },
+  {
+    "id": "211429c0d8a7846e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772215103542,
+    "ip": ""
+  },
+  {
+    "id": "86c3440eb5fc3177",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772215152903,
+    "ip": ""
+  },
+  {
+    "id": "de79a70cc2639cd3",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772215154786,
+    "ip": ""
+  },
+  {
+    "id": "c0285588af15f01d",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772215817770,
+    "ip": ""
+  },
+  {
+    "id": "7f52f1d034b53a8e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772215819671,
+    "ip": ""
+  },
+  {
+    "id": "ab87a613c2bc8562",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772215950434,
+    "ip": ""
+  },
+  {
+    "id": "d6b816bdc4ba02cd",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772215951161,
+    "ip": ""
+  },
+  {
+    "id": "2a4528a9823c853b",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772216274015,
+    "ip": ""
+  },
+  {
+    "id": "3c75efa7dc5d992e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772216275830,
+    "ip": ""
+  },
+  {
+    "id": "19ef1db1aa718b6c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772216311531,
+    "ip": ""
+  },
+  {
+    "id": "79af895758c66926",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772216313231,
+    "ip": ""
+  },
+  {
+    "id": "8661deffd5b35bee",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772216318207,
+    "ip": ""
+  },
+  {
+    "id": "aab0951cb71f04ca",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772216318623,
+    "ip": ""
+  },
+  {
+    "id": "b925a510a5df2660",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772216398898,
+    "ip": ""
+  },
+  {
+    "id": "6fab7aee0e8039c8",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772216400671,
+    "ip": ""
+  },
+  {
+    "id": "16a1da76dbd33b32",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772217161210,
+    "ip": ""
+  },
+  {
+    "id": "478c35329f109309",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772217163033,
+    "ip": ""
+  },
+  {
+    "id": "6fad82cfc5fc3505",
+    "type": "create_poll",
+    "username": "gelimorto",
+    "details": "Created poll: 1",
+    "timestamp": 1772217185827,
+    "ip": ""
+  },
+  {
+    "id": "45f9e6dab11f544e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772217283438,
+    "ip": ""
+  },
+  {
+    "id": "a204afd9a536f81c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772217512055,
+    "ip": ""
+  },
+  {
+    "id": "9f0c06c04a02c862",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772217512734,
+    "ip": ""
+  },
+  {
+    "id": "e3cb147d2e71e95c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772217513470,
+    "ip": ""
+  },
+  {
+    "id": "3fef9056bbe79f4f",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772217545025,
+    "ip": ""
+  },
+  {
+    "id": "edf5cc6b45de6612",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772217583379,
+    "ip": ""
+  },
+  {
+    "id": "b8f51e0be72deb30",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772217583380,
+    "ip": ""
+  },
+  {
+    "id": "161a929e596f29e4",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772217587613,
+    "ip": ""
+  },
+  {
+    "id": "7db9f7539a010cad",
+    "type": "register",
+    "username": "testuser2",
+    "details": "Account created via login form",
+    "timestamp": 1772217604481,
+    "ip": ""
+  },
+  {
+    "id": "36b7d37091df9b97",
+    "type": "login",
+    "username": "testuser2",
+    "details": "User logged in",
+    "timestamp": 1772217604482,
+    "ip": ""
+  },
+  {
+    "id": "6004c30047815d47",
+    "type": "disconnect",
+    "username": "testuser2",
+    "details": "User disconnected",
+    "timestamp": 1772217628847,
+    "ip": ""
+  },
+  {
+    "id": "18a7cf452818c890",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772217632442,
+    "ip": ""
+  },
+  {
+    "id": "71122405aff34f4c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772217668852,
+    "ip": ""
+  },
+  {
+    "id": "742a363e5e74b277",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772218009935,
+    "ip": ""
+  },
+  {
+    "id": "d855bb7007f2c33f",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772218010697,
+    "ip": ""
+  },
+  {
+    "id": "7521a51cad436a97",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772218018228,
+    "ip": ""
+  },
+  {
+    "id": "eadd24a7c8a937ac",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772218020040,
+    "ip": ""
+  },
+  {
+    "id": "f14903afcb127a43",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772218676219,
+    "ip": ""
+  },
+  {
+    "id": "7ce7fbf7e9a62703",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772218678048,
+    "ip": ""
+  },
+  {
+    "id": "a1c801987ff84bb0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772219537513,
+    "ip": ""
+  },
+  {
+    "id": "791038cf4c9a0dd8",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772219539354,
+    "ip": ""
+  },
+  {
+    "id": "ba33a17c10dbd5b8",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772219784936,
+    "ip": ""
+  },
+  {
+    "id": "86dd3935aadd69a8",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772219787384,
+    "ip": ""
+  },
+  {
+    "id": "30826f99cb686468",
+    "type": "create_poll",
+    "username": "gelimorto",
+    "details": "Created poll: 1",
+    "timestamp": 1772219792492,
+    "ip": ""
+  },
+  {
+    "id": "fecb98da5593d5e0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772220072172,
+    "ip": ""
+  },
+  {
+    "id": "45e3a47f3d712dea",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772220073976,
+    "ip": ""
+  },
+  {
+    "id": "fafdde9592277e8c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772220130441,
+    "ip": ""
+  },
+  {
+    "id": "9b023f4518792ca7",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772220132193,
+    "ip": ""
+  },
+  {
+    "id": "e3ed4a6e502f557b",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772220133703,
+    "ip": ""
+  },
+  {
+    "id": "50dadba9ea56b4e4",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Memes",
+    "timestamp": 1772220137991,
+    "ip": ""
+  },
+  {
+    "id": "79c607a3a99ef33f",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772220141479,
+    "ip": ""
+  },
+  {
+    "id": "a0f2b90deddd7f35",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772220183531,
+    "ip": ""
+  },
+  {
+    "id": "00bf7c6950b0d60a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772220185436,
+    "ip": ""
+  },
+  {
+    "id": "10389c8967c24aff",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772220388545,
+    "ip": ""
+  },
+  {
+    "id": "61f8c8957e80311d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772220390369,
+    "ip": ""
+  },
+  {
+    "id": "605c3171083b2dec",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772220962370,
+    "ip": ""
+  },
+  {
+    "id": "446cb4090dd1bc5d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772220964253,
+    "ip": ""
+  },
+  {
+    "id": "4a803965b1a9f5f0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772221045435,
+    "ip": ""
+  },
+  {
+    "id": "1f7cb1043d0bc4aa",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772221047315,
+    "ip": ""
+  },
+  {
+    "id": "7460ba6ce08c8309",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772221415998,
+    "ip": ""
+  },
+  {
+    "id": "20dd056f5a4d1334",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772221416573,
+    "ip": ""
+  },
+  {
+    "id": "69e03f2e6449324e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772221418340,
+    "ip": ""
+  },
+  {
+    "id": "d3ec9976cc93f6b3",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1772221419605,
+    "ip": ""
+  },
+  {
+    "id": "f639fb9e7c07afdc",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772221421187,
+    "ip": ""
+  },
+  {
+    "id": "84f78d59c618bc60",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772221424551,
+    "ip": ""
+  },
+  {
+    "id": "76ce7f0704f46bcc",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772221426390,
+    "ip": ""
+  },
+  {
+    "id": "d4fc7e9ecfff8616",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772222525544,
+    "ip": ""
+  },
+  {
+    "id": "b28c41bfe70181b9",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772223667043,
+    "ip": ""
+  },
+  {
+    "id": "bef78c957c65f452",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772225886411,
+    "ip": ""
+  },
+  {
+    "id": "6a9c7171b0fe1b8c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772225890734,
+    "ip": ""
+  },
+  {
+    "id": "7ade2deba452294d",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772225891853,
+    "ip": ""
+  },
+  {
+    "id": "594f2412a05c32e4",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772225893606,
+    "ip": ""
+  },
+  {
+    "id": "4e60e7a1751acc9e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772225894276,
+    "ip": ""
+  },
+  {
+    "id": "18584f0b18314428",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1772225958428,
+    "ip": ""
+  },
+  {
+    "id": "1b0d771cebe1b00d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1772225960549,
+    "ip": ""
+  },
+  {
+    "id": "81eb1aaeb714a911",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1772225962378,
+    "ip": ""
+  },
+  {
+    "id": "d12a1f4a9e587d5e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1772225963122,
+    "ip": ""
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "poll_2512cf1ac5e8": {
+    "id": "poll_2512cf1ac5e8",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "2",
+    "options": [
+      {
+        "id": 0,
+        "text": "1",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "3",
+        "votes": []
+      }
+    ],
+    "active": true,
+    "created": 1772208383259,
+    "expiresAt": 1772294783259
+  },
+  "poll_ce9b58da6430": {
+    "id": "poll_ce9b58da6430",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "1",
+    "options": [
+      {
+        "id": 0,
+        "text": "2",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "3",
+        "votes": []
+      }
+    ],
+    "active": true,
+    "created": 1772217185826,
+    "expiresAt": 1772303585826
+  },
+  "poll_bbf154e99013": {
+    "id": "poll_bbf154e99013",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "1",
+    "options": [
+      {
+        "id": 0,
+        "text": "2",
+        "votes": [
+          "gelimorto"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "3",
+        "votes": []
+      }
+    ],
+    "active": true,
+    "created": 1772219792491,
+    "expiresAt": 1772306192491
+  }
+}
