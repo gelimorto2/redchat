@@ -1,9 +1,103 @@
 {
-  "poll_2512cf1ac5e8": {
-    "id": "poll_2512cf1ac5e8",
+  "poll_ed2e2607ea43": {
+    "id": "poll_ed2e2607ea43",
+    "creator": "zenoxx",
+    "room": "general",
+    "question": "1",
+    "options": [
+      {
+        "id": 0,
+        "text": "2",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "3",
+        "votes": [
+          "zenoxx",
+          "gelimorto"
+        ]
+      }
+    ],
+    "active": false,
+    "created": 1772302352880,
+    "expiresAt": 1772388752880
+  },
+  "poll_db1e82e40d69": {
+    "id": "poll_db1e82e40d69",
     "creator": "gelimorto",
     "room": "general",
-    "question": "2",
+    "question": "1",
+    "options": [
+      {
+        "id": 0,
+        "text": "2",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "3",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772315574493,
+    "expiresAt": 1772401974493
+  },
+  "poll_8cd24835cd95": {
+    "id": "poll_8cd24835cd95",
+    "creator": "zenoxx",
+    "room": "general",
+    "question": "new",
+    "options": [
+      {
+        "id": 0,
+        "text": "1",
+        "votes": [
+          "zenoxx"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "2",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772387589396,
+    "expiresAt": 1772473989396,
+    "lastVoteTime": {
+      "zenoxx": 1772402786767
+    }
+  },
+  "poll_996416e7c705": {
+    "id": "poll_996416e7c705",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "edfgfegr",
+    "options": [
+      {
+        "id": 0,
+        "text": "ergerg",
+        "votes": [
+          "gelimorto"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "ezrgerg",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772393188221,
+    "expiresAt": 1772479588221
+  },
+  "poll_8fa68f8faef1": {
+    "id": "poll_8fa68f8faef1",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "test",
     "options": [
       {
         "id": 0,
@@ -12,56 +106,264 @@
       },
       {
         "id": 1,
-        "text": "3",
+        "text": "2",
         "votes": []
       }
     ],
-    "active": true,
-    "created": 1772208383259,
-    "expiresAt": 1772294783259
+    "active": false,
+    "created": 1772395837661,
+    "expiresAt": 1772482237661,
+    "allowMultiple": true,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "gelimorto": 1772396536624
+    }
   },
-  "poll_ce9b58da6430": {
-    "id": "poll_ce9b58da6430",
+  "poll_bc9f036f2403": {
+    "id": "poll_bc9f036f2403",
     "creator": "gelimorto",
     "room": "general",
-    "question": "1",
+    "question": "Est ce que Y13k ban?",
     "options": [
       {
         "id": 0,
-        "text": "2",
-        "votes": []
-      },
-      {
-        "id": 1,
-        "text": "3",
-        "votes": []
-      }
-    ],
-    "active": true,
-    "created": 1772217185826,
-    "expiresAt": 1772303585826
-  },
-  "poll_bbf154e99013": {
-    "id": "poll_bbf154e99013",
-    "creator": "gelimorto",
-    "room": "general",
-    "question": "1",
-    "options": [
-      {
-        "id": 0,
-        "text": "2",
+        "text": "Oui",
         "votes": [
-          "gelimorto"
+          "gelimorto",
+          "pepinoto04"
         ]
       },
       {
         "id": 1,
-        "text": "3",
+        "text": "Non",
+        "votes": [
+          "Y13k",
+          "zenoxx"
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Quoi?",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772445699482,
+    "expiresAt": 1772532099482,
+    "allowMultiple": false,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "gelimorto": 1772445714300,
+      "Y13k": 1772445748523,
+      "pepinoto04": 1772452266461,
+      "zenoxx": 1772445867025
+    }
+  },
+  "poll_49fab30ee631": {
+    "id": "poll_49fab30ee631",
+    "creator": "zenoxx",
+    "room": "general",
+    "question": "Vs êtes en cours",
+    "options": [
+      {
+        "id": 0,
+        "text": "oe",
+        "votes": [
+          "gelimorto",
+          "NaimOM1993",
+          "gaetantc",
+          "pepinoto04"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "Non chui gay et une gauchiste",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772462840836,
+    "expiresAt": 1772549240836,
+    "allowMultiple": false,
+    "anonymous": true,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "zenoxx": 1772526948679,
+      "gelimorto": 1772463408608,
+      "DouceFrance": 1772471241903,
+      "NaimOM1993": 1772474626090,
+      "gaetantc": 1772543584198,
+      "pepinoto04": 1772544503022
+    }
+  },
+  "poll_8a1e9b53dec7": {
+    "id": "poll_8a1e9b53dec7",
+    "creator": "DouceFrance",
+    "room": "general",
+    "question": "Vous preferez",
+    "options": [
+      {
+        "id": 0,
+        "text": "Etats Unis et Israel",
+        "votes": [
+          "DouceFrance",
+          "Sacha",
+          "zenoxx",
+          "pepinoto04",
+          "Luzzzco",
+          "POL"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "Iran",
+        "votes": [
+          "gelimorto"
+        ]
+      }
+    ],
+    "active": false,
+    "created": 1772550198065,
+    "expiresAt": 1772636598065,
+    "allowMultiple": false,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "DouceFrance": 1772550199737,
+      "Sacha": 1772550214060,
+      "zenoxx": 1772550252930,
+      "pepinoto04": 1772550257575,
+      "gelimorto": 1772617847812,
+      "Luzzzco": 1772550928051,
+      "POL": 1772604066903
+    }
+  },
+  "poll_3eb5cf0a7432": {
+    "id": "poll_3eb5cf0a7432",
+    "creator": "DouceFrance",
+    "room": "room_2d30fc7d1125",
+    "question": "Vous voteriez plutôt pour",
+    "options": [
+      {
+        "id": 0,
+        "text": "RN",
+        "votes": [
+          "DouceFrance",
+          "gelimorto",
+          "pepinoto04",
+          "zenoxx"
+        ]
+      },
+      {
+        "id": 1,
+        "text": "Debout la France",
+        "votes": [
+          "DouceFrance",
+          "zenoxx"
+        ]
+      },
+      {
+        "id": 2,
+        "text": "Reconquête",
+        "votes": [
+          "DouceFrance"
+        ]
+      },
+      {
+        "id": 3,
+        "text": "Action française",
+        "votes": [
+          "DouceFrance"
+        ]
+      },
+      {
+        "id": 4,
+        "text": "Le reste... Pouah ! Ça puir la merdasse !",
         "votes": []
       }
     ],
     "active": true,
-    "created": 1772219792491,
-    "expiresAt": 1772306192491
+    "created": 1772566120905,
+    "expiresAt": 1772652520905,
+    "allowMultiple": true,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "DouceFrance": 1772566126667,
+      "gelimorto": 1772617479866,
+      "zenoxx": 1772642787857,
+      "pepinoto04": 1772620144279
+    }
+  },
+  "poll_0ba9f3592dd0": {
+    "id": "poll_0ba9f3592dd0",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "Which is your favorite color?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Red",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "Blue",
+        "votes": []
+      },
+      {
+        "id": 2,
+        "text": "Green",
+        "votes": [
+          "gelimorto"
+        ]
+      }
+    ],
+    "active": false,
+    "created": 1772737028191,
+    "expiresAt": 1772823428191,
+    "allowMultiple": false,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {
+      "gelimorto": 1772737031626
+    }
+  },
+  "poll_01a71b8d9b77": {
+    "id": "poll_01a71b8d9b77",
+    "creator": "gelimorto",
+    "room": "general",
+    "question": "Which IDE feature is most important to you?",
+    "options": [
+      {
+        "id": 0,
+        "text": "Syntax Highlighting",
+        "votes": []
+      },
+      {
+        "id": 1,
+        "text": "Code Completion",
+        "votes": []
+      },
+      {
+        "id": 2,
+        "text": "Debugger",
+        "votes": []
+      },
+      {
+        "id": 3,
+        "text": "Git Integration",
+        "votes": []
+      }
+    ],
+    "active": false,
+    "created": 1772737134792,
+    "expiresAt": 1772823534792,
+    "allowMultiple": false,
+    "anonymous": false,
+    "cooldownMinutes": 0,
+    "lastVoteTime": {}
   }
 }

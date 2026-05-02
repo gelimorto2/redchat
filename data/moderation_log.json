@@ -1,1 +1,458 @@
-[]
+[
+  {
+    "id": "1b11a73479956878",
+    "action": "ban",
+    "moderator": "gelimorto",
+    "target": "testuser2",
+    "reason": "No reason given",
+    "timestamp": 1772270162099
+  },
+  {
+    "id": "82717fc50cceb0d4",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772292230460
+  },
+  {
+    "id": "19c7c8ce98442080",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772292288321
+  },
+  {
+    "id": "82a58920af36cd46",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "testuser2",
+    "reason": "Unbanned",
+    "timestamp": 1772299815418
+  },
+  {
+    "id": "c11345c46b893917",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Unbanned",
+    "timestamp": 1772299816443
+  },
+  {
+    "id": "41a64342b66ee33a",
+    "action": "ban",
+    "moderator": "gelimorto",
+    "target": "testaccount1",
+    "reason": "No reason",
+    "timestamp": 1772299845895
+  },
+  {
+    "id": "7502981d66322dce",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "testaccount1",
+    "reason": "Unbanned",
+    "timestamp": 1772299855760
+  },
+  {
+    "id": "9872e8d427b0fbba",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to admin",
+    "timestamp": 1772300141637
+  },
+  {
+    "id": "a484319fdf26c934",
+    "action": "set_role",
+    "moderator": "zenoxx",
+    "target": "zenoxx",
+    "reason": "Role set to member",
+    "timestamp": 1772300169216
+  },
+  {
+    "id": "87dd9c53ba12e2c6",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "testuser2",
+    "reason": "Resolved",
+    "timestamp": 1772300305591
+  },
+  {
+    "id": "00df9d6cc9f30a93",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to moderator",
+    "timestamp": 1772302556102
+  },
+  {
+    "id": "e638d7b98e22c329",
+    "action": "delete_message",
+    "moderator": "zenoxx",
+    "target": "testuser2",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772302579007
+  },
+  {
+    "id": "ff4111c94177e363",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to admin",
+    "timestamp": 1772302667232
+  },
+  {
+    "id": "8b956cf9c51b1753",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to member",
+    "timestamp": 1772302669378
+  },
+  {
+    "id": "ba55abda03f0dfa8",
+    "action": "delete_account",
+    "moderator": "gelimorto",
+    "target": "zanox",
+    "reason": "Account deleted via admin dashboard",
+    "timestamp": 1772312068229
+  },
+  {
+    "id": "4fcfbd6073f1bcdc",
+    "action": "delete_account",
+    "moderator": "gelimorto",
+    "target": "zenox",
+    "reason": "Account deleted via admin dashboard",
+    "timestamp": 1772312069782
+  },
+  {
+    "id": "2696ead049fbcdcc",
+    "action": "delete_account",
+    "moderator": "gelimorto",
+    "target": "testuser2",
+    "reason": "Account deleted via admin dashboard",
+    "timestamp": 1772312071245
+  },
+  {
+    "id": "62b030e78e1ac4c3",
+    "action": "delete_account",
+    "moderator": "gelimorto",
+    "target": "testaccount2",
+    "reason": "Account deleted via admin dashboard",
+    "timestamp": 1772312072509
+  },
+  {
+    "id": "d239a8395f2040d7",
+    "action": "delete_account",
+    "moderator": "gelimorto",
+    "target": "testaccount1",
+    "reason": "Account deleted via admin dashboard",
+    "timestamp": 1772312073814
+  },
+  {
+    "id": "63a9e95da1e4db1b",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to admin",
+    "timestamp": 1772391770448
+  },
+  {
+    "id": "4e0192c87dddb50b",
+    "action": "deleteThread",
+    "moderator": "gelimorto",
+    "target": "a2c3f299da27a0a8",
+    "reason": "Deleted thread: test343",
+    "timestamp": 1772392576501
+  },
+  {
+    "id": "fd1aebba8aac5510",
+    "action": "deleteThread",
+    "moderator": "gelimorto",
+    "target": "33f07355cb679418",
+    "reason": "Deleted thread: test1",
+    "timestamp": 1772393374860
+  },
+  {
+    "id": "f1b4091ff16a7216",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to admin",
+    "timestamp": 1772442252805
+  },
+  {
+    "id": "4659759ccf70c73b",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "Nigger",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772444166803
+  },
+  {
+    "id": "3f00c3675ac4c69b",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "Y13k",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772444170221
+  },
+  {
+    "id": "a98eb809cd1e564f",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to moderator",
+    "timestamp": 1772444221698
+  },
+  {
+    "id": "9a5439ea9acfb0c3",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Resolved",
+    "timestamp": 1772452808823
+  },
+  {
+    "id": "b4d4d7780c271d3a",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Resolved",
+    "timestamp": 1772452810242
+  },
+  {
+    "id": "1c9b213fde2c2193",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "Y13k",
+    "reason": "Resolved",
+    "timestamp": 1772452811443
+  },
+  {
+    "id": "9baad8a21b7795e4",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772461955378
+  },
+  {
+    "id": "0d6dbe6ff2bd78cd",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to admin",
+    "timestamp": 1772463368169
+  },
+  {
+    "id": "c49e13fbd42619a8",
+    "action": "set_role",
+    "moderator": "zenoxx",
+    "target": "DouceFrance",
+    "reason": "Role set to moderator",
+    "timestamp": 1772463624999
+  },
+  {
+    "id": "c8b7d089d8d8412a",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772464095407
+  },
+  {
+    "id": "373fcb1038327a42",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772464098039
+  },
+  {
+    "id": "c599d1aa0b319d2c",
+    "action": "set_role",
+    "moderator": "zenoxx",
+    "target": "DouceFrance",
+    "reason": "Role set to member",
+    "timestamp": 1772544945356
+  },
+  {
+    "id": "f72d99ee9451ae53",
+    "action": "set_role",
+    "moderator": "zenoxx",
+    "target": "DouceFrance",
+    "reason": "Role set to moderator",
+    "timestamp": 1772544947086
+  },
+  {
+    "id": "1a3e487dc9ab7fa6",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772549911488
+  },
+  {
+    "id": "527cf0ac52044e4e",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772549916120
+  },
+  {
+    "id": "2b31c9b7f92ef141",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772549919120
+  },
+  {
+    "id": "4125e972318ece0b",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550311284
+  },
+  {
+    "id": "7955eee5430f82b4",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "timothe",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550406810
+  },
+  {
+    "id": "76708f221d7c1545",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "timothe",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550409648
+  },
+  {
+    "id": "29b832d0968ecf96",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "timothe",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550412773
+  },
+  {
+    "id": "9d87961283540002",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "timothe",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550415897
+  },
+  {
+    "id": "7942ed84723bb66b",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "timothe",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772550422481
+  },
+  {
+    "id": "656b6ef44c552098",
+    "action": "ban",
+    "moderator": "gelimorto",
+    "target": "Nigger",
+    "reason": "No reason given",
+    "timestamp": 1772621563633
+  },
+  {
+    "id": "8838fe8223745739",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "Nigger",
+    "reason": "Unbanned via admin dashboard",
+    "timestamp": 1772621574318
+  },
+  {
+    "id": "54df09db9f5051a6",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "Nigger",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772621645916
+  },
+  {
+    "id": "682b260c996e7934",
+    "action": "delete_message",
+    "moderator": "gelimorto",
+    "target": "pepinoto04",
+    "reason": "Message deleted by moderator",
+    "timestamp": 1772621754931
+  },
+  {
+    "id": "28c05be0882b4d37",
+    "action": "ban",
+    "moderator": "gelimorto",
+    "target": "pepinoto04",
+    "reason": "ntgrm",
+    "timestamp": 1772621820087
+  },
+  {
+    "id": "5118894fdf8c2319",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "pepinoto04",
+    "reason": "Unbanned via admin dashboard",
+    "timestamp": 1772621887897
+  },
+  {
+    "id": "d596489246bdbeed",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Resolved",
+    "timestamp": 1772621900114
+  },
+  {
+    "id": "d0bce38265a5adda",
+    "action": "ban",
+    "moderator": "gelimorto",
+    "target": "pepinoto04",
+    "reason": "test",
+    "timestamp": 1772623098767
+  },
+  {
+    "id": "715a8c475857d7ea",
+    "action": "unban",
+    "moderator": "gelimorto",
+    "target": "pepinoto04",
+    "reason": "Unbanned via admin dashboard",
+    "timestamp": 1772623183434
+  },
+  {
+    "id": "d1712f30862fee2f",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "DouceFrance",
+    "reason": "Role set to member",
+    "timestamp": 1772699476686
+  },
+  {
+    "id": "d027eacf1461a0c6",
+    "action": "resolve_report",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Resolved",
+    "timestamp": 1772699530759
+  },
+  {
+    "id": "56c10fedcbcf4704",
+    "action": "set_role",
+    "moderator": "gelimorto",
+    "target": "zenoxx",
+    "reason": "Role set to moderator",
+    "timestamp": 1772780080828
+  }
+]

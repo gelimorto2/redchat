@@ -1,8 +1,88 @@
 {
   "gelimorto": [
     {
-      "messageId": "cda19116e9d4d2649f9ec83d",
-      "bookmarkedAt": 1772203441405
+      "messageId": "8ccb8730d08dd5d26b8bf678",
+      "room": "General",
+      "message": "Yo",
+      "username": "zenoxx",
+      "timestamp": 1772461669240,
+      "bookmarkedAt": 1772461669282
+    },
+    {
+      "messageId": "979eddf7b85c6cff098483eb",
+      "room": "General",
+      "message": "🍆🍑",
+      "username": "pepinoto04",
+      "timestamp": 1772549780669,
+      "bookmarkedAt": 1772549780696
+    },
+    {
+      "messageId": "e24d46401022ff9174a42fb4",
+      "room": "general",
+      "message": "¨BK",
+      "username": "Sacha",
+      "timestamp": 1772617833774,
+      "bookmarkedAt": 1772617833823
+    }
+  ],
+  "zenoxx": [
+    {
+      "messageId": "27364a9219c5bc187e4e63f9",
+      "room": "#RN2027🇫🇷",
+      "message": "",
+      "username": "DouceFrance",
+      "timestamp": 1772698388764,
+      "bookmarkedAt": 1772698388185
+    },
+    {
+      "messageId": "81a388af248b027accbb8f98",
+      "room": "#RN2027🇫🇷",
+      "message": "",
+      "username": "DouceFrance",
+      "timestamp": 1772698392875,
+      "bookmarkedAt": 1772698392305
+    }
+  ],
+  "pepinoto04": [
+    {
+      "messageId": "5987e051c418f6b451cf929e",
+      "room": "general",
+      "message": "",
+      "username": "zenoxx",
+      "timestamp": 1772549894062,
+      "bookmarkedAt": 1772549894082
+    },
+    {
+      "messageId": "92791df0ce60d616ad00f323",
+      "room": "general",
+      "message": "",
+      "username": "zenoxx",
+      "timestamp": 1772549908613,
+      "bookmarkedAt": 1772549908633
+    },
+    {
+      "messageId": "bd54195479123e080a340260",
+      "room": "general",
+      "message": "",
+      "username": "gelimorto",
+      "timestamp": 1772549978183,
+      "bookmarkedAt": 1772549978202
+    },
+    {
+      "messageId": "672ac381e1363a4c084a2fd2",
+      "room": "general",
+      "message": "",
+      "username": "timothe",
+      "timestamp": 1772550023376,
+      "bookmarkedAt": 1772550023395
+    },
+    {
+      "messageId": "f371ed8866e2360378c9ad27",
+      "room": "general",
+      "message": "bs",
+      "username": "gaetantc",
+      "timestamp": 1772620363920,
+      "bookmarkedAt": 1772620363961
     }
   ]
 }

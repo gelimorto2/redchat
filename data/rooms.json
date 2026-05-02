@@ -1,1 +1,23 @@
-{}
+{
+  "room_9bd00375d921": {
+    "id": "room_9bd00375d921",
+    "name": "school",
+    "description": "chanel pour parler des cours ",
+    "icon": "fa-rocket",
+    "color": "#3498db",
+    "creator": "zenoxx",
+    "isPrivate": false,
+    "isNSFW": false,
+    "members": [
+      "zenoxx",
+      "gelimorto",
+      "pepinoto04",
+      "DouceFrance",
+      "gaetantc",
+      "Luzzzco",
+      "Nigger",
+      "Joshuabrl"
+    ],
+    "created": 1772402625607
+  }
+}

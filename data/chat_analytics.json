@@ -8,10 +8,10 @@
     0,
     0,
     0,
+    1,
     0,
     0,
-    0,
-    0,
+    1,
     0,
     0,
     0,
@@ -27,22 +27,31 @@
   ],
   "messagesByDay": [
     0,
+    1,
     0,
     0,
-    0,
-    0,
+    1,
     0,
     0
   ],
   "topEmojis": {},
   "topCommands": {},
-  "averageMessageLength": 0,
-  "totalCharacters": 0,
+  "averageMessageLength": 24,
+  "totalCharacters": 47,
   "linkCount": 0,
   "imageCount": 0,
   "fileCount": 0,
   "reactionCount": 0,
   "uniqueUsersToday": [],
   "peakConcurrentToday": 0,
-  "messageVelocity": []
+  "messageVelocity": [
+    {
+      "minute": 29540863,
+      "count": 1
+    },
+    {
+      "minute": 29544984,
+      "count": 1
+    }
+  ]
 }

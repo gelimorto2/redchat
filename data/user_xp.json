@@ -1,1 +1,2231 @@
-{}
+{
+  "gelimorto": {
+    "totalXP": 15274,
+    "level": 18,
+    "dailyXP": 0,
+    "streak": 3,
+    "lastActive": "2026-03-10T15:33:30.912Z",
+    "xpHistory": [
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772743857088
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743912248
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743916952
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743923497
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744015651
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744031457
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744062628
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744088301
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744100830
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744106777
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744122774
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744132851
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744162740
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744184939
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744234311
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744240071
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744258781
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744266597
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744287308
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744295867
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744317267
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744756303
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744795190
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744920385
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744959464
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772745192987
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772745300477
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772745310034
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772776213217
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772780061019
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772780115893
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772780139377
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772786585392
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772786594814
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772786757682
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772786770776
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772786872139
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772803615120
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772808354146
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772871656878
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772902411959
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772902459321
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772999382772
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773000497478
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773000707483
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773000938549
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773000964874
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773001112875
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773001414840
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1773156810912
+      }
+    ],
+    "totalMessages": 127,
+    "totalReactions": 10,
+    "totalDMs": 20,
+    "roomsJoined": 151,
+    "emojisUsed": [
+      "🎊",
+      "🎆",
+      "📍",
+      "💥",
+      "🎲"
+    ],
+    "lastDailyReset": "2026-03-10",
+    "pollVotes": 23,
+    "stickersSent": 3,
+    "wheelSpins": 10,
+    "imagesSent": 1
+  },
+  "zenoxx": {
+    "totalXP": 1621,
+    "level": 6,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-06T15:56:46.731Z",
+    "xpHistory": [
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744042179
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744044790
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744081717
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744089760
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744094974
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744101087
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744103923
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744144347
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744155450
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744158842
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744166654
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744172721
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744186237
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744190149
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744200047
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744212303
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744232644
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744251597
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744255767
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744270990
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744284671
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772744308025
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744348651
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744378740
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744400260
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744410936
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744451682
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744457320
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744580887
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744610520
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744673533
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744687430
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744712459
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744735291
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744738484
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744747995
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744768288
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772744774933
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772744788930
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772784018091
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772784046857
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772784079390
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772784093781
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772797515888
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772797587522
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772797612066
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772797620704
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772798012059
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772808398418
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772812606731
+      }
+    ],
+    "totalMessages": 286,
+    "totalReactions": 4,
+    "totalDMs": 20,
+    "roomsJoined": 158,
+    "emojisUsed": [
+      "🇫",
+      "🇷",
+      "✨",
+      "🎲",
+      "🎊"
+    ],
+    "lastDailyReset": "2026-03-06",
+    "wheelSpins": 11,
+    "pollVotes": 39,
+    "stickersSent": 80,
+    "imagesSent": 2
+  },
+  "DouceFrance": {
+    "totalXP": 495,
+    "level": 4,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-08T10:49:25.259Z",
+    "xpHistory": [
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772565699308
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772566188276
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772566206779
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772566427121
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772566596433
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772567473397
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772628062858
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772630225799
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772631471148
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772633167701
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772636137527
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772648275800
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772648374174
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_2d30fc7d1125",
+        "timestamp": 1772648583729
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_2d30fc7d1125",
+        "timestamp": 1772648636520
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_2d30fc7d1125",
+        "timestamp": 1772648651302
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772648676028
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772699007358
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772727243301
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772730881014
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772745834560
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772746038334
+      },
+      {
+        "amount": 22,
+        "reason": "Achievement: Event Organizer",
+        "timestamp": 1772746257427
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772746266230
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772746691082
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772746731450
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772822323505
+      },
+      {
+        "amount": 3,
+        "reason": "ai_usage",
+        "timestamp": 1772822526346
+      },
+      {
+        "amount": 3,
+        "reason": "ai_usage",
+        "timestamp": 1772822540128
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822642758
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822644255
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822645731
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822647576
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822649312
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822650229
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822652191
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822653176
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822654656
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822661189
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822663167
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822664750
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822672159
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822673534
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772822675151
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772824161351
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772882919347
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772966362811
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772966419319
+      },
+      {
+        "amount": 5,
+        "reason": "ai_usage",
+        "timestamp": 1772966429628
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772966965259
+      }
+    ],
+    "totalMessages": 23,
+    "totalReactions": 2,
+    "totalDMs": 17,
+    "roomsJoined": 92,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-08",
+    "wheelSpins": 3,
+    "pollVotes": 7,
+    "stickersSent": 3
+  },
+  "Y13k": {
+    "totalXP": 261,
+    "level": 3,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-07T15:52:16.768Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772443595237
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772443607695
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772443607695
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444160135
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772444231219
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: Stylist",
+        "timestamp": 1772444255449
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444294598
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444300257
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444308417
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772444577767
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444596480
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444602217
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444638243
+      },
+      {
+        "amount": 22,
+        "reason": "Achievement: Event Organizer",
+        "timestamp": 1772445426498
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772445547791
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772445609657
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772445617171
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772460807891
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772460849628
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772461463783
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772461754861
+      },
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772743648938
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772743694901
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743715033
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743721237
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772743726189
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772743736745
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772743804406
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772898719753
+      },
+      {
+        "amount": 6,
+        "reason": "Message in general",
+        "timestamp": 1772898736768
+      }
+    ],
+    "totalMessages": 13,
+    "totalReactions": 0,
+    "totalDMs": 1,
+    "roomsJoined": 9,
+    "emojisUsed": [
+      "🫰"
+    ],
+    "lastDailyReset": "2026-03-07",
+    "wheelSpins": 1,
+    "pollVotes": 3
+  },
+  "timothe": {
+    "totalXP": 59,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-03T15:00:15.951Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772443924691
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772444049626
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444049627
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444061072
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444067262
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772549868555
+      },
+      {
+        "amount": 12,
+        "reason": "Achievement: File Sharer",
+        "timestamp": 1772550015951
+      }
+    ],
+    "totalMessages": 3,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 8,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-03",
+    "imagesSent": 5
+  },
+  "pepinoto04": {
+    "totalXP": 212,
+    "level": 3,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-08T16:23:40.667Z",
+    "xpHistory": [
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772623190637
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772623197829
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623262737
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623264075
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623265513
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623286312
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623288772
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623306070
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623306910
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623309358
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623328008
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623329738
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623331253
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623333097
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623334312
+      },
+      {
+        "amount": 33,
+        "reason": "Achievement: Speed Typer",
+        "timestamp": 1772623334315
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623335503
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623337448
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623340733
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623342043
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623343695
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623362273
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623403756
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623405237
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623406631
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623409863
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623411749
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623413800
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623415572
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623417509
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_a4eb489400ec",
+        "timestamp": 1772623419333
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772695913420
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772695981057
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772696031717
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772696761307
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772698576309
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698718413
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698758366
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698773742
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772699973713
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772700169394
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772714766162
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772729883931
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772730352097
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772812032880
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772874180644
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772897462466
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772965294767
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772986994312
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772987020667
+      }
+    ],
+    "totalMessages": 92,
+    "totalReactions": 2,
+    "totalDMs": 6,
+    "roomsJoined": 78,
+    "emojisUsed": [
+      "🍆",
+      "🍑"
+    ],
+    "lastDailyReset": "2026-03-08",
+    "pollVotes": 80,
+    "wheelSpins": 1
+  },
+  "Nigger": {
+    "totalXP": 304,
+    "level": 3,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-04T11:17:49.263Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772444136989
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772444152632
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772444152633
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620352939
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620360722
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620383453
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620400961
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620474661
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620480312
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: File Sharer",
+        "timestamp": 1772620504029
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Voice Actor",
+        "timestamp": 1772620504031
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772620510050
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620515422
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772621293083
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621342438
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621347791
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: Stylist",
+        "timestamp": 1772621448728
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772621578556
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621591018
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621597202
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621608691
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772622051927
+      },
+      {
+        "amount": 55,
+        "reason": "Achievement: Explorer",
+        "timestamp": 1772622080235
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_9bd00375d921",
+        "timestamp": 1772622107231
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772622409316
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772622426620
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772622521890
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772622529410
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772622540955
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772622986770
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772623069263
+      }
+    ],
+    "totalMessages": 15,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 12,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-04",
+    "imagesSent": 1
+  },
+  "Power662": {
+    "totalXP": 58,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-06T06:58:50.907Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772464736377
+      },
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772696992245
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772780330904
+      },
+      {
+        "amount": 27,
+        "reason": "Achievement: Early Bird",
+        "timestamp": 1772780330907
+      }
+    ],
+    "totalMessages": 0,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 0,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-06"
+  },
+  "Sky": {
+    "totalXP": 10,
+    "level": 1,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-02T16:26:06.505Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772468766505
+      }
+    ],
+    "totalMessages": 0,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 0,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-02"
+  },
+  "NaimOM1993": {
+    "totalXP": 26,
+    "level": 1,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-02T18:04:36.214Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772474618916
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772474676213
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772474676214
+      }
+    ],
+    "totalMessages": 1,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 9,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-02",
+    "pollVotes": 3
+  },
+  "gaetantc": {
+    "totalXP": 126,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-06T12:51:43.578Z",
+    "xpHistory": [
+      {
+        "amount": 5,
+        "reason": "Message in room_8f879dde9bb3",
+        "timestamp": 1772479190536
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_9bd00375d921",
+        "timestamp": 1772479237788
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772482358867
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772482405253
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772489527541
+      },
+      {
+        "amount": 55,
+        "reason": "Achievement: Explorer",
+        "timestamp": 1772489545721
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772518578691
+      },
+      {
+        "amount": 27,
+        "reason": "Achievement: Early Bird",
+        "timestamp": 1772518578693
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772531915841
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772531958181
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772532330521
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772543570652
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772543604748
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772543726415
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772543801799
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_8f879dde9bb3",
+        "timestamp": 1772543903344
+      },
+      {
+        "amount": 5,
+        "reason": "Message in room_8f879dde9bb3",
+        "timestamp": 1772544193189
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544251259
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544262808
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544314629
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772544432351
+      },
+      {
+        "amount": 2,
+        "reason": "Reaction",
+        "timestamp": 1772544593743
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: Reactor",
+        "timestamp": 1772544593745
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544612211
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544630933
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544661988
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544701404
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772544840994
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772544876404
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772545145618
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772545314138
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772549843463
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550000854
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772555962232
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772556992869
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772559074382
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772561183837
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772629333553
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772662057784
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772662087963
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772698691126
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698848808
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698882254
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772698890434
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772698906190
+      },
+      {
+        "amount": 27,
+        "reason": "Achievement: Gambler",
+        "timestamp": 1772700099539
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772801442458
+      },
+      {
+        "amount": 6,
+        "reason": "Message in general",
+        "timestamp": 1772801459938
+      },
+      {
+        "amount": 6,
+        "reason": "Message in general",
+        "timestamp": 1772801486238
+      },
+      {
+        "amount": 6,
+        "reason": "Message in room_9bd00375d921",
+        "timestamp": 1772801503578
+      }
+    ],
+    "totalMessages": 48,
+    "totalReactions": 1,
+    "totalDMs": 0,
+    "roomsJoined": 31,
+    "emojisUsed": [
+      "🇨",
+      "🇵",
+      "😂",
+      "🐵"
+    ],
+    "lastDailyReset": "2026-03-06",
+    "pollVotes": 3,
+    "stickersSent": 4,
+    "wheelSpins": 5
+  },
+  "Sacha": {
+    "totalXP": 79,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-03T15:03:33.484Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772550071050
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772550077466
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550077467
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772550122704
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550133991
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550141560
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550156411
+      },
+      {
+        "amount": 22,
+        "reason": "Achievement: Voter",
+        "timestamp": 1772550213484
+      }
+    ],
+    "totalMessages": 4,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 6,
+    "emojisUsed": [
+      "😚"
+    ],
+    "lastDailyReset": "2026-03-03",
+    "pollVotes": 12
+  },
+  "Luzzzco": {
+    "totalXP": 108,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-03T17:48:19.697Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772550737206
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772550846640
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772550846641
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: File Sharer",
+        "timestamp": 1772550997923
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772551048741
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772551049256
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772551253738
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772554114903
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772555980365
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772560099697
+      }
+    ],
+    "totalMessages": 1,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 4,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-03",
+    "pollVotes": 1,
+    "imagesSent": 1
+  },
+  "92ix": {
+    "totalXP": 120,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-06T06:59:55.380Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772553495029
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772553536956
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772553548599
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772553593107
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772700305936
+      },
+      {
+        "amount": 12,
+        "reason": "Achievement: Stylist",
+        "timestamp": 1772700364040
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1772780313450
+      },
+      {
+        "amount": 30,
+        "reason": "Achievement: Early Bird",
+        "timestamp": 1772780313453
+      },
+      {
+        "amount": 12,
+        "reason": "Daily login",
+        "timestamp": 1772780395380
+      }
+    ],
+    "totalMessages": 0,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 1,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-06"
+  },
+  "POL": {
+    "totalXP": 64,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-06T08:47:38.294Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772604019894
+      },
+      {
+        "amount": 27,
+        "reason": "Achievement: Early Bird",
+        "timestamp": 1772604019896
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772604048816
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772604048818
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772786858294
+      }
+    ],
+    "totalMessages": 1,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 0,
+    "emojisUsed": [
+      "😘"
+    ],
+    "lastDailyReset": "2026-03-06",
+    "pollVotes": 3,
+    "wheelSpins": 1
+  },
+  "hannadlt": {
+    "totalXP": 95,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-04T16:56:10.886Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772620065945
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772620072946
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620072948
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772620108155
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620238343
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620251419
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772620255599
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772620429217
+      },
+      {
+        "amount": 5,
+        "reason": "Direct message",
+        "timestamp": 1772620430792
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772620467040
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772643370886
+      }
+    ],
+    "totalMessages": 3,
+    "totalReactions": 0,
+    "totalDMs": 2,
+    "roomsJoined": 0,
+    "emojisUsed": [
+      "🐮"
+    ],
+    "lastDailyReset": "2026-03-04"
+  },
+  "Mattt": {
+    "totalXP": 53,
+    "level": 2,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-04T10:46:24.615Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772620371878
+      },
+      {
+        "amount": 16,
+        "reason": "Achievement: Social Butterfly",
+        "timestamp": 1772620416185
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772621160490
+      },
+      {
+        "amount": 11,
+        "reason": "Achievement: First Words",
+        "timestamp": 1772621184613
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1772621184615
+      }
+    ],
+    "totalMessages": 1,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 0,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-04"
+  },
+  "Debora": {
+    "totalXP": 10,
+    "level": 1,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-04T11:42:37.015Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772624557015
+      }
+    ],
+    "totalMessages": 0,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 0,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-04"
+  },
+  "Joshuabrl": {
+    "totalXP": 32,
+    "level": 1,
+    "dailyXP": 0,
+    "streak": 0,
+    "lastActive": "2026-03-07T09:05:44.241Z",
+    "xpHistory": [
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1772832674704
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772832790443
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1772874344241
+      }
+    ],
+    "totalMessages": 0,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 2,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-03-07"
+  }
+}
