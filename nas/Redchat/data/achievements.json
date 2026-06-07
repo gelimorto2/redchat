@@ -1,0 +1,32 @@
+{
+  "gelimorto": [
+    {
+      "id": "first_message",
+      "name": "First Words",
+      "description": "Send your first message",
+      "icon": "💬",
+      "earnedAt": 1779476863675
+    },
+    {
+      "id": "explorer",
+      "name": "Explorer",
+      "description": "Join 10 different rooms",
+      "icon": "🧭",
+      "earnedAt": 1779531639813
+    },
+    {
+      "id": "profile_customizer",
+      "name": "Stylist",
+      "description": "Customize your profile (avatar, bio, or banner)",
+      "icon": "💅",
+      "earnedAt": 1779635730504
+    },
+    {
+      "id": "level_five",
+      "name": "Rising Star",
+      "description": "Reach level 5",
+      "icon": "⭐",
+      "earnedAt": 1779819297256
+    }
+  ]
+}

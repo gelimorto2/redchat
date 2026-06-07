@@ -1,0 +1,83 @@
+{
+  "general": [
+    {
+      "x": 30,
+      "y": 14,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779479465231
+    },
+    {
+      "x": 23,
+      "y": 21,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779481227122
+    },
+    {
+      "x": 31,
+      "y": 28,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779481968318
+    },
+    {
+      "x": 30,
+      "y": 22,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779482093232
+    },
+    {
+      "x": 22,
+      "y": 33,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779483716148
+    }
+  ],
+  "global": [
+    {
+      "x": 30,
+      "y": 23,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779532009959
+    },
+    {
+      "x": 34,
+      "y": 28,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779816868201
+    },
+    {
+      "x": 23,
+      "y": 25,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779817447958
+    },
+    {
+      "x": 41,
+      "y": 26,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779817715175
+    },
+    {
+      "x": 41,
+      "y": 26,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779817946746
+    },
+    {
+      "x": 36,
+      "y": 25,
+      "color": "#000000",
+      "author": "gelimorto",
+      "timestamp": 1779818089722
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "words": [],
+  "action": "mask",
+  "maskChar": "*",
+  "exemptRoles": [
+    "admin"
+  ],
+  "customRegex": []
+}

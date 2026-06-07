@@ -1,0 +1,7 @@
+{
+  "gelimorto": [
+    "{\"endpoint\":\"https://updates.push.services.mozilla.com/wpush/v2/gAAAAABqEKhIW_y9l1E6Z4kL9pxZgfHJGu6Q1cGJOw8fPrw7HWurJTp4Ia8jA9EX_nRCeQXIAIWgcdtR5F0HlvtelrrvF9TZG7tyrk5cOcvzJb67SKFXAg80E1FnlwQUJ1Oq99OFWb_X51hM3H-arn8fRD54qogk0NQHnq_wA55aVg5Bvb3znX0\",\"expirationTime\":null,\"keys\":{\"auth\":\"u2lwIFL1HZ91GAFNS5TOOw\",\"p256dh\":\"BD10gRNf-Q39-qK2e7w5Ahb4y1RDgYAkDqqtnpsdEMpm9h8qX1rggb-fUlFx0HtB_YYwfMbPAHOSSbZZHWI7NEE\"}}",
+    "{\"endpoint\":\"https://updates.push.services.mozilla.com/wpush/v2/gAAAAABqEMQlvv7eVXfiSfRbf40AWCizgRnZg0Ixl-d-I9-9zj1thKa7dZp0ialhK1D3fUVY66Hc9evuuRkg7QtyzCeoQQtr9wStf5MB8EAm9Br2TzksVhKs9rWfFd0LwKdruj1Rz1R20gr3eiQq11ADOspjlVgYDF8cgOb7-KR5q0UFXJJ9Y_A\",\"expirationTime\":null,\"keys\":{\"auth\":\"hpwbN0kDeST51-8rVrbWvA\",\"p256dh\":\"BIVsRqUT63PoFuzZcBTmI-VuNRbdu_glT9dwy6-sZcQSFLUerC_7c_RIEBKNhh65tigLIJ5dN_dkUfMww3qrhN0\"}}",
+    "{\"endpoint\":\"https://updates.push.services.mozilla.com/wpush/v2/gAAAAABqJSeoCZbH-CMW16yCe_T2jdF5utHrtnDhgw7bfpLVKfaR2FHdI-j6T6JVsvVoDsTO2U32KGbry0zDxU937sapmCoPD9_gyBLliB9gI1JQLqbpB6e9-x09LxLYfVcIOLirFXWZhknkUmoHfoPzWy2VPM1Mc6JU6hEHM9T1MEx2MhLSBqY\",\"expirationTime\":null,\"keys\":{\"auth\":\"uWgzwux_srbmvkNTbVJDgg\",\"p256dh\":\"BBftRgbDN9M0TqAwrgbR_-q67phMHz8tzZqIoyntBovloj5nlKHlEyFUFJfmcMJdLISr02h7j8BhaTLmWwrQpHQ\"}}"
+  ]
+}

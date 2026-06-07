@@ -1,0 +1,53 @@
+{
+  "startTime": 1779477130120,
+  "totalMessages": 4,
+  "totalLogins": 61,
+  "totalRegistrations": 0,
+  "totalFileUploads": 2,
+  "totalReports": 0,
+  "totalBans": 0,
+  "peakOnlineUsers": 1,
+  "dailyStats": {
+    "2026-05-22": {
+      "messages": 0,
+      "logins": 12,
+      "registrations": 0,
+      "reports": 0
+    },
+    "2026-05-23": {
+      "messages": 4,
+      "logins": 23,
+      "registrations": 0,
+      "reports": 0
+    },
+    "2026-05-24": {
+      "messages": 0,
+      "logins": 1,
+      "registrations": 0,
+      "reports": 0
+    },
+    "2026-05-26": {
+      "messages": 0,
+      "logins": 24,
+      "registrations": 0,
+      "reports": 0
+    },
+    "2026-06-07": {
+      "messages": 0,
+      "logins": 1,
+      "registrations": 0,
+      "reports": 0
+    }
+  },
+  "hourlyActivity": {
+    "8": 3,
+    "9": 2,
+    "10": 23,
+    "15": 1,
+    "17": 19,
+    "18": 5,
+    "19": 4,
+    "20": 5,
+    "21": 3
+  }
+}

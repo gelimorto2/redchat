@@ -1,0 +1,267 @@
+{
+  "gelimorto": {
+    "totalXP": 889,
+    "level": 5,
+    "dailyXP": 10,
+    "streak": 1,
+    "lastActive": "2026-06-07T08:11:19.785Z",
+    "xpHistory": [
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779530875912
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1779530927402
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531238378
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531243887
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531434915
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531539464
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531638736
+      },
+      {
+        "amount": 55,
+        "reason": "Achievement: Explorer",
+        "timestamp": 1779531639813
+      },
+      {
+        "amount": 5,
+        "reason": "Message in general",
+        "timestamp": 1779531644868
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531707747
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531927749
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531974818
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779531978712
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779532015095
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779532029685
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779532233416
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779532341432
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779533797236
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779635580066
+      },
+      {
+        "amount": 6,
+        "reason": "ai_usage",
+        "timestamp": 1779635600477
+      },
+      {
+        "amount": 6,
+        "reason": "ai_usage",
+        "timestamp": 1779635611170
+      },
+      {
+        "amount": 6,
+        "reason": "ai_usage",
+        "timestamp": 1779635652510
+      },
+      {
+        "amount": 6,
+        "reason": "ai_usage",
+        "timestamp": 1779635685283
+      },
+      {
+        "amount": 12,
+        "reason": "Achievement: Stylist",
+        "timestamp": 1779635730505
+      },
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1779816238312
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779816864496
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817436896
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817665985
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817740540
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817763124
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817792316
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817805067
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817838285
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817855896
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817865178
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817888781
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817937411
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779817990458
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818003301
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818076561
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818106030
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818117381
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818223797
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818427156
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779818452698
+      },
+      {
+        "amount": 55,
+        "reason": "Achievement: Rising Star",
+        "timestamp": 1779819297256
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779819297257
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779819374905
+      },
+      {
+        "amount": 11,
+        "reason": "Daily login",
+        "timestamp": 1779819374996
+      },
+      {
+        "amount": 10,
+        "reason": "Daily login",
+        "timestamp": 1780819879785
+      }
+    ],
+    "totalMessages": 4,
+    "totalReactions": 0,
+    "totalDMs": 0,
+    "roomsJoined": 33,
+    "emojisUsed": [],
+    "lastDailyReset": "2026-06-07"
+  }
+}

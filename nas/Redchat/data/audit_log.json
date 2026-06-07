@@ -1,0 +1,236 @@
+[
+  {
+    "id": "1b2b4a426f0e4ded",
+    "action": "level_up",
+    "user": "gelimorto",
+    "details": "Level 1 -> 2",
+    "metadata": {},
+    "timestamp": 1779476827409,
+    "ip": null
+  },
+  {
+    "id": "6e4c9ea220768474",
+    "action": "achievement",
+    "user": "gelimorto",
+    "details": "Earned: First Words",
+    "metadata": {},
+    "timestamp": 1779476863676,
+    "ip": null
+  },
+  {
+    "id": "309c544af56e8104",
+    "action": "level_up",
+    "user": "gelimorto",
+    "details": "Level 1 -> 2",
+    "metadata": {},
+    "timestamp": 1779479462728,
+    "ip": null
+  },
+  {
+    "id": "d068f67f5841fa1f",
+    "action": "error",
+    "user": "server",
+    "details": "Uncaught exception: listen EADDRINUSE: address already in use :::3000",
+    "metadata": {},
+    "timestamp": 1779483472117,
+    "ip": null
+  },
+  {
+    "id": "c265c9484ce57147",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779494431212,
+    "ip": null
+  },
+  {
+    "id": "decd2d41975b7114",
+    "action": "level_up",
+    "user": "gelimorto",
+    "details": "Level 2 -> 3",
+    "metadata": {},
+    "timestamp": 1779526971861,
+    "ip": null
+  },
+  {
+    "id": "a4036793a9ead22e",
+    "action": "achievement",
+    "user": "gelimorto",
+    "details": "Earned: Explorer",
+    "metadata": {},
+    "timestamp": 1779531639814,
+    "ip": null
+  },
+  {
+    "id": "3e010771f53d5b2d",
+    "action": "level_up",
+    "user": "gelimorto",
+    "details": "Level 3 -> 4",
+    "metadata": {},
+    "timestamp": 1779531978712,
+    "ip": null
+  },
+  {
+    "id": "a44d9f8ea9773e34",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779580845264,
+    "ip": null
+  },
+  {
+    "id": "e6c07a00da358f28",
+    "action": "achievement",
+    "user": "gelimorto",
+    "details": "Earned: Stylist",
+    "metadata": {},
+    "timestamp": 1779635730505,
+    "ip": null
+  },
+  {
+    "id": "96ad88623511ac63",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779667246189,
+    "ip": null
+  },
+  {
+    "id": "17ed7b915f3048b1",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779753647067,
+    "ip": null
+  },
+  {
+    "id": "ea909050ec821bb7",
+    "action": "level_up",
+    "user": "gelimorto",
+    "details": "Level 4 -> 5",
+    "metadata": {},
+    "timestamp": 1779819297255,
+    "ip": null
+  },
+  {
+    "id": "d37ec5b84121f348",
+    "action": "achievement",
+    "user": "gelimorto",
+    "details": "Earned: Rising Star",
+    "metadata": {},
+    "timestamp": 1779819297257,
+    "ip": null
+  },
+  {
+    "id": "51d121d3dfa64423",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779840047946,
+    "ip": null
+  },
+  {
+    "id": "27f2432714fdf694",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1779926448789,
+    "ip": null
+  },
+  {
+    "id": "35cdeeffcbbb6b60",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780012849639,
+    "ip": null
+  },
+  {
+    "id": "0d62ae32c2b4a7ae",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780099250497,
+    "ip": null
+  },
+  {
+    "id": "16ef3ce877765a92",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780185651365,
+    "ip": null
+  },
+  {
+    "id": "1618dd27ceab5c19",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780272052258,
+    "ip": null
+  },
+  {
+    "id": "8ce6c7b325879883",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780358453122,
+    "ip": null
+  },
+  {
+    "id": "92f1c4fda2a53c45",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780444854015,
+    "ip": null
+  },
+  {
+    "id": "e31acb6ff3294550",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780531254874,
+    "ip": null
+  },
+  {
+    "id": "9cb724c2de1b206e",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780617655714,
+    "ip": null
+  },
+  {
+    "id": "743ff346636c57e7",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780704022308,
+    "ip": null
+  },
+  {
+    "id": "dd186df6844f24c8",
+    "action": "system",
+    "user": "server",
+    "details": "Daily analytics reset",
+    "metadata": {},
+    "timestamp": 1780790418156,
+    "ip": null
+  }
+]

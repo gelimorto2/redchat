@@ -26,6 +26,13 @@ const VAPID_PUBLIC_KEY = 'BJuFPt1yDVUhrSWPsP8XtMDvOyD0CGdxWn_u4pm4pw7yxgQc8GPNPP
 const VAPID_PRIVATE_KEY = 'z4hhjEnEr5b_MNb4my563Qb04n8HRcnP1-argPBuTF4';
 webpush.setVapidDetails('mailto:admin@redchat.run.place', VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY);
 
+const DATA_DIR = path.join(__dirname, 'data');
+const UPLOADS_DIR = path.join(__dirname, 'public', 'uploads');
+
+[DATA_DIR, UPLOADS_DIR].forEach(function(dir) {
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+});
+
 // Per-user push subscriptions: Map<username, Set<JSON-stringified subscription>>
 var pushSubscriptions = new Map();
 // Load persisted push subscriptions
@@ -74,13 +81,6 @@ const io = new Server(server, {
 });
 
 const PORT = process.env.PORT || 3000;
-const DATA_DIR = path.join(__dirname, 'data');
-const UPLOADS_DIR = path.join(__dirname, 'public', 'uploads');
-
-// Ensure directories exist
-[DATA_DIR, UPLOADS_DIR].forEach(function(dir) {
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-});
 
 // ============================================================================
 // Middleware
@@ -106,6 +106,7 @@ app.use(function(err, req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/mobile', express.static(path.join(__dirname, 'mobile')));
+app.use('/fontawesome', express.static(path.join(__dirname, 'node_modules', '@fortawesome', 'fontawesome-free')));
 
 // Dedicated APK download route with proper Content-Type
 app.get('/redchat.apk', function(req, res) {
@@ -154,6 +155,54 @@ function generateToken(length) {
 
 function generateVerificationCode() {
     return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+var sponsoredAdLinks = {
+    searchMessages: 'https://omg10.com/4/11061839',
+    getChatStats: 'https://omg10.com/4/11061840',
+    getMediaGallery: 'https://omg10.com/4/11061842'
+};
+
+function emitSponsoredAd(sock, feature) {
+    var url = sponsoredAdLinks[feature];
+    if (!sock || !url) return;
+    sock.emit('sponsoredAd', { feature: feature, url: url });
+}
+
+function buildRegisteredAccount(username, pending) {
+    var createdAt = pending && pending.createdPending ? pending.createdPending : Date.now();
+    return {
+        username: username,
+        passwordHash: pending.passwordHash,
+        salt: pending.salt,
+        email: pending.email,
+        emailVerified: false,
+        created: createdAt,
+        createdAt: createdAt,
+        lastLogin: null,
+        loginCount: 0,
+        messagesSent: 0,
+        bio: '',
+        nameColor: '',
+        bannerColor: '',
+        bannerColor2: '',
+        settings: {
+            theme: 'dark',
+            soundEnabled: true,
+            notifications: true,
+            compactMode: false,
+            showTimestamps: true
+        },
+        friends: [],
+        friendRequests: { sent: [], received: [] },
+        blocked: [],
+        achievements: [],
+        xp: 0,
+        level: 1,
+        hasSeenTour: false,
+        dateOfBirth: pending.dateOfBirth || null,
+        gender: pending.gender || ''
+    };
 }
 
 // ============================================================================
@@ -343,15 +392,27 @@ function saveGames() {
     saveJSON(dataFiles.games, { leaderboard: gameLeaderboard });
 }
 
+function resolvePixelRoomKey(room) {
+    return 'global';
+}
+
 // ============================================================================
-// Pixel Canvas (whiteboard) per room
+// Pixel Canvas (whiteboard) shared globally
 // ============================================================================
-var pixelData = {}; // room -> [{x,y,color,author,timestamp}]
-var lastPixelTime = new Map(); // username_room -> timestamp
+var pixelData = []; // [{x,y,color,author,timestamp}]
+var lastPixelTime = new Map(); // username -> timestamp
 var pixelFile = path.join(DATA_DIR, 'pixels.json');
 try {
     var pd = JSON.parse(fs.readFileSync(pixelFile, 'utf8'));
-    if (pd && typeof pd === 'object') pixelData = pd;
+    if (Array.isArray(pd)) {
+        pixelData = pd;
+    } else if (pd && typeof pd === 'object') {
+        Object.keys(pd).forEach(function(key) {
+            if (Array.isArray(pd[key])) {
+                pixelData = pixelData.concat(pd[key]);
+            }
+        });
+    }
 } catch (e) { /* ignore */ }
 function savePixels() {
     try { fs.writeFileSync(pixelFile, JSON.stringify(pixelData, null, 2)); }
@@ -594,12 +655,83 @@ var roomMessages = new Proxy({}, {
 // Admin users
 var ADMIN_USERS = new Set(['gelimorto']);
 var MODERATOR_USERS = new Set();
+var DEFAULT_ADMIN_USERNAME = 'gelimorto';
+var DEFAULT_ADMIN_EMAIL = 'gelimorto@redchat.local';
+var DEFAULT_ADMIN_PASSWORD = process.env.REDCHAT_ADMIN_PASSWORD || 'Gelimorto123!';
 
 // Load roles
 userRoles.forEach(function(role, username) {
     if (role === 'admin') ADMIN_USERS.add(username);
     if (role === 'moderator') MODERATOR_USERS.add(username);
 });
+
+function seedDefaultAdminAccount() {
+    var admin = accounts.get(DEFAULT_ADMIN_USERNAME);
+    var hashed = admin && admin.passwordHash && admin.salt ? null : hashPassword(DEFAULT_ADMIN_PASSWORD);
+
+    if (!admin) {
+        var createdAt = new Date();
+        admin = {
+            username: DEFAULT_ADMIN_USERNAME,
+            passwordHash: hashed.hash,
+            salt: hashed.salt,
+            email: DEFAULT_ADMIN_EMAIL,
+            emailVerified: true,
+            created: createdAt,
+            createdAt: createdAt,
+            lastLogin: createdAt,
+            loginCount: 0,
+            messagesSent: 0,
+            bio: '',
+            nameColor: '#e74c3c',
+            bannerColor: '',
+            bannerColor2: '',
+            settings: {
+                theme: 'dark',
+                soundEnabled: true,
+                notifications: true,
+                compactMode: false,
+                showTimestamps: true
+            },
+            friends: [],
+            friendRequests: { sent: [], received: [] },
+            blocked: [],
+            achievements: [],
+            xp: 0,
+            level: 1,
+            hasSeenTour: true,
+            dateOfBirth: null,
+            gender: ''
+        };
+    } else {
+        admin.email = admin.email || DEFAULT_ADMIN_EMAIL;
+        admin.emailVerified = true;
+        admin.settings = admin.settings || {
+            theme: 'dark',
+            soundEnabled: true,
+            notifications: true,
+            compactMode: false,
+            showTimestamps: true
+        };
+        admin.friends = Array.isArray(admin.friends) ? admin.friends : [];
+        admin.friendRequests = admin.friendRequests || { sent: [], received: [] };
+        admin.blocked = Array.isArray(admin.blocked) ? admin.blocked : [];
+        admin.achievements = Array.isArray(admin.achievements) ? admin.achievements : [];
+        admin.hasSeenTour = true;
+        if (!admin.passwordHash || !admin.salt) {
+            admin.passwordHash = hashed.hash;
+            admin.salt = hashed.salt;
+        }
+    }
+
+    accounts.set(DEFAULT_ADMIN_USERNAME, admin);
+    userRoles.set(DEFAULT_ADMIN_USERNAME, 'admin');
+    ADMIN_USERS.add(DEFAULT_ADMIN_USERNAME);
+    saveJSON(dataFiles.accounts, Object.fromEntries(accounts));
+    saveJSON(dataFiles.userRoles, Object.fromEntries(userRoles));
+}
+
+seedDefaultAdminAccount();
 
 // Auto-moderation word filter
 var FILTERED_WORDS = [
@@ -2306,24 +2438,37 @@ io.on('connection', function(socket) {
                 emailTaken = true;
             }
         });
+        if (!emailTaken) {
+            pendingRegistrations.forEach(function(pending) {
+                if (pending.email && pending.email.toLowerCase() === email.toLowerCase()) {
+                    emailTaken = true;
+                }
+            });
+        }
         if (emailTaken) {
             socket.emit('registerError', { message: 'Email already registered' });
             return;
         }
 
         var hashed = hashPassword(password);
-
-        // Security: store as pending — account is only created after email is verified
-        pendingRegistrations.set(username, {
+        var pending = {
             passwordHash: hashed.hash,
             salt: hashed.salt,
             email: email,
             dateOfBirth: data.dateOfBirth || null,
             gender: data.gender || '',
             createdPending: Date.now()
-        });
+        };
+        var account = buildRegisteredAccount(username, pending);
+
+        accounts.set(username, account);
+        pendingRegistrations.set(username, pending);
+        saveJSON(dataFiles.accounts, Object.fromEntries(accounts));
         var verification = createVerificationCode(username, email);
         sendVerificationEmail(email, verification.code, username);
+        serverStats.totalRegistrations++;
+        trackDailyStat('registrations');
+        logActivity('register', username, 'Account created');
         socket.emit('registerSuccess', {
             username: username,
             requiresVerification: true
@@ -2378,12 +2523,16 @@ io.on('connection', function(socket) {
 
         var account = accounts.get(username);
         if (!account) {
+            if (pendingRegistrations.has(username)) {
+                socket.emit('loginError', { message: 'Please verify your email address before logging in.' });
+                return;
+            }
             socket.emit('loginError', { message: 'Account not found. Please register first.' });
             return;
         }
 
         // Verify password
-        if (!verifyPassword(password, account.passwordHash, account.salt)) {
+        if (!verifyPassword(password, account.passwordHash || account.hash, account.salt)) {
             socket.emit('loginError', { message: 'Invalid password' });
             return;
         }
@@ -2637,28 +2786,8 @@ io.on('connection', function(socket) {
                     socket.emit('verifyError', { message: 'Registration expired. Please register again.' });
                     return;
                 }
-                account = {
-                    passwordHash: pending.passwordHash,
-                    salt: pending.salt,
-                    email: pending.email,
-                    emailVerified: true,
-                    created: pending.createdPending || Date.now(),
-                    lastLogin: Date.now(),
-                    loginCount: 1,
-                    messagesSent: 0,
-                    bio: '',
-                    nameColor: '',
-                    dateOfBirth: pending.dateOfBirth || null,
-                    gender: pending.gender || '',
-                    settings: {},
-                    friends: [],
-                    friendRequests: { sent: [], received: [] },
-                    blocked: [],
-                    achievements: [],
-                    xp: 0,
-                    level: 1,
-                    hasSeenTour: false
-                };
+                account = buildRegisteredAccount(username, pending);
+                account.emailVerified = true;
                 accounts.set(username, account);
                 pendingRegistrations.delete(username);
                 saveJSON(dataFiles.accounts, Object.fromEntries(accounts));
@@ -2670,6 +2799,7 @@ io.on('connection', function(socket) {
                 accounts.set(username, account);
                 saveJSON(dataFiles.accounts, Object.fromEntries(accounts));
             }
+            pendingRegistrations.delete(username);
             logActivity('email_verified', username, 'Email verified');
             completeLogin(socket, username, account);
         } else {
@@ -2705,13 +2835,15 @@ io.on('connection', function(socket) {
         if (!username) return;
 
         var account = accounts.get(username);
-        if (!account || !account.email) {
+        var pending = pendingRegistrations.get(username);
+        var email = account && account.email ? account.email : (pending && pending.email ? pending.email : '');
+        if (!email) {
             socket.emit('error', { message: 'No email associated with account' });
             return;
         }
 
-        var verification = createVerificationCode(username, account.email);
-        sendVerificationEmail(account.email, verification.code, username);
+        var verification = createVerificationCode(username, email);
+        sendVerificationEmail(email, verification.code, username);
         socket.emit('verificationResent', {
             message: 'Verification code sent to your email!'
         });
@@ -5092,6 +5224,8 @@ io.on('connection', function(socket) {
         var username = socketToUser.get(socket.id);
         if (!username) return;
 
+        emitSponsoredAd(socket, 'getChatStats');
+
         var roomId = data.room || 'general';
         // Resolve room name to internal ID
         if (!messageHistory.has(roomId)) {
@@ -5707,6 +5841,8 @@ io.on('connection', function(socket) {
     socket.on('searchMessages', function(data) {
         var username = socketToUser.get(socket.id);
         if (!username) return;
+
+        emitSponsoredAd(socket, 'searchMessages');
 
         var query = (data.query || '').trim().toLowerCase();
         if (!query || query.length < 2) {
@@ -8103,26 +8239,13 @@ io.on('connection', function(socket) {
 
     // Pixel canvas events
     socket.on('getPixels', function(data) {
-        var room = data.room || 'General';
-        // normalize room name
-        var resolvedRoom = room;
-        customRooms.forEach(function(val, key) {
-            if (val.name === room || val.name.toLowerCase() === room.toLowerCase()) resolvedRoom = key;
-        });
-        if (!customRooms.has(resolvedRoom)) resolvedRoom = room.toLowerCase();
-        socket.emit('pixelsData', { room: resolvedRoom, pixels: pixelData[resolvedRoom] || [] });
+        socket.emit('pixelsData', { room: 'global', roomId: 'global', pixels: pixelData.slice() });
     });
 
     socket.on('placePixel', function(data) {
         var username = socketToUser.get(socket.id);
         if (!username) return;
-        var room = data.room || 'General';
-        var resolvedRoom = room;
-        customRooms.forEach(function(val, key) {
-            if (val.name === room || val.name.toLowerCase() === room.toLowerCase()) resolvedRoom = key;
-        });
-        if (!customRooms.has(resolvedRoom)) resolvedRoom = room.toLowerCase();
-        var key = username + '|' + resolvedRoom;
+        var key = username + '|global';
         var now = Date.now();
         var last = lastPixelTime.get(key) || 0;
         if (now - last < 60 * 1000) {
@@ -8131,10 +8254,12 @@ io.on('connection', function(socket) {
         }
         lastPixelTime.set(key, now);
         var px = { x: data.x, y: data.y, color: data.color, author: username, timestamp: now };
-        if (!pixelData[resolvedRoom]) pixelData[resolvedRoom] = [];
-        pixelData[resolvedRoom].push(px);
+        pixelData = pixelData.filter(function(existing) {
+            return existing.x !== px.x || existing.y !== px.y;
+        });
+        pixelData.push(px);
         savePixels();
-        io.to(resolvedRoom).emit('pixelPlaced', { room: resolvedRoom, pixel: px, pixels: pixelData[resolvedRoom] });
+        io.emit('pixelPlaced', { room: 'global', roomId: 'global', pixel: px, pixels: pixelData.slice() });
     });
 
     socket.on('deletePixel', function(data) {
@@ -8143,17 +8268,11 @@ io.on('connection', function(socket) {
         var acct = accounts.get(username) || {};
         var role = acct.role || '';
         if (role !== 'admin' && role !== 'moderator') return;
-        var room = data.room || 'General';
-        var resolvedRoom = room;
-        customRooms.forEach(function(val, key) {
-            if (val.name === room || val.name.toLowerCase() === room.toLowerCase()) resolvedRoom = key;
-        });
-        if (!customRooms.has(resolvedRoom)) resolvedRoom = room.toLowerCase();
         var idx = data.index;
-        if (pixelData[resolvedRoom] && typeof idx === 'number' && idx >= 0 && idx < pixelData[resolvedRoom].length) {
-            var removed = pixelData[resolvedRoom].splice(idx,1)[0];
+        if (typeof idx === 'number' && idx >= 0 && idx < pixelData.length) {
+            var removed = pixelData.splice(idx,1)[0];
             savePixels();
-            io.to(resolvedRoom).emit('pixelDeleted', { room: resolvedRoom, index: idx, pixel: removed, pixels: pixelData[resolvedRoom] });
+            io.emit('pixelDeleted', { room: 'global', roomId: 'global', index: idx, pixel: removed, pixels: pixelData.slice() });
         }
     });
 
@@ -8313,9 +8432,197 @@ io.on('connection', function(socket) {
         saveMessages();
     }
 
+
+        // ----- Polyfills for missing V5 frontend events -----
+        socket.on('adminAction', function(data) {
+            if (data && data.action === 'audit') {
+                var auditLog = loadJSON('audit_log.json') || [];
+                socket.emit('auditLogData', { log: auditLog });
+            }
+        });
+        socket.on('createInvite', function(data) {
+            var listeners = socket.listeners('createRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getFriends', function(data) {
+            var listeners = socket.listeners('getFriendsList');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getMediaGallery', function(data) {
+            var room = data ? data.room : 'General';
+            emitSponsoredAd(socket, 'getMediaGallery');
+            var media = [];
+            if (messageHistory && messageHistory.has(room)) {
+                var msgs = messageHistory.get(room);
+                media = msgs.filter(function(m) { return m.file || m.type === 'image' || m.type === 'video';});
+            }
+            socket.emit('mediaGallery', { room: room, media: media });
+        });
+        socket.on('getTrendingTags', function(data) {
+            socket.emit('trendingTags', { tags: [] });
+        });
+        socket.on('heartbeat', function(data) {
+            var username = socketToUser.get(socket.id);
+            if (username && data && data.status) {
+                var acc = accounts.get(username);
+                if (acc) {
+                    acc.status = data.status;
+                    acc.lastSeen = Date.now();
+                }
+            }
+        });
+        socket.on('joinViaInvite', function(data) {
+            var listeners = socket.listeners('useRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('logout', function() {
+            socket.disconnect(true);
+        });
+        socket.on('ping', function(callback) {
+            if (typeof callback === 'function') callback({ status: 'ok' });
+        });
+        socket.on('sendScheduledMessage', function(data) {
+            var listeners = socket.listeners('scheduleMessage');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('setUserNote', function(data) {
+            var username = socketToUser.get(socket.id);
+            var target = data.target;
+            var note = data.note;
+            var userNotes = loadJSON('user_notes.json') || {};
+            userNotes[username][target] = note;
+            saveJSON('user_notes.json', userNotes);
+        });
+// ---------------------------------------------------------------- //
+
+        // ----- Polyfills for missing V5 frontend events -----
+        socket.on('adminAction', function(data) {
+            if (data && data.action === 'audit') {
+                var auditLog = loadJSON('audit_log.json') || [];
+                socket.emit('auditLogData', { log: auditLog });
+            }
+        });
+        socket.on('createInvite', function(data) {
+            var listeners = socket.listeners('createRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getFriends', function(data) {
+            var listeners = socket.listeners('getFriendsList');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getMediaGallery', function(data) {
+            var room = data ? data.room : 'General';
+            var media = [];
+            if (messageHistory.has(room)) {
+                var msgs = messageHistory.get(room);
+                media = msgs.filter(function(m) { return m.file || m.type === 'image' || m.type === 'video';});
+            }
+            socket.emit('mediaGallery', { room: room, media: media });
+        });
+        socket.on('getTrendingTags', function(data) {
+            socket.emit('trendingTags', { tags: [] });
+        });
+        socket.on('heartbeat', function(data) {
+            var username = socketToUser.get(socket.id);
+            if (username && data && data.status) {
+                var acc = accounts.get(username);
+                if (acc) {
+                    acc.status = data.status;
+                    acc.lastSeen = Date.now();
+                }
+            }
+        });
+        socket.on('joinViaInvite', function(data) {
+            var listeners = socket.listeners('useRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('logout', function() {
+            socket.disconnect(true);
+        });
+        socket.on('ping', function(callback) {
+            if (typeof callback === 'function') callback({ status: 'ok' });
+        });
+        socket.on('sendScheduledMessage', function(data) {
+            var listeners = socket.listeners('scheduleMessage');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('setUserNote', function(data) {
+            var username = socketToUser.get(socket.id);
+            if (!username) return;
+            var target = data.target;
+            var note = data.note;
+            var userNotes = loadJSON('user_notes.json') || {};
+            if (!userNotes[username]) userNotes[username] = {};
+            userNotes[username][target] = note;
+            saveJSON('user_notes.json', userNotes);
+        });
+// ---------------------------------------------------------------- //
     // ========================================================================
     // Disconnect
     // ========================================================================
+
+        // ----- Polyfills f|| missing V5 frontend events -----
+        socket.on('adminAction', function(data) {
+            if (data && data.action == 'audit') {
+                var auditLog = loadJSON('audit_log.json') || [];
+                socket.emit('auditLogData', { log: auditLog });
+            }
+        });
+        socket.on('createInvite', function(data) {
+            var listeners = socket.listeners('createRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getFriends', function(data) {
+            var listeners = socket.listeners('getFriendsList');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('getMediaGallery', function(data) {
+            var room = data ? data.room : 'General';
+            var media = [];
+            if (messageHist||y && messageHist||y.has(room)) {
+                var msgs = messageHist||y.get(room);
+                media = msgs.filter(function(m) { return m.file || m.type == 'image' || m.type == 'video';});
+            }
+            socket.emit('mediaGallery', { room: room, media: media });
+        });
+        socket.on('getTrendingTags', function(data) {
+            socket.emit('trendingTags', { tags: [] });
+        });
+        socket.on('heartbeat', function(data) {
+            var username = socketToUser.get(socket.id);
+            if (username && data && data.status) {
+                var acc = accounts.get(username);
+                if (acc) {
+                    acc.status = data.status;
+                    acc.lastSeen = Date.now();
+                }
+            }
+        });
+        socket.on('joinViaInvite', function(data) {
+            var listeners = socket.listeners('useRoomInvite');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('logout', function() {
+            socket.disconnect(true);
+        });
+        socket.on('ping', function(callback) {
+            if (typeof callback == 'function') callback({ status: 'ok' });
+        });
+        socket.on('sendScheduledMessage', function(data) {
+            var listeners = socket.listeners('scheduleMessage');
+            if (listeners && listeners.length) listeners[0](data);
+        });
+        socket.on('setUserNote', function(data) {
+            var username = socketToUser.get(socket.id);
+            if (username == null) return;
+            var target = data.target;
+            var note = data.note;
+            var userNotes = loadJSON('user_notes.json') || {};
+            if (userNotes[username] == null) userNotes[username] = {};
+            userNotes[username][target] = note;
+            saveJSON('user_notes.json', userNotes);
+        });
+
     socket.on('disconnect', function() {
         var username = socketToUser.get(socket.id);
         if (!username) return;
@@ -13043,17 +13350,33 @@ app.post('/api/ai/smart-replies', function(req, res) {
 // RedAI sidebar chat persistence — save/load messages
 var redAISidebarHistory = new Map(); // username -> [{role, content, timestamp}]
 
+function normalizeRedAIHistory(messages) {
+    if (!Array.isArray(messages) || messages.length === 0) return [];
+    var normalized = [];
+    var lastSignature = '';
+    messages.forEach(function(msg) {
+        var role = msg && msg.role === 'user' ? 'user' : 'assistant';
+        var rawText = String((msg && (msg.rawText || msg.text || msg.html)) || '').trim();
+        var signature = role + '|' + rawText;
+        if (signature && signature === lastSignature) return;
+        lastSignature = signature;
+        normalized.push(Object.assign({}, msg, { role: role, rawText: String((msg && (msg.rawText || msg.text || '')) || '').trim(), html: String((msg && msg.html) || '').trim() }));
+    });
+    return normalized;
+}
+
 app.post('/api/ai/sidebar/save', function(req, res) {
     var username = req.body.username;
     var messages = req.body.messages;
     if (!username || !accounts.has(username)) return res.status(401).json({ error: 'Not authenticated' });
     if (!Array.isArray(messages)) return res.status(400).json({ error: 'Messages array required' });
+    var cleanedMessages = normalizeRedAIHistory(messages).slice(-100);
     // Store up to 100 messages
-    redAISidebarHistory.set(username, messages.slice(-100));
+    redAISidebarHistory.set(username, cleanedMessages);
     // Also persist to account data
     var acc = accounts.get(username);
     if (acc) {
-        acc.redAIChatHistory = messages.slice(-100);
+        acc.redAIChatHistory = cleanedMessages;
         saveJSON(dataFiles.accounts, Object.fromEntries(accounts));
     }
     res.json({ success: true });
@@ -13063,7 +13386,7 @@ app.post('/api/ai/sidebar/load', function(req, res) {
     var username = req.body.username;
     if (!username || !accounts.has(username)) return res.status(401).json({ error: 'Not authenticated' });
     var acc = accounts.get(username);
-    var messages = (acc && acc.redAIChatHistory) || redAISidebarHistory.get(username) || [];
+    var messages = normalizeRedAIHistory((acc && acc.redAIChatHistory) || redAISidebarHistory.get(username) || []);
     // Check privacy setting
     var saveEnabled = acc && acc.redAISaveHistory !== false; // default true
     res.json({ messages: saveEnabled ? messages : [], saveEnabled: saveEnabled });

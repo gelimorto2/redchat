@@ -1206,6 +1206,11 @@ class ChatApp {
     this.avatars = {};
     this.userAccents = {}; // per-user accent colors for initials
     this.myAvatar = null;
+    this._aiRequestSeq = 0;
+    this._aiAbortController = null;
+    this._aiThinking = false;
+    this._aiTypingIndicatorEl = null;
+    this._redaiTypingEl = null;
     this.stickers = [];
     this.captchaA = 0;
     this.captchaB = 0;
@@ -1241,6 +1246,7 @@ class ChatApp {
     // Pixel canvas state
     this._lastPixelTime = 0;
     this._pixelData = [];
+    this._pixelRoomKey = 'global';
     this.userNotes = {};
     this.scheduledMessages = [];
     this.focusMode = false;
@@ -1322,16 +1328,20 @@ class ChatApp {
     this.loadUserNotes();
     this.loadEmojiRecent();
 
-    this.cacheDOM();
-    this.connect();
-    this.bindEvents();
-    this.applySavedTheme();
-    this.initEmojiPicker();
-    this.initIdleDetection();
-    this.initServiceWorker();
-    this.applyTranslations();
-    this.startConnectionMonitor();
-    this.initPerformanceTracking();
+    try {
+      this.cacheDOM();
+      this.connect();
+      this.bindEvents();
+      this.applySavedTheme();
+      this.initEmojiPicker();
+      this.initIdleDetection();
+      this.initServiceWorker();
+      this.applyTranslations();
+      this.startConnectionMonitor();
+      this.initPerformanceTracking();
+    } catch (e) {
+      console.error('[RedChat] Constructor init error:', e);
+    }
   }
 
   /* ─── DOM CACHE ─── */
@@ -1954,7 +1964,72 @@ class ChatApp {
   }
 
   /* ─── SOCKET CONNECTION ─── */
+  createSocketFallback() {
+    const queuedEvents = [];
+    const noop = () => {};
+    return {
+      __fallback: true,
+      __queuedEvents: queuedEvents,
+      emit: (event, ...args) => {
+        queuedEvents.push([event, args]);
+      },
+      on: noop,
+      once: noop,
+      off: noop,
+      removeAllListeners: noop,
+      disconnect: noop,
+      connect: noop
+    };
+  }
+
+  loadLocalSocketClient() {
+    if (typeof window.io === 'function') {
+      return Promise.resolve();
+    }
+
+    if (this._socketLoaderPromise) {
+      return this._socketLoaderPromise;
+    }
+
+    this._socketLoaderPromise = new Promise((resolve, reject) => {
+      const existing = document.querySelector('script[data-redchat-socket-client="true"]');
+      if (existing) {
+        existing.addEventListener('load', () => resolve(), { once: true });
+        existing.addEventListener('error', () => reject(new Error('Socket.IO client failed to load')), { once: true });
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = '/socket.io/socket.io.js';
+      script.async = true;
+      script.dataset.redchatSocketClient = 'true';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Socket.IO client failed to load'));
+      document.head.appendChild(script);
+    }).finally(() => {
+      this._socketLoaderPromise = null;
+    });
+
+    return this._socketLoaderPromise;
+  }
+
   connect() {
+    const queuedEvents = this.socket && this.socket.__queuedEvents ? [...this.socket.__queuedEvents] : [];
+
+    if (typeof window.io !== 'function') {
+      this.socket = this.socket && this.socket.__fallback ? this.socket : this.createSocketFallback();
+      this.loadLocalSocketClient()
+        .then(() => {
+          if (typeof window.io === 'function') {
+            this.connect();
+          }
+        })
+        .catch(err => {
+          console.warn('[RedChat] Socket.IO client unavailable, using offline fallback:', err);
+        });
+      return this.socket;
+    }
+
     this.socket = io({ reconnection: true, reconnectionDelay: 2000, reconnectionAttempts: 10 });
 
     this.socket.on('connect', () => {
@@ -1986,6 +2061,9 @@ class ChatApp {
     this.socket.on('verifySuccess', data => this.handleVerifySuccess(data));
     this.socket.on('verifyError', data => this.handleAuthError('verifyError', data.message));
     this.socket.on('verificationResent', data => this.toast(data.message || 'Verification code sent!', 'success'));
+    this.socket.on('sponsoredAd', data => {
+      if (data && data.url) this._openSponsoredAd(data.url);
+    });
     this.socket.on('resetCodeSent', (data) => {
       this.pendingResetUser = data.username;
       if(this.dom.resetCodePanel) this.dom.resetCodePanel.style.display = 'block';
@@ -2157,13 +2235,21 @@ class ChatApp {
     // Avatar
     this.socket.on('avatarUpdate', data => {
       this.avatars[data.username] = data.avatar;
+      if (data.username === this.username && data.avatar) {
+        localStorage.setItem(`redchat_avatar:${data.username}`, data.avatar);
+      }
       this.updateAvatarsInDOM(data.username, data.avatar);
     });
     this.socket.on('avatarData', data => {
       this.avatars = { ...this.avatars, ...data };
       // Update ALL users' avatars in the DOM (history loads before avatarData arrives)
       for (const [user, url] of Object.entries(data)) {
-        if (url) this.updateAvatarsInDOM(user, url);
+        if (url) {
+          if (user === this.username) {
+            localStorage.setItem(`redchat_avatar:${user}`, url);
+          }
+          this.updateAvatarsInDOM(user, url);
+        }
       }
     });
 
@@ -2520,6 +2606,19 @@ class ChatApp {
       banner.innerHTML = '<i class="fas fa-sync-alt"></i> RedChat has been updated! <button onclick="location.reload()" style="background:#fff;color:#333;border:none;padding:6px 16px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px;">Refresh Now</button> <button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,.8);cursor:pointer;font-size:16px;padding:4px;"><i class="fas fa-times"></i></button>';
       document.body.prepend(banner);
     });
+
+    if (queuedEvents.length) {
+      queuedEvents.forEach(([event, args]) => {
+        try {
+          this.socket.emit(event, ...args);
+        } catch (err) {
+          console.warn('[RedChat] Failed to replay queued socket event:', event, err);
+        }
+      });
+      if (this.socket.__queuedEvents) {
+        this.socket.__queuedEvents.length = 0;
+      }
+    }
   }
 
 
@@ -2822,7 +2921,6 @@ class ChatApp {
         { label: 'Play a Game', icon: 'fas fa-gamepad', action: 'game', handler: () => this.showGameSelectDialog() },
         { separator: true },
         { label: 'Share Location', icon: 'fas fa-location-dot', action: 'location', handler: () => this.shareLocation() },
-        { label: 'Open Canvas', icon: 'fas fa-square', action: 'canvas', handler: () => this._openPixelCanvas() },
       ];
       // Position the context menu above the button, clamped to viewport
       const fakeEvent = { preventDefault: () => {}, clientX: rect.left + rect.width / 2, clientY: rect.top - 4, _openAbove: true };
@@ -3972,9 +4070,11 @@ class ChatApp {
     this.userXP = data.xp || 0;
     this.xpNeeded = data.xpNeeded || 100;
     this.userPerks = data.perks || [];
-    this.userAvatar = data.avatar || '';
-    if (data.avatar) {
-      this.avatars[data.username] = data.avatar;
+    const avatarCacheKey = `redchat_avatar:${data.username}`;
+    const cachedAvatar = localStorage.getItem(avatarCacheKey) || '';
+    this.userAvatar = data.avatar || cachedAvatar || '';
+    if (this.userAvatar) {
+      this.avatars[data.username] = this.userAvatar;
     }
     this.userBio = data.bio || '';
     this.bio = data.bio || '';
@@ -3995,7 +4095,7 @@ class ChatApp {
       else { roleBadge.style.display = 'none'; }
     }
     // Update panel avatar (always — falls back to initials if no avatar stored)
-    this.updateAvatarsInDOM(data.username, data.avatar || '');
+    this.updateAvatarsInDOM(data.username, this.userAvatar || '');
     // Show admin button if admin
     if (this.dom.adminPanelBtn && data.role === 'admin') this.dom.adminPanelBtn.style.display = '';
     this.showApp();
@@ -4259,6 +4359,7 @@ class ChatApp {
     this.allRoomsData = data.allRooms || [];
     this.renderRooms();
     this.renderBrowseRooms();
+    this.renderRoomEventsPanel();
   }
 
   renderRooms() {
@@ -4304,6 +4405,31 @@ class ChatApp {
     });
     // Update favorites list
     this.renderFavorites();
+    this.renderRoomEventsPanel();
+  }
+
+  renderRoomEventsPanel() {
+    const panel = document.getElementById('roomEventsPanel');
+    if (!panel) return;
+    const pixels = Array.isArray(this._pixelData) ? this._pixelData : [];
+    const latest = pixels.length > 0 ? pixels[pixels.length - 1] : null;
+    const latestTime = latest?.timestamp ? new Date(latest.timestamp).toLocaleString() : 'No activity yet';
+    panel.innerHTML = `
+      <button id="openCanvasEventsBtn" class="room-events-open" type="button">
+        <i class="fas fa-palette"></i>
+        <span>Open Canvas</span>
+      </button>
+      <div class="room-events-summary">
+        <div class="room-events-count">${pixels.length} pixel${pixels.length === 1 ? '' : 's'} on the server canvas</div>
+      </div>
+      <div class="room-events-latest">
+        <span class="room-events-label">Latest</span>
+        <span class="room-events-value">${latest ? `${this.escapeHTML(latest.author || 'Unknown')} · (${latest.x}, ${latest.y}) · ${this.escapeHTML(latest.color || '')}` : 'No pixel placed yet'}</span>
+        <span class="room-events-time">${this.escapeHTML(latestTime)}</span>
+      </div>
+      <div class="room-events-hint">Tap a blank tile to place a pixel. Tap a filled tile to inspect it.</div>
+    `;
+    panel.querySelector('#openCanvasEventsBtn')?.addEventListener('click', () => this._openPixelCanvas());
   }
 
   renderBrowseRooms() {
@@ -4424,9 +4550,11 @@ class ChatApp {
     }
     // Save draft from the current room/DM before switching
     this.saveDraft();
+    this._closePixelCanvas();
     this.currentRoom = room;
     this.isDM = false;
     this.currentDM = null;
+    this._pixelRoomKey = this._resolvePixelRoomKey(room);
     // Update current room indicator in header
     const roomNameEl = document.getElementById('currentRoomName');
     if (roomNameEl) {
@@ -4469,6 +4597,10 @@ class ChatApp {
     // Update placeholder text
     const switchRoomData = (this.allRoomsData || []).find(r => r.id === room || r.name === room);
     if (this.dom.messageInput) this.dom.messageInput.placeholder = `Message ${switchRoomData?.name || room}...`;
+    this.renderRoomEventsPanel();
+    if (document.getElementById('pixelOverlay')?.style.display === 'flex') {
+      this._refreshPixelCanvas();
+    }
   }
 
   joinRoom(room) {
@@ -4526,6 +4658,9 @@ class ChatApp {
     this.editingMessageId = null;
     this.dom.replyBar?.classList.remove('active');
     this.dom.editBar?.classList.remove('active');
+    this._pixelRoomKey = this._resolvePixelRoomKey(room);
+    this._pixelData = [];
+    this._setPixelSelection(null);
     // Switch sidebar back to channels if we're on the redai tab
     if (this.activeSidebarTab === 'redai' || (this.state && this.state.activeSidebarTab === 'redai')) {
       this.switchSidebarTab('channels');
@@ -4551,12 +4686,17 @@ class ChatApp {
       setTimeout(() => this.closeSidebar(), 150);
     }
     this.dom.messageInput?.focus();
+    if (document.getElementById('pixelOverlay')?.style.display === 'flex') {
+      this._refreshPixelCanvas();
+    }
   }
 
   handleRoomJoined(data) {
     this.currentRoom = data.room;
     // Ensure the room is tracked as joined so the checkmark stays
     if (!this.rooms.includes(data.room)) this.rooms.push(data.room);
+    this._pixelData = [];
+    this._setPixelSelection(null);
     if (this.dom.channelName) this.dom.channelName.textContent = data.room;
     if (data.topic) this.dom.topicBar && (this.dom.topicBar.textContent = data.topic);
     else if (this.dom.topicBar) this.dom.topicBar.textContent = 'Click to add a topic';
@@ -4749,7 +4889,7 @@ class ChatApp {
     const args = parts.slice(1).join(' ');
 
     const commands = {
-      'help': () => this.toast('Commands: /shrug /tableflip /unflip /lenny /disapproval /sparkles /spoiler /roll /confetti /fireworks /shake /nick /time /help', 'info'),
+      'help': () => this.toast('Commands: /shrug /tableflip /unflip /lenny /disapproval /sparkles /spoiler /roll /confetti /fireworks /shake /nick /time /ai /ask /image /summarize /translate /help', 'info'),
       'shrug':      () => this.socket.emit('chatMessage', { text: (args ? args + ' ' : '') + '¯\\_(ツ)_/¯', room: this.currentRoom }),
       'tableflip':  () => this.socket.emit('chatMessage', { text: '(╯°□°）╯︵ ┻━┻', room: this.currentRoom }),
       'unflip':     () => this.socket.emit('chatMessage', { text: '┬─┬ ノ( ゜-゜ノ)', room: this.currentRoom }),
@@ -4781,10 +4921,19 @@ class ChatApp {
         this.socket.emit('chatMessage', { text: `🎲 rolled **${result}** (1-${max})`, room: this.currentRoom });
       },
       'time':  () => this.toast(new Date().toLocaleTimeString(), 'info'),
+      'ask': () => {
+        if (!args.trim()) { this.toast('Usage: /ask <question>', 'warning'); return; }
+        this.socket.emit('chatMessage', { text: '@RedAI ' + args, room: this.currentRoom, userLang: this.currentLang || 'en' });
+      },
       'ai': () => {
         if (!args.trim()) { this.toast('Usage: /ai <question>', 'warning'); return; }
         // Send the question as @RedAI mention so the bot responds in the channel
         this.socket.emit('chatMessage', { text: '@RedAI ' + args, room: this.currentRoom, userLang: this.currentLang || 'en' });
+      },
+      'image': () => {
+        const prompt = args.trim() || window.prompt('Describe the image RedAI should generate', '');
+        if (!prompt) return;
+        this._openPuterImagePopup(prompt);
       },
       'summarize': () => {
         this.aiSummarizeChat();
@@ -4872,10 +5021,6 @@ class ChatApp {
       if (msg.type === 'game' && (msg.id || msg.game?.id)) this._seenGameIds.add(msg.id || msg.game?.id);
       this.appendMessage({ ...msg, fromHistory: true });
     });
-    if (msgsArr.length === 0) {
-      // show blank canvas when no messages
-      this._openPixelCanvas();
-    }
     // Flush system messages that arrived while in DM view
     if (this._pendingSystemMsgs?.length) {
       this._pendingSystemMsgs.forEach(d => {
@@ -6283,7 +6428,14 @@ class ChatApp {
     
     // use initials fallback if no avatar URL provided
     const avatarSrc = data.avatar ? data.avatar : this.generateInitialsAvatar(data.username);
-    modal.querySelector('.profile-avatar')?.setAttribute('src', avatarSrc);
+    const avatarEl = modal.querySelector('.profile-avatar');
+    if (avatarEl) {
+      avatarEl.onerror = () => {
+        avatarEl.onerror = null;
+        avatarEl.src = this.generateInitialsAvatar(data.username);
+      };
+      avatarEl.setAttribute('src', avatarSrc);
+    }
     // apply accent color banner if provided
     const banner = modal.querySelector('.profile-banner');
     if (banner) {
@@ -6348,13 +6500,37 @@ class ChatApp {
   }
 
   /* ═══════════════════════ FILE UPLOAD ═══════════════════════ */
+  async _parseUploadResponse(res) {
+    const text = await res.text();
+    const contentType = res.headers.get('content-type') || '';
+    if (!text) return {};
+    if (contentType.includes('application/json')) {
+      try {
+        return JSON.parse(text);
+      } catch (err) {
+        throw new Error('Upload returned invalid JSON');
+      }
+    }
+    try {
+      return JSON.parse(text);
+    } catch (err) {
+      throw new Error(text.trim() || `Upload failed (${res.status})`);
+    }
+  }
+
   sendVoiceMessage(file) {
     if (!file) return;
     const formData = new FormData();
     formData.append('file', file);
     this.toast('Sending voice message...', 'info', 3000);
     fetch('/upload', { method: 'POST', body: formData })
-      .then(res => res.ok ? res.json() : Promise.reject('Upload failed'))
+      .then(async res => {
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(text.trim() || 'Upload failed');
+        }
+        return this._parseUploadResponse(res);
+      })
       .then(data => {
         if (data.url) {
           const room = (this.currentRoom || 'general').toString().toLowerCase();
@@ -6456,14 +6632,18 @@ class ChatApp {
       method: 'POST',
       body: formData
     })
-    .then(res => {
+    .then(async res => {
       if (!res.ok) {
-        return res.text().then(text => {
-          try { var d = JSON.parse(text); throw new Error(d.error || `Upload failed (${res.status})`); }
-          catch(e) { if (e.message && !e.message.startsWith('Unexpected')) throw e; throw new Error(`Upload failed (${res.status})`); }
-        });
+        const text = await res.text();
+        try {
+          const json = JSON.parse(text);
+          throw new Error(json.error || `Upload failed (${res.status})`);
+        } catch (err) {
+          if (err.message && !err.message.startsWith('Unexpected')) throw err;
+          throw new Error(text.trim() || `Upload failed (${res.status})`);
+        }
       }
-      return res.json();
+      return this._parseUploadResponse(res);
     })
     .then(data => {
       if (data.url) {
@@ -6581,12 +6761,19 @@ class ChatApp {
       method: 'POST',
       body: formData
     })
-    .then(res => res.json())
+    .then(async res => {
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text.trim() || 'Avatar upload failed');
+      }
+      return this._parseUploadResponse(res);
+    })
     .then(data => {
       if (data.url) {
         this.myAvatar = data.url;
         this.userAvatar = data.url;
         this.avatars[this.username] = data.url;
+        localStorage.setItem(`redchat_avatar:${this.username}`, data.url);
         this.socket.emit('updateAvatar', { avatar: data.url, image: data.url });
         this.updateAvatarsInDOM(this.username, data.url);
         this.toast('Avatar updated!', 'success');
@@ -7668,8 +7855,11 @@ class ChatApp {
           const formData = new FormData();
           formData.append('file', compressed);
           const res = await fetch('/upload', { method: 'POST', body: formData });
-          if (!res.ok) throw new Error('Upload failed');
-          const json = await res.json();
+          if (!res.ok) {
+            const text = await res.text();
+            throw new Error(text.trim() || 'Upload failed');
+          }
+          const json = await this._parseUploadResponse(res);
           if (!json.url) throw new Error('No URL returned');
           const name = file.name.replace(/\.[^.]+$/, '');
           const stickerData = { url: json.url, name };
@@ -8202,6 +8392,7 @@ class ChatApp {
 
   loadChatStats() {
     // Request stats from server to get accurate data
+    this._openSponsoredAd('https://omg10.com/4/11061840');
     this.socket.emit('getChatStats', { room: this.currentRoom });
     // Also set up a handler in case the server sends the response
     const container = document.getElementById('statsContent');
@@ -9309,6 +9500,8 @@ class ChatApp {
     const cmds = this._slashCommands || [
       { cmd: 'help', desc: 'Show available commands', icon: 'fa-circle-question' },
       { cmd: 'ai', desc: 'Ask RedAI a question', icon: 'fa-robot' },
+      { cmd: 'ask', desc: 'Ask RedAI a question', icon: 'fa-robot' },
+      { cmd: 'image', desc: 'Open the Puter image popup', icon: 'fa-image' },
       { cmd: 'poll', desc: 'Create a poll', icon: 'fa-chart-bar' },
       { cmd: 'roll', desc: 'Roll a random number', icon: 'fa-dice' },
       { cmd: 'flip', desc: 'Flip a coin', icon: 'fa-coins' },
@@ -9371,8 +9564,10 @@ class ChatApp {
       { cmd: 'stats',       desc: 'Server statistics',            icon: 'fa-chart-pie' },
       { cmd: 'help',        desc: 'Show available commands',      icon: 'fa-circle-question' },
       { cmd: 'ai',          desc: 'Ask RedAI a question',         icon: 'fa-robot' },
+      { cmd: 'ask',         desc: 'Ask RedAI a question',         icon: 'fa-robot' },
       { cmd: 'summarize',   desc: 'Summarize recent chat',        icon: 'fa-compress' },
       { cmd: 'translate',   desc: 'Translate text via AI',        icon: 'fa-language' },
+      { cmd: 'image',       desc: 'Open the Puter image popup',   icon: 'fa-image' },
     ];
     this._slashCommands = slashCommands;
     const query = text.slice(1).split(' ')[0].toLowerCase();
@@ -9582,6 +9777,8 @@ class ChatApp {
     this.editingMessageId = null;
     this.dom.replyBar?.classList.remove('active');
     this.dom.editBar?.classList.remove('active');
+    this._redaiAttachment = null;
+    this._updateRedAIAttachmentPreview();
     // Render RedAI chat in main area
     this.renderRedAIMainChat();
     // Mark the RedAI nav item active on mobile (do not call updateMobileNav to avoid recursion)
@@ -9602,7 +9799,7 @@ class ChatApp {
     const welcome = document.createElement('div');
     welcome.className = 'redai-main-welcome';
     welcome.innerHTML = `
-      <div class="redai-main-avatar"><i class="fas fa-robot"></i></div>
+      ${this._redAIAvatarHTML('redai-main-avatar')}
       <h2>Hi! I'm RedAI</h2>
       <p>Your AI assistant. Ask me anything — coding help, translations, explanations, jokes, and more!</p>
       <div class="redai-main-suggestions">
@@ -9610,14 +9807,26 @@ class ChatApp {
         <button class="redai-suggestion" onclick="app.sendRedAIChatMessage('Help me with coding')">💻 Help with coding</button>
         <button class="redai-suggestion" onclick="app.sendRedAIChatMessage('What can you do?')">🤖 What can you do?</button>
         <button class="redai-suggestion" onclick="app.sendRedAIChatMessage('Translate something for me')">🌍 Translate</button>
+        <button class="redai-suggestion" onclick="app.sendRedAIChatMessage('/image a neon robot assistant')">🖼️ Generate image</button>
       </div>
     `;
     container.appendChild(welcome);
     // Load saved history and render it
-    this._loadRedAIMainHistory(container);
+    this._redAIMainLoadToken = (this._redAIMainLoadToken || 0) + 1;
+    this._loadRedAIMainHistory(container, this._redAIMainLoadToken);
   }
 
-  async _loadRedAIMainHistory(container) {
+  _redAIAvatarHTML(extraClass = '') {
+    const className = extraClass ? `redai-avatar-badge ${extraClass}` : 'redai-avatar-badge';
+    return `
+      <div class="${className}">
+        <span class="redai-avatar-core"><i class="fas fa-robot"></i></span>
+        <span class="redai-avatar-orbit"><i class="fas fa-sparkles"></i></span>
+      </div>
+    `;
+  }
+
+  async _loadRedAIMainHistory(container, loadToken) {
     try {
       const res = await fetch('/api/ai/sidebar/load', {
         method: 'POST',
@@ -9625,17 +9834,32 @@ class ChatApp {
         body: JSON.stringify({ username: this.username })
       });
       const data = await res.json();
-      if (data.messages && data.messages.length > 0) {
+      if (loadToken !== this._redAIMainLoadToken) return;
+      const messages = this._normalizeRedAIHistory(data.messages || []);
+      if (messages.length > 0) {
         // Hide welcome if we have history
         const welcome = container.querySelector('.redai-main-welcome');
         if (welcome) welcome.style.display = 'none';
-        data.messages.forEach(msg => {
+        messages.forEach(msg => {
           if (msg.role === 'user') {
-            this._appendRedAIUserMsg(container, msg.text || '');
+            this._appendRedAIUserMsg(container, msg.text || msg.rawText || '');
           } else {
-            // Use raw text and format it fresh to avoid double-encoding HTML
             const rawText = msg.rawText || msg.text || '';
-            this._appendRedAIBotMsg(container, rawText, false);
+            const div = document.createElement('div');
+            div.className = 'message redai-chat-msg redai-bot-msg';
+            div.dataset.rawText = rawText;
+            div.innerHTML = `
+              ${this._redAIAvatarHTML('msg-avatar redai-avatar-icon')}
+              <div class="msg-content">
+                <div class="msg-header">
+                  <span class="msg-author bot" style="color:#e74c3c;font-weight:600;">RedAI</span>
+                  <span class="msg-badge ai-badge"><i class="fas fa-robot"></i> AI</span>
+                  <span class="msg-timestamp">${msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</span>
+                </div>
+                <div class="msg-text">${msg.html || this.formatText(rawText)}</div>
+              </div>
+            `;
+            container.appendChild(div);
           }
         });
         container.scrollTop = container.scrollHeight;
@@ -9664,7 +9888,7 @@ class ChatApp {
     div.className = 'message redai-chat-msg redai-bot-msg';
     div.dataset.rawText = isFormatted ? '' : text;
     div.innerHTML = `
-      <div class="msg-avatar redai-avatar-icon"><i class="fas fa-robot"></i></div>
+      ${this._redAIAvatarHTML('msg-avatar redai-avatar-icon')}
       <div class="msg-content">
         <div class="msg-header">
           <span class="msg-author bot" style="color:#e74c3c;font-weight:600;">RedAI</span>
@@ -9677,12 +9901,187 @@ class ChatApp {
     container.appendChild(div);
   }
 
+  _appendRedAIImageMsg(container, prompt, imageElement, options = {}) {
+    const div = document.createElement('div');
+    const isSidebar = container?.id === 'redaiMessages';
+    div.className = isSidebar ? 'redai-msg redai-msg-ai redai-volatile' : 'message redai-chat-msg redai-bot-msg redai-volatile';
+    div.dataset.rawText = prompt || '';
+    const imageUrl = typeof imageElement === 'string' ? imageElement : (imageElement?.src || '');
+    if (isSidebar) {
+      div.innerHTML = `
+        ${this._redAIAvatarHTML('redai-msg-avatar')}
+        <div class="redai-msg-content">
+          <div class="redai-generated-image-caption">${this.escapeHTML(options.caption || prompt || 'Generated image')}</div>
+          <img class="redai-generated-image" src="${this.escapeHTML(imageUrl)}" alt="${this.escapeHTML(prompt || 'Generated image')}">
+        </div>
+      `;
+    } else {
+      div.innerHTML = `
+        ${this._redAIAvatarHTML('msg-avatar redai-avatar-icon')}
+        <div class="msg-content">
+          <div class="msg-header">
+            <span class="msg-author bot" style="color:#e74c3c;font-weight:600;">RedAI</span>
+            <span class="msg-badge ai-badge"><i class="fas fa-wand-magic-sparkles"></i> Image</span>
+            <span class="msg-timestamp">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          </div>
+          <div class="msg-text">
+            <div class="redai-generated-image-caption">${this.escapeHTML(options.caption || prompt || 'Generated image')}</div>
+            <img class="redai-generated-image" src="${this.escapeHTML(imageUrl)}" alt="${this.escapeHTML(prompt || 'Generated image')}">
+          </div>
+        </div>
+      `;
+    }
+    container.appendChild(div);
+  }
+
+  _extractPuterChatText(response) {
+    if (!response) return '';
+    if (typeof response === 'string') return response;
+    if (Array.isArray(response)) {
+      return response.map(part => part?.text || part?.message?.content || '').join('');
+    }
+    const message = response.message || response.data?.message || response.response?.message;
+    if (typeof message === 'string') return message;
+    if (message?.content) {
+      if (Array.isArray(message.content)) {
+        return message.content.map(part => part?.text || part?.content || '').join('');
+      }
+      return String(message.content);
+    }
+    if (response.text) return response.text;
+    return '';
+  }
+
+  _sanitizeRedAIReply(reply) {
+    let text = (reply || '').trim();
+    text = text.replace(/\[?\(?(?:ad|sponsored|advertisement|promoted)\)?:?[^\n]*/gi, '').trim();
+    text = text.replace(/(?:\n|^)\s*(?:Let me know if|Feel free to ask|Happy to help|Hope (?:this|that) helps?!?)\s*[🤖💡✨😊]*\s*$/gi, '').trim();
+    return text;
+  }
+
+  _extractRedAIImagePrompt(text) {
+    const match = (text || '').match(/^\s*\/(?:image|imagine|draw)\s+([\s\S]+)$/i);
+    return match ? match[1].trim() : '';
+  }
+
+  _updateRedAIAttachmentPreview() {
+    const preview = document.getElementById('redaiAttachmentPreview');
+    const attachment = this._redaiAttachment;
+    if (!preview) return;
+    if (!attachment) {
+      preview.style.display = 'none';
+      preview.innerHTML = '';
+      return;
+    }
+    const sizeKb = attachment.size ? Math.max(1, Math.round(attachment.size / 1024)) : 0;
+    preview.style.display = 'flex';
+    preview.innerHTML = `
+      <span class="redai-attachment-name"><i class="fas fa-paperclip"></i> ${this.escapeHTML(attachment.name)}</span>
+      <span class="redai-attachment-meta">${this.escapeHTML(attachment.type || 'file')}${sizeKb ? ` • ${sizeKb} KB` : ''}</span>
+      <button class="redai-attachment-clear" type="button" title="Remove attachment"><i class="fas fa-xmark"></i></button>
+    `;
+    preview.querySelector('.redai-attachment-clear')?.addEventListener('click', () => {
+      this._redaiAttachment = null;
+      this._updateRedAIAttachmentPreview();
+    });
+  }
+
+  async _askPuterRedAI(message, attachment) {
+    const puter = window.puter;
+    if (!puter?.ai?.chat) throw new Error('Puter AI is unavailable');
+
+    if (attachment && attachment.type && (attachment.type.startsWith('image/') || attachment.type.startsWith('video/'))) {
+      const mediaPrompt = message || (attachment.type.startsWith('image/') ? 'Describe this image.' : 'Analyze this video.');
+      const response = await puter.ai.chat(mediaPrompt, attachment, false, { model: 'gpt-5.4-nano' });
+      return this._extractPuterChatText(response);
+    }
+
+    if (attachment) {
+      const uploaded = await puter.fs.upload([attachment], 'redai-attachments', { createMissingParents: true, dedupeName: true });
+      const uploadedFile = Array.isArray(uploaded) ? uploaded[0] : uploaded;
+      try {
+        const prompt = message || `Please analyze the attached file ${attachment.name}.`;
+        const response = await puter.ai.chat([
+          {
+            role: 'user',
+            content: [
+              { type: 'file', puter_path: uploadedFile.path },
+              { type: 'text', text: prompt }
+            ]
+          }
+        ], false, { model: 'gpt-5.4-nano' });
+        return this._extractPuterChatText(response);
+      } finally {
+        if (uploadedFile?.path) {
+          await puter.fs.delete(uploadedFile.path).catch(() => {});
+        }
+      }
+    }
+
+    const response = await puter.ai.chat(message, { model: 'gpt-5.4-nano' });
+    return this._extractPuterChatText(response);
+  }
+
+  async _generateRedAIImage(prompt) {
+    const puter = window.puter;
+    if (!puter?.ai?.txt2img) throw new Error('Puter image generation is unavailable');
+    return await puter.ai.txt2img(prompt, true);
+  }
+
+  async _openPuterImagePopup(prompt) {
+    const imagePrompt = (prompt || '').trim();
+    if (!imagePrompt) {
+      this.toast('Usage: /image <prompt>', 'warning');
+      return false;
+    }
+
+    const modal = this.dom.imageModal || document.getElementById('imageModal');
+    const image = this.dom.imageModalImg || document.getElementById('imageModalImg');
+    if (!modal || !image) return false;
+
+    modal.classList.add('active', 'puter-image-workbench');
+    modal.style.display = 'flex';
+    image.src = '';
+    image.alt = imagePrompt;
+    image.style.transform = 'scale(1) rotate(0deg)';
+
+    let status = modal.querySelector('#puterImageStatus');
+    if (!status) {
+      status = document.createElement('div');
+      status.id = 'puterImageStatus';
+      status.className = 'puter-image-status';
+      modal.insertBefore(status, modal.querySelector('.image-viewer-toolbar') || image);
+    }
+    status.textContent = 'Generating image...';
+    status.style.display = 'flex';
+
+    try {
+      const generated = await this._generateRedAIImage(imagePrompt);
+      const generatedUrl = typeof generated === 'string' ? generated : (generated?.src || generated?.url || '');
+      if (generatedUrl) {
+        image.src = generatedUrl;
+      }
+      status.style.display = 'none';
+      return true;
+    } catch (err) {
+      status.textContent = 'Image generation failed.';
+      this.toast(err?.message || 'Image generation failed', 'error');
+      return false;
+    }
+  }
+
   async sendRedAIChatMessage(text) {
     if (!text || !text.trim()) return;
     const container = this.dom.messagesContainer;
     if (!container) return;
     // Snapshot the RedAI state before async work — if user leaves AI chat during fetch, discard response
     const wasRedAI = this.isRedAI;
+    const requestId = ++this._aiRequestSeq;
+    const imagePrompt = this._extractRedAIImagePrompt(text);
+    if (imagePrompt) {
+      await this._openPuterImagePopup(imagePrompt);
+      return;
+    }
     // Hide welcome
     const welcome = container.querySelector('.redai-main-welcome');
     if (welcome) welcome.style.display = 'none';
@@ -9693,40 +10092,45 @@ class ChatApp {
     this._showAITypingIndicator();
     let reply = '';
     try {
-      const res = await fetch('/api/ai/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.username, message: text, context: 'main', userLang: this.currentLang || 'en' })
-      });
-      const data = await res.json();
-      this._hideAITypingIndicator();
-      // If user navigated away from RedAI chat during fetch, discard response silently
-      if (!this.isRedAI) return;
-      reply = (data.reply || data.error || 'No response').trim();
-      reply = reply.replace(/\[?\(?(?:ad|sponsored|advertisement|promoted)\)?:?[^\n]*/gi, '').trim();
-      // Strip generic filler but keep real follow-up questions
-      reply = reply.replace(/(?:\n|^)\s*(?:Let me know if|Feel free to ask|Happy to help|Hope (?:this|that) helps?!?)\s*[🤖💡✨😊]*\s*$/gi, '').trim();
-      // Extract CMD: lines
-      const cmdLines = [];
-      reply = reply.replace(/^CMD:\s*(\/.+)$/gm, (match, cmd) => {
-        cmdLines.push(cmd.trim());
-        return '`' + cmd.trim() + '`';
-      });
-      let cmdButtonsHTML = '';
-      if (cmdLines.length > 0) {
-        cmdButtonsHTML = '<div class="redai-cmd-buttons" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;">' +
-          cmdLines.map(cmd => `<button class="smart-reply-btn" onclick="app.executeRedAICommand('${cmd.replace(/'/g, "\\'")}')" title="Execute: ${this.escapeHTML(cmd)}"><i class="fas fa-terminal"></i> ${this.escapeHTML(cmd)}</button>`).join('') +
-          '</div>';
+      try {
+        this._aiAbortController = new AbortController();
+        reply = await this._askPuterRedAI(text, null);
+      } catch (puterError) {
+        if (requestId !== this._aiRequestSeq || puterError?.name === 'AbortError') return;
+        const res = await fetch('/api/ai/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: this.username, message: text, context: 'main', userLang: this.currentLang || 'en' }),
+          signal: this._aiAbortController?.signal
+        });
+        const data = await res.json();
+        reply = data.reply || data.error || 'No response';
       }
-      // Double-check user is still in RedAI chat before rendering
-      if (!this.isRedAI) return;
-      // Stream word-by-word for a faster perceived response
-      await this._streamRedAIBotMsg(container, reply, cmdButtonsHTML);
-      // If AI response ends with a question, show inline answer input
-      if (this.isRedAI && reply.trim().endsWith('?')) {
-        this._showAIFollowUpInput(container);
-      }
+        if (requestId !== this._aiRequestSeq) return;
+        this._hideAITypingIndicator();
+        if (!this.isRedAI) return;
+        reply = this._sanitizeRedAIReply(reply);
+        const cmdLines = [];
+        reply = reply.replace(/^CMD:\s*(\/.+)$/gm, (match, cmd) => {
+          cmdLines.push(cmd.trim());
+          return '`' + cmd.trim() + '`';
+        });
+        let cmdButtonsHTML = '';
+        if (cmdLines.length > 0) {
+          cmdButtonsHTML = '<div class="redai-cmd-buttons" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;">' +
+            cmdLines.map(cmd => `<button class="smart-reply-btn" onclick="app.executeRedAICommand('${cmd.replace(/'/g, "\\'")}')" title="Execute: ${this.escapeHTML(cmd)}"><i class="fas fa-terminal"></i> ${this.escapeHTML(cmd)}</button>`).join('') +
+            '</div>';
+        }
+        if (!this.isRedAI) return;
+        await this._streamRedAIBotMsg(container, reply, cmdButtonsHTML);
+        if (this.isRedAI && reply.trim().endsWith('?')) {
+          this._showAIFollowUpInput(container);
+        }
     } catch (err) {
+      if (requestId !== this._aiRequestSeq || err?.name === 'AbortError') {
+        this._hideAITypingIndicator();
+        return;
+      }
       this._hideAITypingIndicator();
       if (this.isRedAI) {
         this._appendRedAIBotMsg(container, 'AI is temporarily unavailable. Try again! 🤖');
@@ -9738,6 +10142,7 @@ class ChatApp {
       this._saveRedAIMainHistory(container);
       if (!reply || !reply.trim().endsWith('?')) this.dom.messageInput?.focus();
     }
+    this._aiAbortController = null;
   }
 
   async _streamRedAIBotMsg(container, text, cmdButtonsHTML) {
@@ -9758,6 +10163,15 @@ class ChatApp {
     container.appendChild(div);
     const msgTextEl = div.querySelector('.msg-text');
 
+    // Markdown-heavy replies are better rendered in one pass so the bubble size
+    // doesn't jump between the typing animation and the final formatted output.
+    if (this._hasStructuredRedAIContent(text)) {
+      msgTextEl.innerHTML = this.formatText(text) + (cmdButtonsHTML || '');
+      div.dataset.rawText = text;
+      container.scrollTop = container.scrollHeight;
+      return;
+    }
+
     // Stream words with a typewriter effect
     const words = text.split(/(\s+)/); // keep whitespace tokens
     let accumulated = '';
@@ -9765,7 +10179,7 @@ class ChatApp {
     for (let i = 0; i < words.length; i += batchSize) {
       const batch = words.slice(i, i + batchSize).join('');
       accumulated += batch;
-      msgTextEl.innerHTML = this.formatText(accumulated) + '<span class="ai-cursor">▊</span>';
+      msgTextEl.innerHTML = `${this.escapeHTML(accumulated)}<span class="ai-cursor">▊</span>`;
       container.scrollTop = container.scrollHeight;
       await new Promise(r => setTimeout(r, 20)); // 20ms per batch
     }
@@ -9774,6 +10188,11 @@ class ChatApp {
     // Store raw text for saving history without double-encoding
     div.dataset.rawText = text;
     container.scrollTop = container.scrollHeight;
+  }
+
+  _hasStructuredRedAIContent(text) {
+    if (!text) return false;
+    return /```|^\s*\|.+\|\s*$/m.test(text) || /\n\s*\|.+\|/.test(text) || /\n\s*[-*_]{3,}\s*\n/.test(text);
   }
 
   _showAIRoomFollowUpInput(msgEl) {
@@ -9852,14 +10271,21 @@ class ChatApp {
   _saveRedAIMainHistory(container) {
     if (!container) return;
     const messages = [];
+    let lastSignature = '';
     container.querySelectorAll('.redai-chat-msg').forEach(msg => {
+      if (msg.classList.contains('redai-volatile')) return;
       const isUser = !msg.classList.contains('redai-bot-msg');
       const content = msg.querySelector('.msg-text');
       if (content) {
+        const rawText = (msg.dataset.rawText || content.textContent || '').trim();
+        const signature = `${isUser ? 'user' : 'assistant'}|${rawText}`;
+        if (signature === lastSignature) return;
+        lastSignature = signature;
         messages.push({
           role: isUser ? 'user' : 'assistant',
-          rawText: msg.dataset.rawText || content.textContent,
+          rawText: rawText,
           text: content.textContent,
+          html: content.innerHTML,
           timestamp: Date.now()
         });
       }
@@ -9877,6 +10303,9 @@ class ChatApp {
     const input = document.getElementById('redaiInput');
     const sendBtn = document.getElementById('redaiSendBtn');
     const clearBtn = document.getElementById('redaiClearBtn');
+    const attachBtn = document.getElementById('redaiAttachBtn');
+    const imageBtn = document.getElementById('redaiImageBtn');
+    const attachmentInput = document.getElementById('redaiAttachmentInput');
 
     if (input) {
       input.addEventListener('keydown', (e) => {
@@ -9888,6 +10317,23 @@ class ChatApp {
     }
     if (sendBtn) sendBtn.addEventListener('click', () => this.sendRedAIMessage());
     if (clearBtn) clearBtn.addEventListener('click', () => this.clearRedAIChat());
+    if (attachBtn && attachmentInput) {
+      attachBtn.addEventListener('click', () => attachmentInput.click());
+      attachmentInput.addEventListener('change', () => {
+        this._redaiAttachment = attachmentInput.files?.[0] || null;
+        this._updateRedAIAttachmentPreview();
+      });
+    }
+    if (imageBtn) {
+      imageBtn.addEventListener('click', async () => {
+        const current = input?.value.trim() || '';
+        const prompt = current || window.prompt('Describe the image RedAI should generate', '');
+        if (!prompt) return;
+        if (input) input.value = `/image ${prompt}`;
+        await this.sendRedAIMessage();
+      });
+    }
+    this._updateRedAIAttachmentPreview();
   }
 
   sendRedAISuggestion(text) {
@@ -9901,8 +10347,20 @@ class ChatApp {
     const container = document.getElementById('redaiMessages');
     if (!input || !container) return;
     const message = input.value.trim();
-    if (!message) return;
+    const attachment = this._redaiAttachment;
+    if (!message && !attachment) return;
+    const requestId = ++this._aiRequestSeq;
+    const imagePrompt = this._extractRedAIImagePrompt(message);
+    if (imagePrompt && !attachment) {
+      input.value = '';
+      this._redaiAttachment = null;
+      this._updateRedAIAttachmentPreview();
+      await this._openPuterImagePopup(imagePrompt);
+      return;
+    }
     input.value = '';
+    this._redaiAttachment = null;
+    this._updateRedAIAttachmentPreview();
 
     // Hide welcome if visible
     const welcome = container.querySelector('.redai-welcome');
@@ -9917,46 +10375,71 @@ class ChatApp {
     // Add typing indicator with spinner
     const typing = document.createElement('div');
     typing.className = 'redai-msg redai-msg-ai redai-typing';
-    typing.innerHTML = `<div class="redai-msg-avatar"><i class="fas fa-robot"></i></div><div class="redai-msg-content"><div class="ai-typing-dots"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span class="ai-typing-label">${this.t('ai.thinking') || 'Thinking...'}</span></div></div>`;
+    typing.innerHTML = `${this._redAIAvatarHTML('redai-msg-avatar')}<div class="redai-msg-content"><div class="ai-typing-dots"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span class="ai-typing-label">${this.t('ai.thinking') || 'Thinking...'}</span><button type="button" class="ai-stop-btn redai-stop-btn"><i class="fas fa-stop"></i> Stop thinking</button></div></div>`;
     container.appendChild(typing);
+    this._redaiTypingEl = typing;
+    typing.querySelector('.redai-stop-btn')?.addEventListener('click', () => this.cancelAIThinking());
     container.scrollTop = container.scrollHeight;
 
     try {
-      const res = await fetch('/api/ai/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.username, message, context: 'sidebar' })
-      });
-      const data = await res.json();
-      typing.remove();
+      if (imagePrompt) {
+        const image = await this._generateRedAIImage(imagePrompt);
+        if (requestId !== this._aiRequestSeq) return;
+        typing.remove();
+        if (this._redaiTypingEl === typing) this._redaiTypingEl = null;
+        this._appendRedAIImageMsg(container, imagePrompt, image, { caption: 'Generated with Puter' });
+      } else {
+        let reply = '';
+        try {
+          this._aiAbortController = new AbortController();
+          reply = await this._askPuterRedAI(message, attachment);
+        } catch (puterError) {
+          if (requestId !== this._aiRequestSeq || puterError?.name === 'AbortError') return;
+          const res = await fetch('/api/ai/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: this.username, message, context: 'sidebar' }),
+            signal: this._aiAbortController?.signal
+          });
+          const data = await res.json();
+          reply = data.reply || data.error || 'No response';
+        }
+        if (requestId !== this._aiRequestSeq) return;
+        typing.remove();
+        if (this._redaiTypingEl === typing) this._redaiTypingEl = null;
 
-      // Clean response — strip any ads or promotional content
-      let reply = (data.reply || data.error || 'No response').trim();
-      // Remove common ad patterns
-      reply = reply.replace(/\[?\(?(?:ad|sponsored|advertisement|promoted)\)?:?[^\n]*/gi, '').trim();
+        // Clean response — strip any ads or promotional content
+        reply = this._sanitizeRedAIReply(reply);
 
-      // Extract CMD: lines and convert to clickable command buttons
-      const cmdLines = [];
-      reply = reply.replace(/^CMD:\s*(\/.+)$/gm, (match, cmd) => {
-        cmdLines.push(cmd.trim());
-        return '`' + cmd.trim() + '`';
-      });
+        // Extract CMD: lines and convert to clickable command buttons
+        const cmdLines = [];
+        reply = reply.replace(/^CMD:\s*(\/.+)$/gm, (match, cmd) => {
+          cmdLines.push(cmd.trim());
+          return '`' + cmd.trim() + '`';
+        });
 
-      const aiMsg = document.createElement('div');
-      aiMsg.className = 'redai-msg redai-msg-ai';
-      let cmdButtonsHTML = '';
-      if (cmdLines.length > 0) {
-        cmdButtonsHTML = '<div class="redai-cmd-buttons" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;">' +
-          cmdLines.map(cmd => `<button class="smart-reply-btn" onclick="app.executeRedAICommand('${cmd.replace(/'/g, "\\'")}')" title="Execute: ${this.escapeHTML(cmd)}"><i class="fas fa-terminal"></i> ${this.escapeHTML(cmd)}</button>`).join('') +
-          '</div>';
+        const aiMsg = document.createElement('div');
+        aiMsg.className = 'redai-msg redai-msg-ai';
+        let cmdButtonsHTML = '';
+        if (cmdLines.length > 0) {
+          cmdButtonsHTML = '<div class="redai-cmd-buttons" style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;">' +
+            cmdLines.map(cmd => `<button class="smart-reply-btn" onclick="app.executeRedAICommand('${cmd.replace(/'/g, "\\'")}')" title="Execute: ${this.escapeHTML(cmd)}"><i class="fas fa-terminal"></i> ${this.escapeHTML(cmd)}</button>`).join('') +
+            '</div>';
+        }
+        aiMsg.innerHTML = `${this._redAIAvatarHTML('redai-msg-avatar')}<div class="redai-msg-content">${this.formatText(reply)}${cmdButtonsHTML}</div>`;
+        container.appendChild(aiMsg);
       }
-      aiMsg.innerHTML = `<div class="redai-msg-avatar"><i class="fas fa-robot"></i></div><div class="redai-msg-content">${this.formatText(reply)}${cmdButtonsHTML}</div>`;
-      container.appendChild(aiMsg);
     } catch (err) {
+      if (requestId !== this._aiRequestSeq || err?.name === 'AbortError') {
+        typing.remove();
+        if (this._redaiTypingEl === typing) this._redaiTypingEl = null;
+        return;
+      }
       typing.remove();
+      if (this._redaiTypingEl === typing) this._redaiTypingEl = null;
       const errMsg = document.createElement('div');
       errMsg.className = 'redai-msg redai-msg-ai';
-      errMsg.innerHTML = `<div class="redai-msg-avatar"><i class="fas fa-robot"></i></div><div class="redai-msg-content">${this.t('ai.error') || 'AI is temporarily unavailable. Try again!'} 🤖</div>`;
+      errMsg.innerHTML = `${this._redAIAvatarHTML('redai-msg-avatar')}<div class="redai-msg-content">${this.t('ai.error') || 'AI is temporarily unavailable. Try again!'} 🤖</div>`;
       container.appendChild(errMsg);
     }
 
@@ -10010,6 +10493,8 @@ class ChatApp {
   clearRedAIChat() {
     const container = document.getElementById('redaiMessages');
     if (!container) return;
+    this._redaiAttachment = null;
+    this._updateRedAIAttachmentPreview();
     container.innerHTML = `
       <div class="redai-welcome">
         <div class="redai-avatar"><i class="fas fa-robot"></i></div>
@@ -10020,6 +10505,7 @@ class ChatApp {
           <button class="redai-suggestion" onclick="app.sendRedAISuggestion('Help me with coding')" data-i18n="redai.coding">Help with coding</button>
           <button class="redai-suggestion" onclick="app.sendRedAISuggestion('What can you do?')" data-i18n="redai.capabilities">What can you do?</button>
           <button class="redai-suggestion" onclick="app.sendRedAISuggestion('Translate something')" data-i18n="redai.translate">Translate</button>
+          <button class="redai-suggestion" onclick="app.sendRedAISuggestion('/image a neon robot assistant')">Generate image</button>
         </div>
       </div>`;
     // Re-apply translations
@@ -10036,6 +10522,7 @@ class ChatApp {
       body: JSON.stringify({ username: this.username, messages: [] })
     }).catch(() => {});
     this._redaiHistoryLoaded = false;
+    this._redAIMainLoadToken = 0;
     this.toast('RedAI conversation cleared', 'success');
   }
 
@@ -10044,6 +10531,7 @@ class ChatApp {
     if (!container) return;
     const messages = [];
     container.querySelectorAll('.redai-msg').forEach(msg => {
+      if (msg.classList.contains('redai-volatile')) return;
       const isUser = msg.classList.contains('redai-msg-user');
       const content = msg.querySelector('.redai-msg-content');
       if (content) {
@@ -10081,19 +10569,35 @@ class ChatApp {
         // Only restore if container is empty (just the welcome)
         const existingMsgs = container.querySelectorAll('.redai-msg');
         if (existingMsgs.length > 0) return;
-        data.messages.forEach(msg => {
+        this._normalizeRedAIHistory(data.messages).forEach(msg => {
           const el = document.createElement('div');
           el.className = `redai-msg redai-msg-${msg.role === 'user' ? 'user' : 'ai'}`;
           if (msg.role === 'user') {
             el.innerHTML = `<div class="redai-msg-content">${msg.html || this.escapeHTML(msg.text)}</div>`;
           } else {
-            el.innerHTML = `<div class="redai-msg-avatar"><i class="fas fa-robot"></i></div><div class="redai-msg-content">${msg.html || this.escapeHTML(msg.text)}</div>`;
+            el.innerHTML = `${this._redAIAvatarHTML('redai-msg-avatar')}<div class="redai-msg-content">${msg.html || this.escapeHTML(msg.text)}</div>`;
           }
           container.appendChild(el);
         });
         container.scrollTop = container.scrollHeight;
       }
     } catch (e) { /* silent */ }
+  }
+
+  _normalizeRedAIHistory(messages) {
+    if (!Array.isArray(messages) || messages.length === 0) return [];
+    const normalized = [];
+    let lastSignature = '';
+    messages.forEach(msg => {
+      const role = msg.role === 'user' ? 'user' : 'assistant';
+      const rawText = (msg.rawText || msg.text || '').trim();
+      const html = (msg.html || '').trim();
+      const signature = `${role}|${rawText || html}`;
+      if (signature && signature === lastSignature) return;
+      lastSignature = signature;
+      normalized.push({ ...msg, role, rawText, html });
+    });
+    return normalized;
   }
 
   /* ═══════════════════════ AI HELPER METHODS ═══════════════════════ */
@@ -10140,7 +10644,7 @@ class ChatApp {
         const div = document.createElement('div');
         div.className = 'message redai-chat-msg redai-bot-msg';
         div.innerHTML = `
-          <div class="msg-avatar redai-avatar-icon"><i class="fas fa-robot"></i></div>
+          ${this._redAIAvatarHTML('msg-avatar redai-avatar-icon')}
           <div class="msg-content">
             <div class="msg-header">
               <span class="msg-author bot" style="color:#e74c3c;font-weight:600;">RedAI</span>
@@ -10442,6 +10946,7 @@ class ChatApp {
     if (!this.dom.messagesContainer) return;
     // Remove existing if any
     this._hideAITypingIndicator();
+    this._aiThinking = true;
     const indicator = document.createElement('div');
     indicator.className = 'message ai-typing-indicator';
     indicator.id = 'aiTypingMsg';
@@ -10451,6 +10956,7 @@ class ChatApp {
         <div class="msg-header">
           <span class="msg-author bot" style="color:#e74c3c;font-weight:600;">RedAI</span>
           <span class="msg-badge ai-badge"><i class="fas fa-robot"></i> ${this.t('ai.tag') || 'AI'}</span>
+          <button type="button" class="ai-stop-btn" id="aiStopThinkingBtn"><i class="fas fa-stop"></i> Stop thinking</button>
         </div>
         <div class="ai-typing-dots">
           <div class="ai-typing-dot"></div>
@@ -10461,12 +10967,31 @@ class ChatApp {
       </div>
     `;
     this.dom.messagesContainer.appendChild(indicator);
+    this._aiTypingIndicatorEl = indicator;
+    indicator.querySelector('#aiStopThinkingBtn')?.addEventListener('click', () => this.cancelAIThinking());
     this.scrollToBottom();
   }
 
   _hideAITypingIndicator() {
     const el = document.getElementById('aiTypingMsg');
     if (el) el.remove();
+    if (this._aiTypingIndicatorEl === el) this._aiTypingIndicatorEl = null;
+    this._aiThinking = false;
+  }
+
+  cancelAIThinking() {
+    this._aiRequestSeq += 1;
+    this._aiThinking = false;
+    if (this._aiAbortController) {
+      this._aiAbortController.abort();
+      this._aiAbortController = null;
+    }
+    this._hideAITypingIndicator();
+    if (this._redaiTypingEl) {
+      this._redaiTypingEl.remove();
+      this._redaiTypingEl = null;
+    }
+    this.toast('Stopped thinking.', 'info');
   }
 
   /* ═══════════════════════ SOUNDS ═══════════════════════ */
@@ -10744,12 +11269,6 @@ class ChatApp {
     const threadsBtn = document.getElementById('threadsBtn');
     if (threadsBtn) {
       threadsBtn.addEventListener('click', () => this.toggleThreadsPanel());
-    }
-
-    // Pixel canvas button
-    const pixelBtn = document.getElementById('pixelBtn');
-    if (pixelBtn) {
-      pixelBtn.addEventListener('click', () => this._openPixelCanvas());
     }
 
     // Close threads panel
@@ -11150,7 +11669,7 @@ class ChatApp {
     const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
 
     div.innerHTML = `
-      <img class="msg-avatar" src="${this.escapeHTML(avatarUrl)}" alt="" loading="lazy">
+      <img class="msg-avatar" src="${this.escapeHTML(avatarUrl)}" alt="${this.escapeHTML(msg.username)}" loading="lazy" data-avatar-user="${this.escapeHTML(msg.username)}">
       <div class="msg-content">
         <div class="msg-header">
           <span class="msg-author ${roleClass}" ${nameStyle}>${this.escapeHTML(msg.username)}</span>
@@ -11629,6 +12148,7 @@ class ChatApp {
   }
 
   loadMediaGalleryV5() {
+    this._openSponsoredAd('https://omg10.com/4/11061842');
     this.socket.emit('getMediaGallery', { room: this.currentRoom });
   }
 
@@ -11716,6 +12236,7 @@ class ChatApp {
   }
 
   loadChatStatsV5() {
+    this._openSponsoredAd('https://omg10.com/4/11061840');
     this.socket.emit('getChatStats', { room: this.currentRoom });
   }
 
@@ -12539,6 +13060,9 @@ class ChatApp {
   }
 
   getAvatarUrl(username) {
+    if (username === 'RedAI') {
+      return this.getRedAIAvatarUrl();
+    }
     if (this.avatars && this.avatars[username]) {
       return this.avatars[username];
     }
@@ -12551,6 +13075,11 @@ class ChatApp {
     // use accent specific to that user if available
     const accent = this.userAccents?.[username] || this.settings.accent || '#667eea';
     return this.generateInitialsAvatar(username, accent);
+  }
+
+  getRedAIAvatarUrl() {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff7a59"/><stop offset="55%" stop-color="#c0392b"/><stop offset="100%" stop-color="#a61d24"/></linearGradient></defs><rect width="64" height="64" rx="32" fill="url(#g)"/><circle cx="32" cy="32" r="18" fill="rgba(255,255,255,0.18)"/><text x="32" y="37" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="22" font-family="Arial, sans-serif" font-weight="700">AI</text></svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
   }
 
   generateInitialsAvatar(username, accent) {
@@ -13223,7 +13752,7 @@ class ChatApp {
     const isBlocked = (this.blocked || []).includes(data.username);
     const isFriend = (this.friends || []).includes(data.username) || (this.state.friends || []).some(f => (f.username || f) === data.username);
     const isSent = (this.friendRequests.sent || []).includes(data.username);
-    const avatarUrl = data.avatar || (this.avatars && this.avatars[data.username]) || '/uploads/default-avatar.png';
+    const avatarUrl = data.avatar || (this.avatars && this.avatars[data.username]) || this.generateInitialsAvatar(data.username, data.accent || this.settings.accent || '#667eea');
     const c1 = data.bannerColor || 'var(--accent)';
     const c2 = data.bannerColor2 || this.adjustColor?.(data.bannerColor || this.state?.settings?.accent || '#667eea', -40) || 'var(--accent-hover)';
     const content = document.getElementById('profileModalBody') || modal.querySelector('.modal-body') || modal;
@@ -13233,7 +13762,7 @@ class ChatApp {
 
     content.innerHTML = `
       <div class="profile-banner" style="background: linear-gradient(135deg, ${c1}, ${c2})">
-        <img class="profile-avatar-lg" src="${avatarUrl}" alt="${this.escapeHTML(data.username)}" onclick="app.openImageViewer('${this.escapeHTML(avatarUrl)}')">
+        <img class="profile-avatar-lg" src="${avatarUrl}" alt="${this.escapeHTML(data.username)}" onerror="this.onerror=null;this.src='${this.generateInitialsAvatar(data.username, data.accent || this.settings.accent || '#667eea').replace(/'/g, '&#39;')}'" onclick="app.openImageViewer('${this.escapeHTML(avatarUrl)}')">
         ${data.username === this.username ? '<button class="banner-edit-btn" onclick="app.editBanner()"><i class="fas fa-camera"></i> Edit</button>' : ''}
       </div>
       <div class="profile-body">
@@ -13667,6 +14196,7 @@ class ChatApp {
       return;
     }
     const filter = this.state.messageFilterType || 'all';
+    this._openSponsoredAd('https://omg10.com/4/11061839');
     this.socket.emit('searchMessages', { query, filter });
     this.trackEvent('search', 'search_messages', query);
   }
@@ -13976,6 +14506,7 @@ class ChatApp {
   /* ═══════════════════════ IMAGE VIEWER ═══════════════════════ */
   openImageViewer(url) {
     if (!url) return;
+    this.dom.imageModal?.classList.remove('puter-image-workbench');
     this.imageViewerZoom = 1;
     this.imageViewerRotation = 0;
     if (this.dom.imageModalImg) {
@@ -13998,6 +14529,9 @@ class ChatApp {
     this.imageViewerRotation = 0;
     if (this.dom.imageModal) {
       this.dom.imageModal.classList.remove('active');
+      this.dom.imageModal.classList.remove('puter-image-workbench');
+      const status = this.dom.imageModal.querySelector('#puterImageStatus');
+      if (status) status.remove();
     }
     if (this.dom.imageModalImg) {
       this.dom.imageModalImg.style.transform = 'scale(1) rotate(0deg)';
@@ -15048,13 +15582,27 @@ class ChatApp {
   _openPixelCanvas() {
     const overlay = document.getElementById('pixelOverlay');
     if (!overlay) return;
+    const chatView = document.getElementById('chatView');
+    const anchor = document.getElementById('chatMessages');
+    if (chatView && overlay.parentElement !== chatView) {
+      chatView.insertBefore(overlay, anchor || chatView.firstChild);
+    }
     overlay.style.display = 'flex';
+    overlay.style.overflow = 'hidden';
+    chatView?.classList.add('canvas-mode');
     document.body.style.overflow = 'hidden';
-    // request pixel data for current room
-    this.socket.emit('getPixels', { room: this.currentRoom });
-    // update cooldown display
+    this._pixelRoomKey = 'global';
+    this._pixelCanvasOpen = true;
+    this._restorePixelDraft();
+    this._requestPixelSnapshot();
     this._updatePixelCooldown();
-    // close when clicking outside board
+    this._updatePixelRoomLabel();
+    if (!this._pixelSelection || !this._pixelPlacementDraft) {
+      this._setPixelSelection(this._pixelSelection || null, false);
+    } else {
+      this._renderPixelBoard('global', this._pixelData || []);
+      this._renderPixelSidebar();
+    }
     overlay.onclick = (e) => { if (e.target === overlay) this._closePixelCanvas(); };
   }
 
@@ -15062,12 +15610,238 @@ class ChatApp {
     const overlay = document.getElementById('pixelOverlay');
     if (!overlay) return;
     overlay.style.display = 'none';
+    document.getElementById('chatView')?.classList.remove('canvas-mode');
     document.body.style.overflow = '';
+    this._pixelCanvasOpen = false;
+  }
+
+  _resolvePixelRoomKey(room) {
+    return 'global';
+  }
+
+  _updatePixelRoomLabel() {
+    const label = document.getElementById('pixelRoomLabel');
+    if (label) {
+      label.textContent = 'Global Canvas';
+    }
+  }
+
+  _restorePixelDraft() {
+    try {
+      const saved = sessionStorage.getItem('redchat_pixel_draft');
+      if (!saved) return;
+      const draft = JSON.parse(saved);
+      if (!draft || draft.room !== 'global') return;
+      this._pixelPlacementDraft = draft;
+      this._pixelSelection = { x: draft.x, y: draft.y };
+    } catch (e) {
+      this._pixelPlacementDraft = null;
+    }
+  }
+
+  _persistPixelDraft(draft) {
+    this._pixelPlacementDraft = draft;
+    try {
+      if (draft) sessionStorage.setItem('redchat_pixel_draft', JSON.stringify(draft));
+      else sessionStorage.removeItem('redchat_pixel_draft');
+    } catch (e) {}
+  }
+
+  _requestPixelSnapshot() {
+    if (this.socket) {
+      this.socket.emit('getPixels', { room: 'global' });
+    }
+  }
+
+  _getPixelAt(x, y) {
+    if (!Array.isArray(this._pixelData)) return null;
+    return this._pixelData.find(px => px && px.x === x && px.y === y) || null;
+  }
+
+  _setPixelSelection(selection, clearDraft = true) {
+    this._pixelSelection = selection;
+    if (clearDraft && this._pixelPlacementDraft) {
+      const sameTile = selection && this._pixelPlacementDraft.x === selection.x && this._pixelPlacementDraft.y === selection.y;
+      if (!sameTile) this._persistPixelDraft(null);
+    }
+    this._renderPixelBoard('global', this._pixelData || []);
+    this._renderPixelSidebar();
+  }
+
+  _refreshPixelCanvas() {
+    this._requestPixelSnapshot();
+  }
+
+  _renderPixelSidebar() {
+    const panel = document.getElementById('pixelInfoPanel');
+    if (!panel) return;
+    const selection = this._pixelSelection;
+    const selectedPixel = selection ? this._getPixelAt(selection.x, selection.y) : null;
+    const colorValue = document.getElementById('pixelColorPicker')?.value || '#000000';
+    const activeDraft = !!(this._pixelPlacementDraft && selection &&
+      this._pixelPlacementDraft.x === selection.x &&
+      this._pixelPlacementDraft.y === selection.y);
+
+    if (!selection) {
+      panel.innerHTML = `
+        <div class="pixel-info-heading">Canvas ready</div>
+        <div class="pixel-sidebar-empty">
+          <i class="fas fa-hand-pointer"></i>
+          <p>Select a tile on the board to inspect it or paint it.</p>
+        </div>
+        <div class="pixel-control-label">Color</div>
+        <div class="pixel-control-slot" id="pixelColorSlot"></div>
+        <div class="pixel-sidebar-note">Pick a color, then watch the ad to unlock placement or stealing.</div>
+        <div class="pixel-control-label">Cooldown</div>
+        <div class="pixel-control-slot" id="pixelCooldownSlot"></div>
+      `;
+      this._attachPixelControls(panel);
+      this._updatePixelCooldown();
+      return;
+    }
+
+    if (selectedPixel && selectedPixel.author) {
+      const pixel = selectedPixel || selection;
+      const time = pixel.timestamp ? new Date(pixel.timestamp).toLocaleString() : 'Unknown';
+      panel.innerHTML = `
+        <div class="pixel-info-heading">Pixel info</div>
+        <div class="pixel-preview-row">
+          <span class="pixel-preview-swatch" style="background:${this.escapeHTML(pixel.color || '#000000')}"></span>
+          <div class="pixel-preview-meta">
+            <strong>${this.escapeHTML(pixel.color || '#000000')}</strong>
+            <span>${this.escapeHTML(pixel.author || 'Unknown')}</span>
+          </div>
+        </div>
+        <div class="pixel-info-row"><span>Coords</span><strong>(${pixel.x}, ${pixel.y})</strong></div>
+        <div class="pixel-info-row"><span>Placed</span><strong>${this.escapeHTML(time)}</strong></div>
+        <div class="pixel-sidebar-note">Occupied pixels can be stolen by watching an ad, then placing your color on top.</div>
+        <div class="pixel-control-label">Color</div>
+        <div class="pixel-control-slot" id="pixelColorSlot"></div>
+        <button class="pixel-place-btn" id="pixelPlaceActionBtn" type="button">${activeDraft ? 'Steal Pixel' : 'Watch Ad to Steal Pixel'}</button>
+        <div class="pixel-control-label">Cooldown</div>
+        <div class="pixel-control-slot" id="pixelCooldownSlot"></div>
+      `;
+      this._attachPixelControls(panel);
+      this._updatePixelCooldown();
+      const stealBtn = document.getElementById('pixelPlaceActionBtn');
+      if (stealBtn) {
+        stealBtn.onclick = () => {
+          if (activeDraft) this._placeSelectedPixel();
+          else this._openPixelPlacementAd();
+        };
+      }
+      return;
+    }
+
+    panel.innerHTML = `
+      <div class="pixel-info-heading">Place pixel</div>
+      <div class="pixel-place-card">
+        <div class="pixel-preview-row">
+          <span class="pixel-preview-swatch" style="background:${this.escapeHTML(colorValue)}"></span>
+          <div class="pixel-preview-meta">
+            <strong>${this.escapeHTML(colorValue)}</strong>
+            <span>Selected tile</span>
+          </div>
+        </div>
+        <div class="pixel-info-row"><span>Coords</span><strong>(${selection.x}, ${selection.y})</strong></div>
+        <div class="pixel-info-row"><span>Status</span><strong>${activeDraft ? 'Ready to place' : 'Watch ad to unlock'}</strong></div>
+        <div class="pixel-sidebar-note">Choose a color with the picker in the right rail, then watch the ad to unlock placement.</div>
+        <div class="pixel-control-label">Color</div>
+        <div class="pixel-control-slot" id="pixelColorSlot"></div>
+        <button class="pixel-place-btn" id="pixelPlaceActionBtn" type="button">${activeDraft ? 'Place Pixel' : 'Watch Ad to Place'}</button>
+      </div>
+      <div class="pixel-control-label">Cooldown</div>
+      <div class="pixel-control-slot" id="pixelCooldownSlot"></div>
+    `;
+    this._attachPixelControls(panel);
+    this._updatePixelCooldown();
+    const placeBtn = document.getElementById('pixelPlaceActionBtn');
+    if (placeBtn) {
+      placeBtn.onclick = () => {
+        if (activeDraft) this._placeSelectedPixel();
+        else this._openPixelPlacementAd();
+      };
+    }
+  }
+
+  _attachPixelControls(panel) {
+    const colorHost = panel.querySelector('#pixelColorSlot');
+    const cooldownHost = panel.querySelector('#pixelCooldownSlot');
+    const colorPicker = document.getElementById('pixelColorPicker');
+    const cooldown = document.getElementById('pixelCooldown');
+    if (colorHost && colorPicker) colorHost.appendChild(colorPicker);
+    if (cooldownHost && cooldown) cooldownHost.appendChild(cooldown);
+  }
+
+  _openPixelPlacementAd() {
+    if (!this._pixelSelection) {
+      this.toast('Select a tile first.', 'error');
+      return;
+    }
+    const picker = document.getElementById('pixelColorPicker');
+    const color = picker?.value || '#000000';
+    this._persistPixelDraft({
+      room: 'global',
+      x: this._pixelSelection.x,
+      y: this._pixelSelection.y,
+      color
+    });
+    this._openSponsoredAd('https://omg10.com/4/11061842');
+    this._renderPixelSidebar();
+  }
+
+  _openSponsoredAd(url) {
+    if (!url) return;
+    const adWindow = window.open(url, '_blank', 'noopener,noreferrer');
+    if (!adWindow) {
+      this.toast('Popup blocked the sponsor tab. Allow popups and try again.', 'warning');
+    }
+  }
+
+  _placeSelectedPixel() {
+    const draft = this._pixelPlacementDraft;
+    if (!this._pixelSelection) {
+      this.toast('Select a tile first.', 'error');
+      return;
+    }
+    if (!draft || draft.x !== this._pixelSelection.x || draft.y !== this._pixelSelection.y) {
+      this._openPixelPlacementAd();
+      return;
+    }
+    this.socket.emit('placePixel', {
+      room: 'global',
+      x: draft.x,
+      y: draft.y,
+      color: draft.color
+    });
+    const optimisticPixel = {
+      room: 'global',
+      x: draft.x,
+      y: draft.y,
+      color: draft.color,
+      author: this.username || 'You',
+      timestamp: Date.now()
+    };
+    if (!Array.isArray(this._pixelData)) this._pixelData = [];
+    this._pixelData = this._pixelData.filter(px => px.x !== optimisticPixel.x || px.y !== optimisticPixel.y);
+    this._pixelData.push(optimisticPixel);
+    this._renderPixelBoard('global', this._pixelData);
+    this._renderPixelSidebar();
+    this.renderRoomEventsPanel();
+    this._persistPixelDraft(null);
+    this.toast('Pixel placement submitted.', 'success');
   }
 
   _renderPixelBoard(room, pixels) {
     const board = document.getElementById('pixelBoard');
     if (!board) return;
+    const pixelMap = new Map();
+    if (Array.isArray(pixels)) {
+      pixels.forEach(px => {
+        if (!px || px.x === undefined || px.y === undefined) return;
+        pixelMap.set(`${px.x},${px.y}`, px);
+      });
+    }
     // clear
     board.innerHTML = '';
     // create 50x50 cells if not already
@@ -15075,70 +15849,80 @@ class ChatApp {
       for (let c = 0; c < 50; c++) {
         const cell = document.createElement('div');
         cell.className = 'pixel-cell';
+        if (this._pixelSelection && this._pixelSelection.x === c && this._pixelSelection.y === r) {
+          cell.classList.add('selected');
+        }
         cell.dataset.row = r;
         cell.dataset.col = c;
+        const pixel = pixelMap.get(`${c},${r}`);
+        if (pixel) {
+          cell.classList.add('occupied');
+          cell.style.background = pixel.color;
+          cell.title = `${pixel.author || 'Unknown'} · ${pixel.color || ''}`;
+          cell.dataset.author = pixel.author || '';
+          cell.dataset.color = pixel.color || '';
+          cell.dataset.timestamp = pixel.timestamp || '';
+        }
         board.appendChild(cell);
       }
-    }
-    // apply existing pixels
-    if (Array.isArray(pixels)) {
-      pixels.forEach((px, idx) => {
-        const selector = `.pixel-cell[data-row="${px.y}"][data-col="${px.x}"]`;
-        const el = board.querySelector(selector);
-        if (el) {
-          el.style.background = px.color;
-          el.title = px.author;
-          // store index for possible deletion
-          el.dataset.index = idx;
-        }
-      });
     }
     // click handler
     board.querySelectorAll('.pixel-cell').forEach(cell => {
       cell.onclick = (e) => {
         const r = parseInt(cell.dataset.row);
         const c = parseInt(cell.dataset.col);
-        const color = document.getElementById('pixelColorPicker').value;
+        const occupiedPixel = cell.dataset.author ? {
+          author: cell.dataset.author,
+          color: cell.dataset.color,
+          timestamp: cell.dataset.timestamp,
+          x: c,
+          y: r
+        } : null;
         // if admin & shift-click, delete pixel
         if (e.shiftKey) {
-          if (cell.dataset.index !== undefined) {
-            this.socket.emit('deletePixel', { room: this.currentRoom, index: parseInt(cell.dataset.index) });
+          if (occupiedPixel && Array.isArray(this._pixelData)) {
+            const pixelIndex = this._pixelData.findIndex(px => px.x === c && px.y === r);
+            if (pixelIndex >= 0) {
+              this.socket.emit('deletePixel', { room: this.currentRoom, index: pixelIndex });
+            }
           }
           return;
         }
-        this.socket.emit('placePixel', { room: this.currentRoom, x: c, y: r, color: color });
+        this._setPixelSelection(occupiedPixel || { x: c, y: r });
       };
     });
   }
 
   // socket handlers for pixels will be registered in initSocket
   _setupPixelSocket() {
-    // start cooldown timer interval
     if (!this._pixelCooldownInterval) {
       this._pixelCooldownInterval = setInterval(() => this._updatePixelCooldown(), 1000);
     }
-    this.socket.on('pixelsData', data => {
-      if (data.room !== this.currentRoom) return;
-      this._pixelData = data.pixels || [];
-      this._renderPixelBoard(data.room, this._pixelData);
-    });
-    this.socket.on('pixelPlaced', data => {
-      if (data.room !== this.currentRoom) return;
-      this._pixelData = data.pixels || [];
-      this._renderPixelBoard(data.room, this._pixelData);
-      if (data.pixel && data.pixel.author === this.username) {
-        this._lastPixelTime = Date.now();
-        this._updatePixelCooldown();
-      }
-    });
-    this.socket.on('pixelDeleted', data => {
-      if (data.room !== this.currentRoom) return;
-      this._pixelData = data.pixels || [];
-      this._renderPixelBoard(data.room, this._pixelData);
-    });
+    this.socket.off('pixelsData');
+    this.socket.off('pixelPlaced');
+    this.socket.off('pixelDeleted');
+    this.socket.off('pixelError');
+
+    this.socket.on('pixelsData', data => this._syncPixelCanvas(data, 'pixelsData'));
+    this.socket.on('pixelPlaced', data => this._syncPixelCanvas(data, 'pixelPlaced'));
+    this.socket.on('pixelDeleted', data => this._syncPixelCanvas(data, 'pixelDeleted'));
     this.socket.on('pixelError', data => {
-      this.toast(data.message, 'error');
+      this.toast(data?.message || 'Pixel action failed', 'error');
+      this._refreshPixelCanvas();
     });
+  }
+
+  _syncPixelCanvas(data, source) {
+    const pixels = Array.isArray(data?.pixels) ? data.pixels : [];
+    this._pixelRoomKey = 'global';
+    this._pixelData = pixels;
+    this._renderPixelBoard('global', this._pixelData);
+    this._renderPixelSidebar();
+    this.renderRoomEventsPanel();
+    if (source === 'pixelPlaced' && data?.pixel && data.pixel.author === this.username) {
+      this._lastPixelTime = Date.now();
+      this._updatePixelCooldown();
+    }
   }
 
   _updatePixelCooldown() {
@@ -15150,11 +15934,10 @@ class ChatApp {
       const sec = Math.ceil(diff / 1000);
       cd.textContent = `Next pixel in ${sec}s`;
     } else {
-      cd.textContent = '';
+      cd.textContent = 'Ready now · 60s cooldown';
     }
+    this._updatePixelRoomLabel();
   }
-
- }
 
 }
 
@@ -15192,6 +15975,60 @@ document.addEventListener('DOMContentLoaded', () => {
       const auth = document.getElementById('authScreen');
       if (auth) auth.style.display = 'flex';
     }
+    // If app exists but init() threw, ensure DOM caching and event bindings run
+    if (app) {
+      try {
+        if (typeof app.cacheDOM === 'function') app.cacheDOM();
+        if (typeof app.bindEvents === 'function') app.bindEvents();
+      } catch (e) {
+        console.error('[RedChat] Fallback bind error:', e);
+      }
+    }
+
+    // Minimal global fallback handlers for auth UI (ensures buttons work)
+    (function addFallbackAuthHandlers() {
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const username = document.getElementById('loginUsername')?.value?.trim();
+          const password = document.getElementById('loginPassword')?.value;
+          const captcha = document.getElementById('captchaAnswer')?.value;
+          if (window.app && app.socket && typeof app.socket.emit === 'function') {
+            app.socket.emit('login', { username, password, captchaAnswer: captcha, expectedCaptcha: app.captchaAnswer });
+          } else {
+            console.warn('[RedChat] Fallback login: no app/socket available');
+          }
+        });
+      }
+
+      const panelMap = {
+        showRegister: 'registerPanel',
+        showLogin: 'loginPanel',
+        showForgotPassword: 'forgotPanel',
+        showLoginFromForgot: 'loginPanel',
+        skipVerification: 'loginPanel'
+      };
+
+      Object.keys(panelMap).forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const panel = panelMap[id];
+          if (window.app && typeof app.showAuthPanel === 'function') {
+            app.showAuthPanel(panel);
+            return;
+          }
+          // Basic DOM fallback
+          ['loginPanel', 'registerPanel', 'forgotPanel', 'verifyPanel'].forEach(p => {
+            const el = document.getElementById(p);
+            if (el) el.classList.remove('active');
+          });
+          const target = document.getElementById(panel);
+          if (target) target.classList.add('active');
+        });
+      });
+    })();
   }, 1500);
 });
 

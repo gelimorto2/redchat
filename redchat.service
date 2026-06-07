@@ -1,0 +1,17 @@
+[Unit]
+Description=RedChat chat server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=leo
+WorkingDirectory=/home/leo/redchat
+Environment=PORT=3000
+ExecStart=/bin/bash /home/leo/redchat/rechat.sh start
+ExecStop=/bin/bash /home/leo/redchat/rechat.sh stop
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1226 @@
+[
+  {
+    "id": "2011cf61d00718a7",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779477594318,
+    "ip": ""
+  },
+  {
+    "id": "6a9dd539cc83cb18",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779477595065,
+    "ip": ""
+  },
+  {
+    "id": "d8d7933b883cbd92",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779477596823,
+    "ip": ""
+  },
+  {
+    "id": "d53a2d0d9b747d72",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779477599560,
+    "ip": ""
+  },
+  {
+    "id": "d53de2b587c3ea32",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779477765625,
+    "ip": ""
+  },
+  {
+    "id": "0b9bd87fa56eb418",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779477767456,
+    "ip": ""
+  },
+  {
+    "id": "9d3ff5515f64906f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779479462727,
+    "ip": ""
+  },
+  {
+    "id": "a6e9fdd54f276186",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779479462728,
+    "ip": ""
+  },
+  {
+    "id": "1905b45f5da2f2a7",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779481888620,
+    "ip": ""
+  },
+  {
+    "id": "1b2f32124eae93b6",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779481891062,
+    "ip": ""
+  },
+  {
+    "id": "f8453cf3a63996b5",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779481895401,
+    "ip": ""
+  },
+  {
+    "id": "998f65a4a5ab0568",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779481940155,
+    "ip": ""
+  },
+  {
+    "id": "98621d744efd390f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779481957939,
+    "ip": ""
+  },
+  {
+    "id": "eac2e899d8c02102",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779481965450,
+    "ip": ""
+  },
+  {
+    "id": "a41c23722b2a589c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779482077219,
+    "ip": ""
+  },
+  {
+    "id": "aa39fe52e99d1d70",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779482079131,
+    "ip": ""
+  },
+  {
+    "id": "5fd06b54506ae88f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779483279594,
+    "ip": ""
+  },
+  {
+    "id": "6108966d7605ea03",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779483281512,
+    "ip": ""
+  },
+  {
+    "id": "6ca814acd5c1ae3f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779483304740,
+    "ip": ""
+  },
+  {
+    "id": "2391ec6c7572f941",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779483657602,
+    "ip": ""
+  },
+  {
+    "id": "a1dff68f1a27fac8",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779483683388,
+    "ip": ""
+  },
+  {
+    "id": "65cdb9504af0848a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779483686254,
+    "ip": ""
+  },
+  {
+    "id": "0021cd8ef23f45ef",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779483729600,
+    "ip": ""
+  },
+  {
+    "id": "1eb098b6cddcf183",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779483731365,
+    "ip": ""
+  },
+  {
+    "id": "e03514873c319ddd",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779483752300,
+    "ip": ""
+  },
+  {
+    "id": "1b522b4a8cfb19f2",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779526509227,
+    "ip": ""
+  },
+  {
+    "id": "8dffc757bf902313",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779526509315,
+    "ip": ""
+  },
+  {
+    "id": "72f20b29c0f75bce",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779526509316,
+    "ip": ""
+  },
+  {
+    "id": "ed084d23a0c924c8",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779526964690,
+    "ip": ""
+  },
+  {
+    "id": "127cce49cc473dcb",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779526988235,
+    "ip": ""
+  },
+  {
+    "id": "a83dd1b5f9a166eb",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779528036704,
+    "ip": ""
+  },
+  {
+    "id": "9742d7223e5fefaf",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779529797942,
+    "ip": ""
+  },
+  {
+    "id": "1d45474a3712be7e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779530597355,
+    "ip": ""
+  },
+  {
+    "id": "dccd43208e7a4c89",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779530597357,
+    "ip": ""
+  },
+  {
+    "id": "ebd58430c1f5e053",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779530655905,
+    "ip": ""
+  },
+  {
+    "id": "127fbdfcd3254984",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779530657749,
+    "ip": ""
+  },
+  {
+    "id": "09602d1a8d0ce9d1",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779530673310,
+    "ip": ""
+  },
+  {
+    "id": "38496f204fde4c6d",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779530713043,
+    "ip": ""
+  },
+  {
+    "id": "fb6d5ff033d1d199",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779530713573,
+    "ip": ""
+  },
+  {
+    "id": "8e9d7d0bc71eac6d",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779530831940,
+    "ip": ""
+  },
+  {
+    "id": "c180d40223d30ca9",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779530833985,
+    "ip": ""
+  },
+  {
+    "id": "bde4bd143b806f40",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779530847351,
+    "ip": ""
+  },
+  {
+    "id": "a9f586999f2eabe5",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779530849341,
+    "ip": ""
+  },
+  {
+    "id": "49fc31483906aa2d",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779530867220,
+    "ip": ""
+  },
+  {
+    "id": "0ef380adcb956b34",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779530875912,
+    "ip": ""
+  },
+  {
+    "id": "a428aab9818e3d6e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779530916290,
+    "ip": ""
+  },
+  {
+    "id": "c9c49804bf4ef938",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779530960788,
+    "ip": ""
+  },
+  {
+    "id": "ae5e623993f1be25",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1779530963429,
+    "ip": ""
+  },
+  {
+    "id": "3a5bc091766dd270",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1779530963963,
+    "ip": ""
+  },
+  {
+    "id": "58ad07a87a332b1f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531236409,
+    "ip": ""
+  },
+  {
+    "id": "531554881095c125",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531238378,
+    "ip": ""
+  },
+  {
+    "id": "60b9c76ffb2acf0c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531242074,
+    "ip": ""
+  },
+  {
+    "id": "9e76ae84346bc92a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531243887,
+    "ip": ""
+  },
+  {
+    "id": "e78dfcbc20119dbd",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531432835,
+    "ip": ""
+  },
+  {
+    "id": "84af57a2e7b9e26e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531434915,
+    "ip": ""
+  },
+  {
+    "id": "dd196ba128bb48aa",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531537301,
+    "ip": ""
+  },
+  {
+    "id": "c30445e31768093f",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531539464,
+    "ip": ""
+  },
+  {
+    "id": "8b01f2bbcfb0f11f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531636806,
+    "ip": ""
+  },
+  {
+    "id": "cae7e22a4ebdd9cc",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531638736,
+    "ip": ""
+  },
+  {
+    "id": "249557d5b59c0049",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779531639812,
+    "ip": ""
+  },
+  {
+    "id": "faf7b77fcd46c93e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531705860,
+    "ip": ""
+  },
+  {
+    "id": "da50d6069ece5a64",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531707747,
+    "ip": ""
+  },
+  {
+    "id": "a84806cad3ac79fd",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779531912784,
+    "ip": ""
+  },
+  {
+    "id": "c71296b07d99886b",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531925586,
+    "ip": ""
+  },
+  {
+    "id": "59fe0b65c91b7728",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531927749,
+    "ip": ""
+  },
+  {
+    "id": "288dae3ae00e0bd6",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531972510,
+    "ip": ""
+  },
+  {
+    "id": "b343662b1b98bb23",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531974818,
+    "ip": ""
+  },
+  {
+    "id": "b1de625a6aa495ba",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779531976210,
+    "ip": ""
+  },
+  {
+    "id": "ca4c6b00a13faf5a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779531978712,
+    "ip": ""
+  },
+  {
+    "id": "b9d22216325b7fb3",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Random",
+    "timestamp": 1779531982277,
+    "ip": ""
+  },
+  {
+    "id": "761898821678fdb5",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Technology",
+    "timestamp": 1779531982920,
+    "ip": ""
+  },
+  {
+    "id": "cceca4d5287d79d3",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779531983749,
+    "ip": ""
+  },
+  {
+    "id": "ef125f5ceb8ceaf0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779532013209,
+    "ip": ""
+  },
+  {
+    "id": "80e549f2807490e7",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779532015095,
+    "ip": ""
+  },
+  {
+    "id": "1cbbd5dd8dad5699",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779532027713,
+    "ip": ""
+  },
+  {
+    "id": "356a42701969d41f",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779532029685,
+    "ip": ""
+  },
+  {
+    "id": "d7a4c937c817fc84",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779532230614,
+    "ip": ""
+  },
+  {
+    "id": "57827b880da56746",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779532231424,
+    "ip": ""
+  },
+  {
+    "id": "89ff0771a68e4714",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779532233416,
+    "ip": ""
+  },
+  {
+    "id": "767223c1fe79b87e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779532234678,
+    "ip": ""
+  },
+  {
+    "id": "a0a4ebb3f7606e86",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779532236969,
+    "ip": ""
+  },
+  {
+    "id": "8b871940c128260c",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Music",
+    "timestamp": 1779532237537,
+    "ip": ""
+  },
+  {
+    "id": "efc3c4745566b5c6",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779532338525,
+    "ip": ""
+  },
+  {
+    "id": "0d9a3f2d6fb54847",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779532341432,
+    "ip": ""
+  },
+  {
+    "id": "b0fd3189afaa3ac0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779533795198,
+    "ip": ""
+  },
+  {
+    "id": "0860937d5bc73003",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779533797236,
+    "ip": ""
+  },
+  {
+    "id": "87923ccad2342f7f",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779533803454,
+    "ip": ""
+  },
+  {
+    "id": "4f1164be860857d4",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779635580066,
+    "ip": ""
+  },
+  {
+    "id": "b1214ff5a82baf31",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779635699822,
+    "ip": ""
+  },
+  {
+    "id": "6064597095060891",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779635712272,
+    "ip": ""
+  },
+  {
+    "id": "73b4213257b3bca9",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779635860199,
+    "ip": ""
+  },
+  {
+    "id": "6dc85d0f3fa19bec",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779816238312,
+    "ip": ""
+  },
+  {
+    "id": "c6de3c0fdb7fe77a",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779816250747,
+    "ip": ""
+  },
+  {
+    "id": "8f1ab4265a171c3e",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779816864496,
+    "ip": ""
+  },
+  {
+    "id": "0b2d3dbddab26606",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817434809,
+    "ip": ""
+  },
+  {
+    "id": "664ed7bc7c563088",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817436896,
+    "ip": ""
+  },
+  {
+    "id": "cbb042c1bd8e332a",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779817583301,
+    "ip": ""
+  },
+  {
+    "id": "cc3ca8f1dbfeb6b8",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779817596226,
+    "ip": ""
+  },
+  {
+    "id": "0cdce15052334e76",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779817596940,
+    "ip": ""
+  },
+  {
+    "id": "75c50bb201803ac0",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817664042,
+    "ip": ""
+  },
+  {
+    "id": "862588c90a1d6ce6",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817665985,
+    "ip": ""
+  },
+  {
+    "id": "21fbd5e11f64ffcc",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817738569,
+    "ip": ""
+  },
+  {
+    "id": "e3b6bd5debe34ca7",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817740540,
+    "ip": ""
+  },
+  {
+    "id": "8696f2dea1f721bf",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817761278,
+    "ip": ""
+  },
+  {
+    "id": "3b0480c00497994d",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817763124,
+    "ip": ""
+  },
+  {
+    "id": "302472e5eac8a0c9",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817790555,
+    "ip": ""
+  },
+  {
+    "id": "09f970645504e1ed",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817792316,
+    "ip": ""
+  },
+  {
+    "id": "7877f2bec091b7db",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817803120,
+    "ip": ""
+  },
+  {
+    "id": "6d5a30695b943f62",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817805067,
+    "ip": ""
+  },
+  {
+    "id": "0453fc95b7c5271a",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817836369,
+    "ip": ""
+  },
+  {
+    "id": "dd636fad7200932b",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817838284,
+    "ip": ""
+  },
+  {
+    "id": "4e092f37985d8305",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817852341,
+    "ip": ""
+  },
+  {
+    "id": "63a31a3cd1dc0eb0",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817855896,
+    "ip": ""
+  },
+  {
+    "id": "13d2fd7171574455",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817863322,
+    "ip": ""
+  },
+  {
+    "id": "99e8395cbbe0e286",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817865178,
+    "ip": ""
+  },
+  {
+    "id": "7147dff8a08c0285",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817886899,
+    "ip": ""
+  },
+  {
+    "id": "4959ca364c269f85",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817888781,
+    "ip": ""
+  },
+  {
+    "id": "a49aa0eb295502db",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817935312,
+    "ip": ""
+  },
+  {
+    "id": "47d77b04e1183c5c",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817937411,
+    "ip": ""
+  },
+  {
+    "id": "77cabaf022d98b9c",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779817988445,
+    "ip": ""
+  },
+  {
+    "id": "a9f35d6f9ce008fb",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779817990458,
+    "ip": ""
+  },
+  {
+    "id": "5d5796cb72e7b607",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818001496,
+    "ip": ""
+  },
+  {
+    "id": "9ff853c7c42538bd",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818003301,
+    "ip": ""
+  },
+  {
+    "id": "2e9f508a3ead5563",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818004827,
+    "ip": ""
+  },
+  {
+    "id": "ee4a46873c8f9a3e",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818074408,
+    "ip": ""
+  },
+  {
+    "id": "2cef3c36267ca4d4",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818076561,
+    "ip": ""
+  },
+  {
+    "id": "8e0956d8bbaafe2f",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818077443,
+    "ip": ""
+  },
+  {
+    "id": "ef0e9d961e44f6b9",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818104233,
+    "ip": ""
+  },
+  {
+    "id": "b0fc19fcaa0b45a5",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818106030,
+    "ip": ""
+  },
+  {
+    "id": "cad14cc218dbb1de",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818115540,
+    "ip": ""
+  },
+  {
+    "id": "7fc3ba614c331a08",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818117381,
+    "ip": ""
+  },
+  {
+    "id": "a5ea7a11fd8fde8e",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818119452,
+    "ip": ""
+  },
+  {
+    "id": "1f78d4382fe59cbe",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818221839,
+    "ip": ""
+  },
+  {
+    "id": "b0bdde23120e782a",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818223797,
+    "ip": ""
+  },
+  {
+    "id": "5d97a684188da6ce",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818226015,
+    "ip": ""
+  },
+  {
+    "id": "b75ad40d65ef68da",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779818297073,
+    "ip": ""
+  },
+  {
+    "id": "ec3fef1c896cddbb",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818299070,
+    "ip": ""
+  },
+  {
+    "id": "ae66c737969eeeb6",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818425098,
+    "ip": ""
+  },
+  {
+    "id": "66d2690251d12f32",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818427156,
+    "ip": ""
+  },
+  {
+    "id": "b8c0c0de1b3ae055",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818432360,
+    "ip": ""
+  },
+  {
+    "id": "bccfc1ae2708fbc7",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779818450972,
+    "ip": ""
+  },
+  {
+    "id": "14fa980f9c2a0960",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779818452698,
+    "ip": ""
+  },
+  {
+    "id": "d6db0690e838f38f",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779818455692,
+    "ip": ""
+  },
+  {
+    "id": "dfdc46c118586bfd",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779819295154,
+    "ip": ""
+  },
+  {
+    "id": "79d6bba3aae60d80",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779819297255,
+    "ip": ""
+  },
+  {
+    "id": "ab0057644abf7686",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: Gaming",
+    "timestamp": 1779819301936,
+    "ip": ""
+  },
+  {
+    "id": "b2bbc286ff6d4690",
+    "type": "join_room",
+    "username": "gelimorto",
+    "details": "Joined room: General",
+    "timestamp": 1779819302417,
+    "ip": ""
+  },
+  {
+    "id": "b4e0375d1493c067",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779819331640,
+    "ip": ""
+  },
+  {
+    "id": "55f71be3932ca925",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779819374905,
+    "ip": ""
+  },
+  {
+    "id": "9249d9b171d0f868",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1779819374996,
+    "ip": ""
+  },
+  {
+    "id": "5f1ada312ea9d6e7",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1779819374996,
+    "ip": ""
+  },
+  {
+    "id": "3eff2242eb10a1e0",
+    "type": "login",
+    "username": "gelimorto",
+    "details": "User logged in",
+    "timestamp": 1780819879785,
+    "ip": ""
+  },
+  {
+    "id": "91bfb9b6ca6bc3a7",
+    "type": "disconnect",
+    "username": "gelimorto",
+    "details": "User disconnected",
+    "timestamp": 1780820173431,
+    "ip": ""
+  }
+]
